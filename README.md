@@ -1,4 +1,4 @@
-# public-web
+# Find Earth public site
 
 > A Vue.js project
 
