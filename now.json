@@ -1,5 +1,5 @@
 {
   "name": "public-site-findearth",
-  "alias": "find.earth",
+  "alias": ["find.earth", "🔎🌎.ws"],
   "type": "npm"
 }
