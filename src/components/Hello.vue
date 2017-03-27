@@ -1,57 +1,30 @@
 <template>
-  <div class="hello">
-    <h1 class="animated fadeIn">{{ msg }}</h1>
-  </div>
+  <section id="hello">
+    <img class="animated-logo" src="/static/animated_logo.svg" @click="goToGitHub">
+  </section>
 </template>
 
 <script>
 export default {
   name: 'hello',
   data() {
-    return {
-      msg: 'Hello 🌎',
-    };
+    return {};
+  },
+  methods: {
+    goToGitHub() {
+      window.location = 'https://github.com/findearth';
+    },
   },
 };
 </script>
 
 <style scoped>
-  @charset "UTF-8";
-
-  h1 {
-    font-weight: normal;
-    margin: 0;
+  .animated-logo {
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
   }
-
-  .animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
-
-  @-webkit-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  .fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+  .animated-logo:hover {
+    cursor: pointer;
+    opacity: 0.7;
   }
 </style>

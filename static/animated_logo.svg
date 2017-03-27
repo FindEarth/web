@@ -1,0 +1,24 @@
+<!--?xml version="1.0" standalone="no"?-->
+
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="200.000000pt" height="200.000000pt" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.13, written by Peter Selinger 2001-2015
+</metadata>
+<g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="none" stroke="#29235C" stroke-width="25">
+<path d="M575 1753 c-137 -19 -225 -63 -311 -157 -122 -131 -168 -275 -145
+-447 44 -336 294 -640 770 -939 108 -67 127 -67 245 7 316 199 566 448 681
+678 53 106 73 179 81 295 11 160 -40 294 -157 411 -103 104 -211 148 -364 149
+-133 0 -248 -40 -331 -116 -20 -19 -40 -34 -43 -34 -4 0 -24 18 -45 39 -48 49
+-132 87 -232 106 -75 15 -92 16 -149 8z m197 -153 c139 -52 258 -223 258 -373
+0 -58 -28 -183 -56 -245 -41 -93 -129 -215 -235 -326 l-101 -106 -48 41 c-66
+56 -175 185 -237 281 -128 200 -142 406 -38 583 42 73 138 141 232 165 56 14
+160 5 225 -20z m738 5 c99 -35 201 -137 239 -240 26 -69 28 -193 6 -280 -61
+-235 -281 -489 -622 -718 -63 -42 -121 -77 -127 -77 -11 0 -239 149 -260 170
+-6 6 23 43 72 94 166 173 272 344 313 506 30 117 24 266 -14 361 -15 36 -27
+70 -27 76 0 14 62 68 103 90 81 43 223 51 317 18z" class="HhVqRsbh_0"></path>
+<path d="M522 1464 c-188 -94 -186 -356 3 -457 56 -30 164 -30 220 0 114 61
+167 183 132 304 -32 109 -127 179 -242 179 -46 0 -74 -7 -113 -26z m162 -108
+c49 -20 76 -61 76 -113 0 -82 -48 -133 -125 -133 -77 0 -125 51 -125 133 0 52
+27 92 74 113 40 17 59 17 100 0z" class="HhVqRsbh_1"></path>
+</g>
+<style>.HhVqRsbh_0{stroke-dasharray:11934 11936;stroke-dashoffset:11935;animation:HhVqRsbh_draw 2500ms linear 0ms forwards;}.HhVqRsbh_1{stroke-dasharray:2399 2401;stroke-dashoffset:2400;animation:HhVqRsbh_draw 2500ms linear 500ms forwards;}@keyframes HhVqRsbh_draw{100%{stroke-dashoffset:0;}}@keyframes HhVqRsbh_fade{0%{stroke-opacity:1;}94.44444444444444%{stroke-opacity:1;}100%{stroke-opacity:0;}}</style></svg>
