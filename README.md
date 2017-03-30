@@ -1,6 +1,6 @@
-# Find Earth public site
+# Public Site | Find Earth
 
-> A Vue.js project
+[![Codeship](https://img.shields.io/codeship/33c10310-d37c-0134-404f-16b6d884a97d/master.svg)]()
 
 ## Build Setup
 
@@ -17,5 +17,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
