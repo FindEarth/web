@@ -2,7 +2,7 @@ import Home from 'components/main/home/Home';
 
 const route = {
   path: '/',
-  name: 'Home',
+  name: 'home',
   component: Home,
 };
 
