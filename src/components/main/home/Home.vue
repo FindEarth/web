@@ -32,6 +32,7 @@
     align-items: center;
 
     .animated-logo {
+      width: 350px;
       transition: opacity 0.3s;
       -webkit-transition: opacity 0.3s;
       &:hover {
