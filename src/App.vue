@@ -9,8 +9,6 @@
     router-view
 </template>
 
-<style>
-  body {
-    margin: 0;
-  }
+<style lang="scss">
+  @import "styles/app.scss";
 </style>
