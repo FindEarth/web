@@ -1,6 +1,21 @@
+// Custom theme #00bcd4 for element-ui https://elementui.github.io/theme-preview/#/en-US
+import 'styles/custom-theme/index.css';
+import ElementUI from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/es';
+
+import * as VueGoogleMaps from 'vue2-google-maps';
+
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+
+Vue.use(ElementUI, { locale });
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBFDFmn-PL1Kg0frwZUXibuFyuiTPDMsas',
+  },
+});
 
 /* eslint-disable no-new */
 new Vue({
