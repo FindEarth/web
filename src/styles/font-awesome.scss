@@ -1,0 +1,13 @@
+$fa-font-path: '~font-awesome/fonts';
+$fa-css-prefix: el-icon-custom;
+@import '~font-awesome/scss/font-awesome.scss';
+
+[class^="el-icon-custom"], [class*=" el-icon-custom"] {
+  font-family: "FontAwesome" !important;
+
+  /* The following is based on original CSS rules of third-party library */
+  font-size: inherit;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
