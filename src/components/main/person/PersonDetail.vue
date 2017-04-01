@@ -1,5 +1,6 @@
 <script>
   import personService from 'services/person';
+  import config from 'services/config';
 
   export default {
     name: 'person',
@@ -10,6 +11,7 @@
         position: {},
         isLoading: true,
         activeTab: '1',
+        mapIcon: { url: '' },
       };
     },
 
@@ -17,6 +19,7 @@
       personService.getById(this.$route.params.personId).then((person) => {
         this.isLoading = false;
         this.person = person;
+        this.mapIcon = this.person.gender === 'M' ? config.map.icon.male : config.map.icon.female;
         this.setPosition();
       });
     },
@@ -46,7 +49,14 @@
     gmap-map.map(v-if='position.lat && position.lng', :center='position', :zoom='14', v-loading='isLoading')
       gmap-marker(
         :position='position',
-        :clickable='true'
+        :clickable='true',
+        style='width: 30px;',
+        :icon='mapIcon',
+        :animation='2',
+      )
+      gmap-circle(
+        :center='position',
+        :radius='1000',
       )
 
     el-row.person(:gutter="20")
