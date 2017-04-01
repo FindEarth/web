@@ -1,11 +1,55 @@
 @import "./font-awesome.scss";
+@import "fonts.scss";
+@import "animate.scss";
+@import "variables.scss";
 
 html {
+  overflow: hidden;
   height: 100vh;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
   margin: 0;
   height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
+.hover-effect {
+  transition: opacity 0.3s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid $primary;
+}
+
+.el-tooltip__popper {
+  padding: 10px 5px;
+
+  .find-it-tooltip {
+    i.fa {
+      display: inline-block;
+      width: 35px;
+      text-align: center;
+      transition: color 0.3s;
+      font-size: 1.7em;
+      cursor: pointer;
+
+      &.el-icon-custom-facebook:hover {
+        color: #3b5998;
+      }
+
+      &.el-icon-custom-twitter:hover {
+        color: #0084b4;
+      }
+    }
+  }
 }

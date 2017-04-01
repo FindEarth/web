@@ -6,3 +6,9 @@
   section#person-container
     router-view
 </template>
+
+<style lang="scss">
+  section#person-container {
+    height: 100%;
+  }
+</style>

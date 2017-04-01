@@ -2,8 +2,12 @@
   import personService from 'services/person';
   import config from 'services/config';
 
+  import customFooter from 'components/layout/Footer';
+
   export default {
     name: 'person',
+
+    components: { customFooter },
 
     data() {
       return {
@@ -11,7 +15,14 @@
         position: {},
         isLoading: true,
         activeTab: '1',
-        mapIcon: { url: '' },
+        map: {
+          options: {
+            styles: config.map.styles,
+            mapTypeControl: false,
+            fullscreenControl: true,
+          },
+        },
+        markerIcon: { url: '' },
       };
     },
 
@@ -19,7 +30,7 @@
       personService.getById(this.$route.params.personId).then((person) => {
         this.isLoading = false;
         this.person = person;
-        this.mapIcon = this.person.gender === 'M' ? config.map.icon.male : config.map.icon.female;
+        this.markerIcon = this.person.gender === 'M' ? config.map.icon.male : config.map.icon.female;
         this.setPosition();
       });
     },
@@ -29,37 +40,50 @@
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0);
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0);
       },
+
+      sharePerson(source) {
+        const text = `${this.person.name} se perdió el ${this.person.createdAt}, ayúdanos a encontrarlo: ${document.URL}`;
+        const sources = {
+          twitter: `https://twitter.com/intent/tweet?text=${text}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${document.URL}`,
+        };
+        window.open(sources[source]);
+      },
     },
   };
 </script>
 
 <template lang="pug">
   section#person-detail
-    el-menu(mode='horizontal')
-      el-row
-        el-col.menu-left-section(:span='12')
-          img.animated-logo(src='/static/logo.svg')
-          p.person-name {{ person.name }}
-        el-col.menu-right-section(:span='12')
-          el-button-group
-            el-button(type='primary') Contactar
-            el-button(type='primary', icon='custom-facebook')
-            el-button(type='primary', icon='custom-twitter')
 
-    gmap-map.map(v-if='position.lat && position.lng', :center='position', :zoom='14', v-loading='isLoading')
-      gmap-marker(
-        :position='position',
-        :clickable='true',
-        style='width: 30px;',
-        :icon='mapIcon',
-        :animation='2',
-      )
-      gmap-circle(
-        :center='position',
-        :radius='1000',
-      )
+    .person-detail-top
+      .wrapper
+        .logo.hover-effect
+          router-link(tag='img', src='/static/animated_logo.svg', :to='{name: \'home\'}')
 
-    el-row.person(:gutter="20")
+        .main-text(class='animated fadeIn' v-if='person.name')
+          <h1><strong class="hover-effect person-name link">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
+          h1 Ayudanos a&nbsp;
+            el-tooltip.find-it(effect='dark', placement='bottom')
+              strong.hover-effect.link encontrarlo
+              template(slot='content')
+                .find-it-tooltip
+                  i.fa.el-icon-custom-facebook(@click='sharePerson(\'facebook\')')
+                  i.fa.el-icon-custom-twitter(@click='sharePerson(\'twitter\')')
+            | .
+
+    .person-detail-middle
+      el-row.person
+        el-col(:span='24')
+          gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14', v-loading='isLoading')
+            gmap-marker(
+              :position='position',
+              :clickable='true',
+              style='width: 30px;',
+              :icon='markerIcon',
+            )
+
+    //- el-row.person(:gutter="20")
       el-col(:span='8')
         .grid-content
           el-card(:body-style="{ padding: '0px' }", v-loading='isLoading')
@@ -80,71 +104,72 @@
         .more-data(v-if='person.description && person.description.more')
           h3 Más datos
           p {{ person.description.more }}
+
+    .person-detail-bottom
+      custom-footer
 </template>
 
 <style lang="scss">
+  @import "../../../styles/variables.scss";
+
   section#person-detail {
-    .el-menu--horizontal {
-      padding: 0 10px;
 
-      .animated-logo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    $flexTop: 3;
+    $flexMiddle: 3;
+    $flexBottom: 1;
+
+    $margin: 50px;
+
+    .person-detail-top, .person-detail-middle, .person-detail-bottom {
+      box-sizing: border-box;
+    }
+
+    .person-detail-top {
+      flex: $flexTop;
+
+      .wrapper {
+        margin: $margin;
+      }
+
+      .logo img{
         width: 45px;
-        vertical-align: middle;
       }
 
-      .person-name {
-        display: inline-block;
-        margin-left: 10px;
-        vertical-align: middle;
-      }
+      .main-text {
+        margin: $margin 0;
+        margin-top: $margin;
 
-      .menu-right-section {
-        display: flex;
-        justify-content: flex-end;
-        flex-direction: row;
-        margin: 7px 0;
-      }
-    }
+        h1 {
+          margin: 0;
+          font-weight: 300;
+          font-size: 2.2em;
+          line-height: 1.4;
 
-    .map {
-      height: 300px;
-      margin-bottom: 30px;
-    }
+          strong {
+            font-weight: 700;
+            color: $primary;
+          }
 
-    .el-row.person {
-      padding: 0 10px;
-    }
-
-    .el-col.details {
-      h3 {
-        margin: 0;
+          .person-name {
+            cursor: help;
+          }
+        }
       }
     }
 
-    .time {
-      font-size: 13px;
-      color: #999;
-      display: inline-block;
-      margin-bottom: 12px;
+    .person-detail-middle {
+      flex: $flexMiddle;
+      .map {
+        height: 45vh;
+      }
     }
 
-    .bottom {
-      margin-top: 13px;
-      line-height: 12px;
-    }
-
-    .image {
-      width: 100%;
-      display: block;
-    }
-
-    .clearfix:before, .clearfix:after {
-      display: table;
-      content: "";
-    }
-
-    .clearfix:after {
-      clear: both
+    .person-detail-bottom {
+      flex: $flexBottom;
     }
   }
 </style>
