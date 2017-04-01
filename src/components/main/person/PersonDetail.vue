@@ -2,12 +2,13 @@
   import personService from 'services/person';
   import config from 'services/config';
 
+  import contactButton from 'components/utils/ContactButton';
   import customFooter from 'components/layout/Footer';
 
   export default {
     name: 'person',
 
-    components: { customFooter },
+    components: { customFooter, contactButton },
 
     data() {
       return {
@@ -58,8 +59,12 @@
 
     .person-detail-top
       .wrapper
-        .logo
-          router-link.hover-effect(tag='img', src='/static/animated_logo.svg', :to='{name: \'home\'}')
+
+        .header
+          .logo
+            router-link.hover-effect(tag='img', src='/static/animated_logo.svg', :to='{name: \'home\'}')
+          .contact
+            contact-button(:person='person')
 
         .main-text(class='animated fadeIn' v-if='person.name')
           <h1><strong class="hover-effect person-name link">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
@@ -136,8 +141,17 @@
         margin: $margin;
       }
 
-      .logo img{
-        width: 45px;
+      .header {
+        display: flex;
+        align-items: center;
+
+        .logo img{
+          width: 45px;
+        }
+
+        .contact {
+          margin-left: auto;
+        }
       }
 
       .main-text {
