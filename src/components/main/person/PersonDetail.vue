@@ -58,8 +58,8 @@
 
     .person-detail-top
       .wrapper
-        .logo.hover-effect
-          router-link(tag='img', src='/static/animated_logo.svg', :to='{name: \'home\'}')
+        .logo
+          router-link.hover-effect(tag='img', src='/static/animated_logo.svg', :to='{name: \'home\'}')
 
         .main-text(class='animated fadeIn' v-if='person.name')
           <h1><strong class="hover-effect person-name link">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
