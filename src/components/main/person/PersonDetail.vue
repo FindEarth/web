@@ -33,8 +33,15 @@
 <template lang="pug">
   section#person-detail
     el-menu(mode='horizontal')
-      img.animated-logo(src='/static/animated_logo.svg')
-      p.person-name {{ person.name }}
+      el-row
+        el-col.menu-left-section(:span='12')
+          img.animated-logo(src='/static/logo.svg')
+          p.person-name {{ person.name }}
+        el-col.menu-right-section(:span='12')
+          el-button-group
+            el-button(type='primary') Contactar
+            el-button(type='primary', icon='custom-facebook')
+            el-button(type='primary', icon='custom-twitter')
 
     gmap-map.map(v-if='position.lat && position.lng', :center='position', :zoom='14', v-loading='isLoading')
       gmap-marker(
@@ -58,7 +65,7 @@
           h3 Apariencia
           p {{ person.description.appearance }}
         .clothing(v-if='person.description && person.description.clothing')
-          h3 Apariencia
+          h3 Vestimenta
           p {{ person.description.clothing }}
         .more-data(v-if='person.description && person.description.more')
           h3 Más datos
@@ -79,6 +86,13 @@
         display: inline-block;
         margin-left: 10px;
         vertical-align: middle;
+      }
+
+      .menu-right-section {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        margin: 7px 0;
       }
     }
 
