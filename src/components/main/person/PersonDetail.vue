@@ -106,7 +106,8 @@
           p {{ person.description.more }}
 
     .person-detail-bottom
-      custom-footer
+      .wrapper
+        custom-footer
 </template>
 
 <style lang="scss">
@@ -170,6 +171,10 @@
 
     .person-detail-bottom {
       flex: $flexBottom;
+      .wrapper {
+        height: 100%;
+        margin: 0 $margin;
+      }
     }
   }
 </style>
