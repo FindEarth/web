@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "element-ui": "^1.2.7",
+    "moment": "^2.18.1",
     "pug": "^2.0.0-beta11",
     "serve": "latest",
     "trae": "^1.4.0",

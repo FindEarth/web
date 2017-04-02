@@ -1,4 +1,6 @@
 <script>
+  import moment from 'moment';
+
   import personService from 'services/person';
   import config from 'services/config';
 
@@ -60,6 +62,12 @@
         window.open(sources[source]);
       },
     },
+
+    filters: {
+      date(date) {
+        return moment(date).format('DD/MM/YYYY');
+      },
+    },
   };
 </script>
 
@@ -76,7 +84,7 @@
             contact-button(:person='person')
 
         .main-text(class='animated fadeIn' v-if='person.name')
-          <h1><strong class="hover-effect person-name link" @click="showModal = true">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
+          <h1><strong class="hover-effect person-name link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
           h1 Ayudanos a&nbsp;
             el-tooltip.find-it(effect='dark', placement='bottom')
               strong.hover-effect.link encontrarlo
