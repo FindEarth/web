@@ -37,15 +37,17 @@
       /* eslint-enable */
     },
 
-    meta() {
-      return [
-        { name: 'og:title', content: 'Find Earth' },
-        { name: 'og:image', content: 'https://find.earth/static/keepers-logo.png' },
-        { name: 'og:site_name', content: 'Find Earth' },
-        { name: 'og:url', content: window.location.href },
-        { name: 'og:description', content: 'Open Source Platform to help tracing Missing Persons' },
-        { name: 'og:type', content: 'website' },
-      ];
+    head: {
+      meta() {
+        return [
+          { name: 'og:title', content: `Find Earth - ${this.$route.params.personId}` },
+          { name: 'og:image', content: 'https://find.earth/static/keepers-logo.png' },
+          { name: 'og:site_name', content: 'Find Earth' },
+          { name: 'og:url', content: window.location.href },
+          { name: 'og:description', content: 'Open Source Platform to help tracing Missing Persons' },
+          { name: 'og:type', content: 'website' },
+        ];
+      },
     },
 
     methods: {
