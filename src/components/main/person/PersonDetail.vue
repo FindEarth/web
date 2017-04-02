@@ -28,15 +28,6 @@
 
     beforeRouteEnter(to, from, next) {
       /* eslint-disable */
-      document.head.innerHTML = `
-        ${document.head.innerHTML}
-        <meta name="og:title" content="Find Earth - 58d8a3c58438934f13a81000">
-        <meta name="og:image" content="https://find.earth/static/keepers-logo.png">
-        <meta name="og:site_name" content="Find Earth">
-        <meta name="og:url" content="https://find.earth/person/58d8a3c58438934f13a81000">
-        <meta name="og:description" content="Open Source Platform to help tracing Missing Persons">
-        <meta name="og:type" content="website">
-      `;
       personService.getById(to.params.personId).then(person => {
         next(vm => {
           vm.person = person;

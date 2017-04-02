@@ -16,7 +16,6 @@
     "serve": "latest",
     "trae": "^1.4.0",
     "vue": "^2.1.10",
-    "vue-head": "^2.0.10",
     "vue-router": "^2.2.0",
     "vue2-google-maps": "^0.7.4"
   },
