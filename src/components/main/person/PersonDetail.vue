@@ -27,16 +27,24 @@
       };
     },
 
-    mounted() {
-      personService.getById(this.$route.params.personId).then((person) => {
-        this.isLoading = false;
-        this.person = person;
-        this.markerIcon = this.person.gender === 'M' ? config.map.icon.male : config.map.icon.female;
-        this.setPosition();
+    beforeRouteEnter(to, from, next) {
+      /* eslint-disable */
+      personService.getById(to.params.personId).then(person => {
+        next(vm => {
+          vm.person = person;
+          vm.setPerson();
+        });
       });
+      /* eslint-enable */
     },
 
     methods: {
+      setPerson() {
+        this.isLoading = false;
+        this.markerIcon = this.person.gender === 'M' ? config.map.icon.male : config.map.icon.female;
+        this.setPosition();
+      },
+
       setPosition() {
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0);
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0);
