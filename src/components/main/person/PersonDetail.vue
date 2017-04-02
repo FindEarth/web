@@ -4,11 +4,12 @@
 
   import contactButton from 'components/utils/ContactButton';
   import customFooter from 'components/layout/Footer';
+  import Modal from 'components/utils/Modal';
 
   export default {
     name: 'person',
 
-    components: { customFooter, contactButton },
+    components: { customFooter, contactButton, Modal },
 
     data() {
       return {
@@ -23,6 +24,7 @@
           },
         },
         markerIcon: { url: '' },
+        showModal: false,
       };
     },
 
@@ -74,7 +76,7 @@
             contact-button(:person='person')
 
         .main-text(class='animated fadeIn' v-if='person.name')
-          <h1><strong class="hover-effect person-name link">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
+          <h1><strong class="hover-effect person-name link" @click="showModal = true">{{ person.name }}</strong> se perdió el 22/09/2017 en Buenos Aires.</h1>
           h1 Ayudanos a&nbsp;
             el-tooltip.find-it(effect='dark', placement='bottom')
               strong.hover-effect.link encontrarlo
@@ -120,6 +122,16 @@
     .person-detail-bottom
       .wrapper
         custom-footer
+
+    modal(v-if='showModal', @close='showModal = false')
+      h3(slot='header') {{ person.name }}
+      div(slot='body')
+        p(v-if='person.description && person.description.appearance')
+          <strong class="detail-title">Apariencia</strong>: {{ this.person.description.appearance }}
+        p(v-if='person.description && person.description.clothing')
+          <strong class="detail-title">Vestimenta</strong>: {{ this.person.description.clothing }}
+        p(v-if='person.description && person.description.more')
+          <strong class="detail-title">Mas informacion</strong>: {{ this.person.description.more }}
 </template>
 
 <style lang="scss">
@@ -197,5 +209,9 @@
         margin: 0 $margin;
       }
     }
+  }
+
+  .detail-title {
+    color: $primary;
   }
 </style>
