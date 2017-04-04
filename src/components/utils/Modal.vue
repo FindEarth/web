@@ -10,10 +10,13 @@
       .modal-wrapper
         .modal-container
           .modal-body
+            span.close-modal-button(@click="$emit('close')") X
             slot(name='body')
 </template>
 
 <style lang="scss">
+  @import "../../styles/variables.scss";
+
   .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -48,6 +51,16 @@
 
   .modal-default-button {
     float: right;
+  }
+
+  .close-modal-button {
+    float: right;
+    position: relative;
+    bottom: 25px;
+    right: -12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: $primary;
   }
 
   /*
