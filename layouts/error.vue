@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <img src="/animated_logo.svg" alt="Find Earth Logo" class="logo" />
+    <img width="90" src="/animated-logo.svg" alt="Find Earth Logo" class="logo" />
     <h1 class="title">
       {{ error.statusCode }}
     </h1>
@@ -19,19 +19,22 @@ export default {
 </script>
 
 <style scoped>
-.title
-{
-  margin-top: 15px;
-  font-size: 5em;
-}
-.info
-{
-  font-weight: 300;
-  color: #9aabb1;
-  margin: 0;
-}
-.button
-{
-  margin-top: 50px;
-}
+  .container {
+    text-align: center;
+  }
+
+  .title {
+    margin-top: 15px;
+    font-size: 5em;
+  }
+
+  .info {
+    font-weight: 300;
+    color: #9aabb1;
+    margin: 0;
+  }
+
+  .button {
+    margin-top: 50px;
+  }
 </style>
