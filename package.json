@@ -18,11 +18,13 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.15.3",
     "cross-env": "^3.1.4",
     "express": "^4.14.0",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.18.1",
     "nuxt": "~0.10.5",
     "pug": "^2.0.0-beta11",
+    "trae": "^1.4.0",
     "vue2-google-maps": "^0.7.5"
   },
   "devDependencies": {

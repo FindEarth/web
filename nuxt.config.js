@@ -16,11 +16,24 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~assets/css/main.css'],
+  css: [
+    'font-awesome/css/font-awesome.css',
+    '~assets/css/normalize.css',
+    '~assets/css/skeleton.css',
+    '~assets/css/main.css'
+  ],
   /*
-  ** Add axios globally
+  ** Add dependencies globally
   */
   build: {
-    vendor: ['axios']
-  }
+    vendor: [
+      'trae',
+      'vue2-google-maps',
+      'moment'
+    ]
+  },
+
+  plugins: [
+    { src: '~plugins/vue-google-maps' }
+  ]
 }

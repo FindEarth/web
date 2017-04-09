@@ -1,13 +1,13 @@
-html, body
-{
-  background-color: #fff;
-  color: #000;
-  letter-spacing: 0.5px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
+html, body {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
 }
 
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid #29235C;
+  cursor: pointer;
+}
+/*
 footer
 {
   padding: 20px;
@@ -25,4 +25,4 @@ a, a:hover, a:focus, a:visited
   height: auto;
   max-width: 400px;
   max-height: 289px;
-}
+}*/
