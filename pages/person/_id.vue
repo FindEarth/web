@@ -5,13 +5,14 @@
   import contactButton from '~components/util/ContactButton'
   import customFooter from '~components/layout/Footer'
   import Modal from '~components/util/Modal'
+  import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'person',
 
-    components: { customFooter, contactButton, Modal },
+    components: { customFooter, contactButton, Modal, PersonMetaTags },
 
-    data() {
+    data () {
       return {
         person: {},
         position: {},
@@ -20,34 +21,17 @@
           options: {
             styles: config.map.style,
             mapTypeControl: false,
-            fullscreenControl: true,
-          },
+            fullscreenControl: true
+          }
         },
         markerIcon: { url: '' },
-        showModal: false,
-      };
+        showModal: false
+      }
     },
 
     async asyncData ({ params, error }) {
       return {
         person: await personService.getById(params.id)
-      }
-    },
-
-    head () {
-      return {
-        title: this.person.name,
-        meta: [
-          { name: 'og:site_name', content: 'Find Earth' },
-          { name: 'og:title', content: `${this.person.name} | Find Earth` },
-          { name: 'og:description', content: `Ayudanos a encontrar a ${this.person.name}` },
-          { name: 'og:image', content: this.person.photos && this.person.photos.length ?  this.person.photos[0] : '' },
-          { name: 'twitter:card', content: 'summary_large_image' },
-          { name: 'twitter:site', content: '@FindEarth' },
-          { name: 'twitter:title', content: `${this.person.name} | Find Earth` },
-          { name: 'twitter:description', content: `Ayudanos a encontrar a ${this.person.name}` },
-          { name: 'twitter:image', content: this.person.photos && this.person.photos.length ?  this.person.photos[0] : '' }
-        ]
       }
     },
 
@@ -57,33 +41,33 @@
 
     methods: {
       contact() {
-        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`;
+        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
       },
 
       setPerson() {
         this.isLoading = false;
-        this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female;
+        this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
         this.setPosition();
       },
 
       setPosition() {
-        this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0);
-        this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0);
+        this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0)
+        this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0)
       },
 
       sharePerson(source) {
-        const text = `${this.person.name} se perdió el ${this.person.createdAt}, ayúdanos a encontrarlo: ${document.URL}`;
+        const text = `${this.person.name} se perdió el ${this.person.createdAt}, ayúdanos a encontrarlo: ${document.URL}`
         const sources = {
           twitter: `https://twitter.com/intent/tweet?text=${text}`,
           facebook: `https://www.facebook.com/sharer/sharer.php?u=${document.URL}`,
         };
-        window.open(sources[source]);
+        window.open(sources[source])
       },
     },
 
     filters: {
       date(date) {
-        return moment(date).format('DD/MM/YYYY');
+        return moment(date).format('DD/MM/YYYY')
       },
     },
   };
@@ -91,6 +75,7 @@
 
 <template lang="pug">
   .content
+    person-meta-tags(:person='person')
     .row
       .one.column
         .logo
