@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'starter',
     meta: [
@@ -13,13 +10,10 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
-  /*
-  ** Global CSS
-  */
   css: ['~assets/css/main.css'],
-  /*
-  ** Add axios globally
-  */
+  loading: {
+    color: '#29235C'
+  },
   build: {
     vendor: ['axios']
   }
