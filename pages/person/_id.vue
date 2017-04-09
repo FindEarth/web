@@ -34,6 +34,23 @@
       }
     },
 
+    head () {
+      return {
+        title: this.person.name,
+        meta: [
+          { name: 'og:site_name', content: 'Find Earth' },
+          { name: 'og:title', content: `${this.person.name} | Find Earth` },
+          { name: 'og:description', content: `Ayudanos a encontrar a ${this.person.name}` },
+          { name: 'og:image', content: this.person.photos && this.person.photos.length ?  this.person.photos[0] : '' },
+          { name: 'twitter:card', content: 'summary_large_image' },
+          { name: 'twitter:site', content: '@FindEarth' },
+          { name: 'twitter:title', content: `${this.person.name} | Find Earth` },
+          { name: 'twitter:description', content: `Ayudanos a encontrar a ${this.person.name}` },
+          { name: 'twitter:image', content: this.person.photos && this.person.photos.length ?  this.person.photos[0] : '' }
+        ]
+      }
+    },
+
     mounted() {
       this.setPerson()
     },
@@ -78,7 +95,7 @@
       .one.column
         .logo
           nuxt-link(to="/")
-            img(src='/animated-findearth-logo.svg')
+            img(src='/animated-logo.svg')
       .eight.columns
         span &nbsp;
       .three.columns
@@ -91,7 +108,7 @@
       h1 Ayudanos a encontrarlo
 
 
-    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14', v-loading='isLoading')
+    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
       gmap-marker(
         :position='position',
         :clickable='true',
@@ -103,7 +120,7 @@
     //- .person-detail-middle
     //-   el-row.person
     //-     el-col(:span='24')
-    //-       gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14', v-loading='isLoading')
+    //-       gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
     //-         gmap-marker(
     //-           :position='position',
     //-           :clickable='true',
@@ -114,7 +131,7 @@
     //- el-row.person(:gutter="20")
       el-col(:span='8')
         .grid-content
-          el-card(:body-style="{ padding: '0px' }", v-loading='isLoading')
+          el-card(:body-style="{ padding: '0px' }")
             el-carousel(v-if='person.photos')
               el-carousel-item(v-for='photo in person.photos')
                 img.image(v-bind:src='photo.url')
