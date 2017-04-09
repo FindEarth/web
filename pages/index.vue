@@ -2,8 +2,10 @@
   export default {
     name: 'home',
 
-    data() {
-      return {};
+    head () {
+      return {
+        title: 'Find Earth'
+      }
     },
 
     methods: {
@@ -16,7 +18,7 @@
 
 <template lang="pug">
   section#home
-    img.animated-logo(src='/static/animated_logo.svg', @click='goToGitHub')
+    img.animated-logo(src='/animated_logo.svg', @click='goToGitHub')
 </template>
 
 <style lang="scss">
