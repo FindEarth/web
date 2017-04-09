@@ -1,6 +1,6 @@
-# nuxt
+# Public Site | Find Earth
 
-> Nuxt.js project
+[![Codeship](https://img.shields.io/codeship/33c10310-d37c-0134-404f-16b6d884a97d/master.svg)]()
 
 ## Build Setup
 
