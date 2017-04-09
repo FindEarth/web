@@ -2,6 +2,10 @@
 
 [![Codeship](https://img.shields.io/codeship/33c10310-d37c-0134-404f-16b6d884a97d/master.svg)]()
 
+<p align="center">
+  <img width="200px" src="https://cdn.rawgit.com/FindEarth/web/master/static/animated_logo.svg">
+</p>
+
 ## Build Setup
 
 ``` bash
