@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <!-- <section class="container">
     <img src="../assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     <h1 class="title">
       USERS
@@ -11,19 +11,19 @@
         </nuxt-link>
       </li>
     </ul>
-  </section>
+  </section> -->
 </template>
 
 <script>
-import axios from '~plugins/axios'
+// import axios from '~plugins/axios'
 
 export default {
-  async asyncData () {
-    let { data } = await axios.get('/api/users')
-    return {
-      users: data
-    }
-  },
+  // async asyncData () {
+  //   let { data } = await axios.get('/api/users')
+  //   return {
+  //     users: data
+  //   }
+  // },
   head () {
     return {
       title: 'Users'
