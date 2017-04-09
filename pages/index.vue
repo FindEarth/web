@@ -10,7 +10,7 @@
 
     methods: {
       goToGitHub() {
-        window.location = 'https://github.com/findearth';
+        window.location = 'https://github.com/FindEarth';
       },
     },
   };
