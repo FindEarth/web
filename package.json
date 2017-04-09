@@ -1,8 +1,8 @@
 {
-  "name": "nuxt",
+  "name": "web-findearth",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "Matias Tucci <matiastucci@gmail.com>",
+  "description": "Public website for Find Earth",
+  "author": "Keepers <hi@keepe.rs>",
   "private": true,
   "scripts": {
     "dev": "nodemon --exec babel-node -w server.js -w nuxt.config.js -w api/ server.js",
