@@ -1,40 +1,38 @@
 <script>
   export default {
-    name: 'ContactButton',
+    name: 'Button',
 
     props: {
-      person: {
-        type: Object,
-        required: true,
-      },
-    },
-
-    methods: {
-      sendEmail() {
-        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`;
+      name: {
+        type: String,
+        required: true
       },
     },
   };
 </script>
 
 <template lang="pug">
-  .contact-button(@click='sendEmail') Contactar
+  .custom-button(@click="$emit('click')") {{ name }}
 </template>
 
 <style lang="scss">
-
-  .contact-button {
-    flex: 1 1 auto;
-    width: auto;
-    padding: 10px;
-    border: 2px solid #29235C;
+  .custom-button {
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: 1px solid #29235C;
     text-align: center;
     text-transform: uppercase;
     position: relative;
-    overflow:hidden;
+    overflow: hidden;
     transition: .3s;
     color: #29235C;
     font-size: .8em;
+
     &:after {
       position: absolute;
       transition: .3s;
