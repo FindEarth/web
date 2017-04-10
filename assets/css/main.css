@@ -1,0 +1,9 @@
+html, body {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid #29235C;
+  cursor: pointer;
+}
