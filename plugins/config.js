@@ -5,8 +5,8 @@ const config = {
     key: 'AIzaSyBFDFmn-PL1Kg0frwZUXibuFyuiTPDMsas',
     style: mapStyle,
     icons: {
-      male: '/static/person-male.svg',
-      female: '/static/person-female.svg'
+      male: '/person-male.svg',
+      female: '/person-female.svg'
     }
   }
 }
