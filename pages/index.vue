@@ -18,7 +18,7 @@
 
 <template lang="pug">
   section#home
-    img.animated-logo(src='/animated-findearth-logo.svg', @click='goToGitHub')
+    img.animated-logo(src='/animated-logo.svg', @click='goToGitHub')
 </template>
 
 <style lang="scss">

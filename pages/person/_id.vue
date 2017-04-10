@@ -5,13 +5,14 @@
   import cButton from '~components/util/Button'
   import CFooter from '~components/layout/Footer'
   import Modal from '~components/util/Modal'
+  import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'person',
 
-    components: { CFooter, cButton, Modal },
+    components: { CFooter, cButton, Modal, PersonMetaTags },
 
-    data() {
+    data () {
       return {
         person: {},
         position: {},
@@ -21,11 +22,11 @@
             styles: config.map.style,
             mapTypeControl: false,
             fullscreenControl: true
-          },
+          }
         },
         markerIcon: { url: '' },
         showModal: false
-      };
+      }
     },
 
     async asyncData ({ params, error }) {
@@ -76,11 +77,12 @@
 
 <template lang="pug">
   .content
+    person-meta-tags(:person='person')
     .row
       .one.column
         .logo
           nuxt-link(to="/")
-            img(src='/animated-findearth-logo.svg')
+            img(src='/animated-logo.svg')
       .eight.columns
         span &nbsp;
       .three.columns.action-button-column
@@ -98,7 +100,7 @@
           i.fa.fa-twitter(@click='sharePerson("twitter")')
 
 
-    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14', v-loading='isLoading')
+    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
       gmap-marker(
         :position='position',
         :clickable='true',
@@ -137,7 +139,6 @@
       flex-direction: row;
       align-items: center;
     }
-
     .action-buttons {
       margin-top: 5px;
       margin-left: auto;
@@ -154,6 +155,8 @@
         display: inline-flex;
         .social-icons {
           margin-left: 20px;
+          color: #29235C;
+
           i {
             width: 30px;
             font-size: 2.5rem;
