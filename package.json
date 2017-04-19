@@ -40,5 +40,9 @@
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "sass-loader": "^6.0.3"
+  },
+  "engines": {
+    "node": "7.0.0",
+    "npm": "3.10.8"
   }
 }
