@@ -1,7 +1,7 @@
 {
   "name": "web-findearth",
   "version": "1.0.0",
-  "description": "Public website for Find Earth",
+  "description": "Find Earth public website",
   "author": "Keepers <hi@keepe.rs>",
   "private": true,
   "scripts": {
@@ -9,7 +9,8 @@
     "build": "nuxt build && babel server.js --out-file server.prod.js",
     "start": "cross-env NODE_ENV=production node server.prod.js",
     "precommit": "npm run lint",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix .js,.vue --ignore-path .gitignore ."
   },
   "babel": {
     "presets": [
