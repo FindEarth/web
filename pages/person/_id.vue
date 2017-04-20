@@ -82,37 +82,38 @@
 </script>
 
 <template lang="pug">
-  .content
-    person-meta-tags(:person='person')
-    .row
-      .one.column
-        .logo
-          nuxt-link(to="/")
-            img(src='/animated-logo.svg')
-      .eight.columns
-        span &nbsp;
-      .three.columns.action-button-column
-        .action-buttons
-          c-button.action-button(@click="showModal = true", name='Detalle')
-          c-button.action-button(@click='contact', name='Contactar')
+  main
+    .content
+      person-meta-tags(:person='person')
+      .row
+        .one.column
+          .logo
+            nuxt-link(to="/")
+              img(src='/animated-logo.svg')
+        .eight.columns
+          span &nbsp;
+        .three.columns.action-button-column
+          .action-buttons
+            c-button.action-button(@click="showModal = true", name='Detalle')
+            c-button.action-button(@click='contact', name='Contactar')
 
-    .message.animated.fadeIn(v-if='person.name')
-      h1
-        <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
-      .help-found
-        h1 Ayudanos a encontrarlo:
-        span.social-icons
-          i.fa.fa-facebook(@click='sharePerson("facebook")')
-          i.fa.fa-twitter(@click='sharePerson("twitter")')
+      .message.animated.fadeIn(v-if='person.name')
+        h1
+          <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+        .help-found
+          h1 Ayudanos a encontrarlo:
+          span.social-icons
+            i.fa.fa-facebook(@click='sharePerson("facebook")')
+            i.fa.fa-twitter(@click='sharePerson("twitter")')
 
 
-    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
-      gmap-marker(
-        :position='position',
-        :clickable='true',
-        style='width: 30px;',
-        :icon='markerIcon',
-      )
+      gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
+        gmap-marker(
+          :position='position',
+          :clickable='true',
+          style='width: 30px;',
+          :icon='markerIcon',
+        )
 
     c-footer
 
@@ -128,8 +129,13 @@
 </template>
 
 <style lang="scss" scoped>
+  main {
+    height: 100vh;
+  }
+
   .content {
     position: relative;
+    height: 90%;
     width: 100%;
     margin: 0 auto;
     padding: 0 50px;
