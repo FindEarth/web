@@ -83,20 +83,23 @@
 
 <template lang="pug">
   main
-    .content
-      person-meta-tags(:person='person')
-      .row
-        .one.column
-          .logo
-            nuxt-link(to="/")
-              img(src='/animated-logo.svg')
-        .eight.columns
-          span &nbsp;
-        .three.columns.action-button-column
-          .action-buttons
-            c-button.action-button(@click="showModal = true", name='Detalle')
-            c-button.action-button(@click='contact', name='Contactar')
+    person-meta-tags(:person='person')
+    nav
+      .content
+        .row
+          .three.columns
+            .logo
+              nuxt-link(to="/")
+                img(src='/animated-logo.svg')
+              h3 Find Earth
+          .five.columns
+            span &nbsp;
+          .three.columns.action-button-column
+            .action-buttons
+              c-button.action-button(@click="showModal = true", name='Detalle')
+              c-button.action-button(@click='contact', name='Contactar')
 
+    .content
       .message.animated.fadeIn(v-if='person.name')
         h1
           <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
@@ -133,16 +136,28 @@
     height: 100vh;
   }
 
+  nav {
+    border-top: 10px solid #29235C;
+
+    .content {
+      margin-top: 10px;
+    }
+  }
+
   .content {
     position: relative;
-    height: 90%;
+    height: 80%;
     width: 100%;
     margin: 0 auto;
     padding: 0 50px;
     box-sizing: border-box;
 
     .logo {
-      width: 45px;
+      display: flex;
+
+      img {
+        width: 45px;
+      }
     }
 
     .action-button-column {
