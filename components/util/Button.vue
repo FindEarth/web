@@ -6,9 +6,9 @@
       name: {
         type: String,
         required: true
-      },
-    },
-  };
+      }
+    }
+  }
 </script>
 
 <template lang="pug">
@@ -47,6 +47,7 @@
       transform: skewX(15deg);
       z-index: -1;
     }
+
     &:hover {
       cursor: pointer;
       color: white;

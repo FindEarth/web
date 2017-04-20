@@ -1,16 +1,18 @@
 <script>
   import moment from 'moment'
-  import personService from '~plugins/person'
+
   import config from '~plugins/config'
-  import cButton from '~components/util/Button'
-  import CFooter from '~components/layout/Footer'
+  import personService from '~plugins/person'
+
   import Modal from '~components/util/Modal'
+  import CButton from '~components/util/Button'
+  import CFooter from '~components/layout/Footer'
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
-    name: 'person',
+    name: 'Person',
 
-    components: { CFooter, cButton, Modal, PersonMetaTags },
+    components: { CFooter, CButton, Modal, PersonMetaTags },
 
     data () {
       return {
@@ -35,78 +37,84 @@
       }
     },
 
-    mounted() {
+    mounted () {
       this.setPerson()
     },
 
     methods: {
-      contact() {
+      contact () {
         window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
       },
 
-      setPerson() {
+      setPerson () {
         this.isLoading = false
         this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
         this.setPosition()
       },
 
-      setPosition() {
+      setPosition () {
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0)
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0)
       },
 
-      sharePerson(source) {
-        const url = `https://find.earth/person/${this.person._id}`;
-        const text = `${this.person.name} se perdió el ${moment(this.person.createdAt).format('DD/MM/YYYY')}, en ` +
+      sharePerson (source) {
+        const url = `https://find.earth/person/${this.person._id}`
+
+        const date = moment(this.person.createdAt).format('DD/MM/YYYY')
+        const text = `${this.person.name} se perdió el ${date}, en ` +
                      `${this.person.geo.city} ayúdanos a encontrarlo: ${url}`
+
         const sources = {
           twitter: `https://twitter.com/intent/tweet?text=${text}`,
-          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
         }
+
         window.open(sources[source])
-      },
+      }
     },
 
     filters: {
-      date(date) {
+      date (date) {
         return moment(date).format('DD/MM/YYYY')
-      },
+      }
     }
   }
 </script>
 
 <template lang="pug">
-  .content
+  main
     person-meta-tags(:person='person')
-    .row
-      .one.column
-        .logo
-          nuxt-link(to="/")
-            img(src='/animated-logo.svg')
-      .eight.columns
-        span &nbsp;
-      .three.columns.action-button-column
-        .action-buttons
-          c-button.action-button(@click="showModal = true", name='Detalle')
-          c-button.action-button(@click='contact', name='Contactar')
+    nav
+      .content
+        .row
+          .five.columns
+            .logo
+              nuxt-link(to="/")
+                img(src='/animated-logo.svg')
+              h3 Find Earth
+          .seven.columns.action-button-column
+            .action-buttons
+              c-button.action-button(@click="showModal = true", name='Detalle')
+              c-button.action-button(@click='contact', name='Contactar')
 
-    .message.animated.fadeIn(v-if='person.name')
-      h1
-        <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
-      .help-found
-        h1 Ayudanos a encontrarlo:
-        span.social-icons
-          i.fa.fa-facebook(@click='sharePerson("facebook")')
-          i.fa.fa-twitter(@click='sharePerson("twitter")')
+    .content
+      .message.animated.fadeIn(v-if='person.name')
+        h1
+          <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+        .help-found
+          h1 Ayudanos a encontrarlo:
+          span.social-icons
+            i.fa.fa-facebook(@click='sharePerson("facebook")')
+            i.fa.fa-twitter(@click='sharePerson("twitter")')
 
 
-    gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
-      gmap-marker(
-        :position='position',
-        :clickable='true',
-        style='width: 30px;',
-        :icon='markerIcon',
-      )
+      gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
+        gmap-marker(
+          :position='position',
+          :clickable='true',
+          style='width: 30px;',
+          :icon='markerIcon',
+        )
 
     c-footer
 
@@ -122,15 +130,30 @@
 </template>
 
 <style lang="scss" scoped>
+  main {
+    height: 95vh;
+  }
+
+  nav {
+    .content {
+      margin-top: 10px;
+    }
+  }
+
   .content {
     position: relative;
+    height: 80%;
     width: 100%;
     margin: 0 auto;
     padding: 0 50px;
     box-sizing: border-box;
 
     .logo {
-      width: 45px;
+      display: flex;
+
+      img {
+        width: 45px;
+      }
     }
 
     .action-button-column {

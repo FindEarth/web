@@ -1,36 +1,61 @@
 <script>
+  import CFooter from '~components/layout/Footer'
+
   export default {
-    name: 'home',
+    name: 'Home',
+
+    components: { CFooter },
+
+    data () {
+      return {
+        lang: 'en'
+      }
+    },
+
+    mounted () {
+      setInterval(() => {
+        this.lang = this.lang === 'en' ? 'es' : 'en'
+      }, 7000)
+    },
 
     head () {
       return {
         title: 'Find Earth'
       }
-    },
-
-    methods: {
-      goToGitHub() {
-        window.location = 'https://github.com/FindEarth';
-      },
-    },
-  };
+    }
+  }
 </script>
 
 <template lang="pug">
-  section#home
-    img.animated-logo(src='/animated-logo.svg', @click='goToGitHub')
+  main
+    section#home.content
+      div
+        a(href="https://opencollective.com/findearth", target="_blank")
+          img.animated-logo(src="/animated-logo.svg")
+        h1  Find Earth
+        transition(name="move")
+          h3(v-show="lang === 'en'")  Help non-profit organizations and governments find missing people around the world.
+        transition(name="move")
+          h3(v-show="lang === 'es'")  Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo
+
+    c-footer
 </template>
 
 <style lang="scss">
+  main {
+    height: 100vh;
+  }
+
   #home {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
-    height: 100vh;
+    color: #29235C;;
     display: flex;
-    justify-content: center;
+    height: 90%;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 
     .animated-logo {
@@ -42,5 +67,15 @@
         opacity: 0.7;
       }
     }
+  }
+
+  .move-enter-active, .move-leave-active {
+    transform: translateX(0);
+    transition: all .3s linear;
+  }
+
+  .move-enter,
+  .move-leave-to {
+    transform: translateX(100%);
   }
 </style>
