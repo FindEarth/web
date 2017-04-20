@@ -8,6 +8,10 @@ const config = {
       male: '/person-male.svg',
       female: '/person-female.svg'
     }
+  },
+
+  api: {
+    baseUrl: 'https://api.find.earth'
   }
 }
 

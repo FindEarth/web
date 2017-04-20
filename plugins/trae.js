@@ -1,4 +1,5 @@
 import trae from 'trae'
+import config from './config'
 
 function errorMessage (err) {
   switch (err.status) {
@@ -44,7 +45,7 @@ function identity (res) {
 // }
 
 const api = trae.create({
-  baseUrl: 'https://api.find.earth'
+  baseUrl: config.api.baseUrl
 })
 
 api.after(identity, throwError)
