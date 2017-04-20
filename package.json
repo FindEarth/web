@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Find Earth public website",
   "author": "Keepers <hi@keepe.rs>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "nodemon --exec babel-node -w server.js -w nuxt.config.js -w api/ server.js",
     "build": "nuxt build && babel server.js --out-file server.prod.js",
