@@ -87,12 +87,12 @@
     nav
       .content
         .row
-          .three.columns
+          .two.columns
             .logo
               nuxt-link(to="/")
                 img(src='/animated-logo.svg')
               h3 Find Earth
-          .five.columns
+          .seven.columns
             span &nbsp;
           .three.columns.action-button-column
             .action-buttons
