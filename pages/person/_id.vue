@@ -1,16 +1,18 @@
 <script>
   import moment from 'moment'
-  import personService from '~plugins/person'
+
   import config from '~plugins/config'
-  import cButton from '~components/util/Button'
-  import CFooter from '~components/layout/Footer'
+  import personService from '~plugins/person'
+
   import Modal from '~components/util/Modal'
+  import CButton from '~components/util/Button'
+  import CFooter from '~components/layout/Footer'
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'person',
 
-    components: { CFooter, cButton, Modal, PersonMetaTags },
+    components: { CFooter, CButton, Modal, PersonMetaTags },
 
     data () {
       return {
@@ -35,42 +37,46 @@
       }
     },
 
-    mounted() {
+    mounted () {
       this.setPerson()
     },
 
     methods: {
-      contact() {
+      contact () {
         window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
       },
 
-      setPerson() {
+      setPerson () {
         this.isLoading = false
         this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
         this.setPosition()
       },
 
-      setPosition() {
+      setPosition () {
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0)
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0)
       },
 
-      sharePerson(source) {
-        const url = `https://find.earth/person/${this.person._id}`;
-        const text = `${this.person.name} se perdió el ${moment(this.person.createdAt).format('DD/MM/YYYY')}, en ` +
+      sharePerson (source) {
+        const url = `https://find.earth/person/${this.person._id}`
+
+        const date = moment(this.person.createdAt).format('DD/MM/YYYY')
+        const text = `${this.person.name} se perdió el ${date}, en ` +
                      `${this.person.geo.city} ayúdanos a encontrarlo: ${url}`
+
         const sources = {
           twitter: `https://twitter.com/intent/tweet?text=${text}`,
-          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
         }
+
         window.open(sources[source])
-      },
+      }
     },
 
     filters: {
-      date(date) {
+      date (date) {
         return moment(date).format('DD/MM/YYYY')
-      },
+      }
     }
   }
 </script>

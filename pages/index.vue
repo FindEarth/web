@@ -9,16 +9,16 @@
     },
 
     methods: {
-      goToGitHub() {
-        window.location = 'https://github.com/FindEarth';
-      },
-    },
-  };
+      goToGitHub () {
+        window.location = 'https://github.com/FindEarth'
+      }
+    }
+  }
 </script>
 
 <template lang="pug">
   section#home
-    img.animated-logo(src='/animated-logo.svg', @click='goToGitHub')
+    img.animated-logo(src="/animated-logo.svg", @click="goToGitHub")
 </template>
 
 <style lang="scss">

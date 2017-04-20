@@ -1,4 +1,4 @@
-<template lang="pug" scoped>
+<template lang="pug">
   .row
     .one.column
       a.keepers-logo.hover-effect(href='https://keepe.rs', target='_blank')
