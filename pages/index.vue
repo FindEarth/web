@@ -6,15 +6,21 @@
 
     components: { CFooter },
 
-    head () {
+    data () {
       return {
-        title: 'Find Earth'
+        lang: 'en'
       }
     },
 
-    methods: {
-      goToGitHub () {
-        window.location = 'https://github.com/FindEarth'
+    mounted () {
+      setInterval(() => {
+        this.lang = this.lang === 'en' ? 'es' : 'en'
+      }, 7000)
+    },
+
+    head () {
+      return {
+        title: 'Find Earth'
       }
     }
   }
@@ -22,14 +28,15 @@
 
 <template lang="pug">
   main
-    header
-      nav
-
     section#home.content
       div
-        img.animated-logo(src="/animated-logo.svg", @click="goToGitHub")
+        a(href="https://opencollective.com/findearth", target="_blank")
+          img.animated-logo(src="/animated-logo.svg")
         h1  Find Earth
-        h3  Help non-profit organizations and governments find missing people around the world.
+        transition(name="move")
+          h3(v-show="lang === 'en'")  Help non-profit organizations and governments find missing people around the world.
+        transition(name="move")
+          h3(v-show="lang === 'es'")  Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo
 
     c-footer
 </template>
@@ -62,8 +69,13 @@
     }
   }
 
-  nav {
-    height: 10px;
-    background: #29235C;
+  .move-enter-active, .move-leave-active {
+    transform: translateX(0);
+    transition: all .3s linear;
+  }
+
+  .move-enter,
+  .move-leave-to {
+    transform: translateX(100%);
   }
 </style>

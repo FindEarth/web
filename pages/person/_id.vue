@@ -10,7 +10,7 @@
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
-    name: 'person',
+    name: 'Person',
 
     components: { CFooter, CButton, Modal, PersonMetaTags },
 
@@ -87,14 +87,12 @@
     nav
       .content
         .row
-          .two.columns
+          .five.columns
             .logo
               nuxt-link(to="/")
                 img(src='/animated-logo.svg')
               h3 Find Earth
-          .seven.columns
-            span &nbsp;
-          .three.columns.action-button-column
+          .seven.columns.action-button-column
             .action-buttons
               c-button.action-button(@click="showModal = true", name='Detalle')
               c-button.action-button(@click='contact', name='Contactar')
@@ -133,12 +131,10 @@
 
 <style lang="scss" scoped>
   main {
-    height: 100vh;
+    height: 95vh;
   }
 
   nav {
-    border-top: 10px solid #29235C;
-
     .content {
       margin-top: 10px;
     }

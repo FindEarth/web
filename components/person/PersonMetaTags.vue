@@ -14,7 +14,7 @@
         ? this.person.photos[0].url : ''
 
       return {
-        title: this.person.name,
+        title: `Ayudanos a encontrar a ${this.person.name}`,
 
         meta: [
           { name: 'og:site_name', content: 'Find Earth' },
