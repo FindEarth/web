@@ -21,7 +21,11 @@
 
     data () {
       return {
+        showModal: false,
+        selectedImage: {},
+
         pageSize: 1,
+
         from: 0,
         to: 0
       }
@@ -57,6 +61,12 @@
         }
       },
 
+      toggleModal (img) {
+        if (img) { this.selectedImage = img }
+
+        this.showModal = !this.showModal
+      },
+
       nextPage () {
         if (this.items && this.items.length) {
           if (this.to >= this.items.length) {
@@ -75,29 +85,43 @@
 </script>
 
 <template lang="pug">
-.image-slider
+.image-slider-container
   div(
     v-for="(c, i) in items",
     v-show="i >= from && i < to"
   )
     a(:href="c.linkUrl", target="_blank")
       transition(name="fade")
-        img(
+        img.image-slider(
+          @click="toggleModal(c)",
           :src="c.url",
           :alt="c.name",
           :title="c.name",
           v-show="i >= from && i < to"
         )
+
   modal(
-    v-show='showContactModal',
-    @close='toggleContactModal'
+    v-show='showModal',
+    @close='toggleModal'
   )
+    h3(slot="header")
+    div.image-slider-modal(slot='body')
+      img(:src="selectedImage.url")
 </template>
 
-<style scoped>
-  img {
+<style lang="scss" scoped>
+  img.image-slider {
     height: 45vh;
     max-width: 100%;
+    cursor: pointer;
+  }
+
+  .image-slider-modal {
+    margin: auto;
+
+    img {
+      width: 100%;
+    }
   }
 
   .fade-enter-active, .fade-leave-active {
