@@ -58,7 +58,7 @@
       },
 
       toggleModal (img) {
-        if (img) { this.selectedImage = img }
+        if (img && img.url) { this.selectedImage = img }
 
         this.showModal = !this.showModal
       },
