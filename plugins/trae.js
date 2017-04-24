@@ -4,14 +4,11 @@ import config from './config'
 function errorMessage (err) {
   switch (err.status) {
     case 400:
-      return err.message || 'Error 400: Bad Request'
-    case 401:
-      window.location.href = '/login'
-      return err.message
+      return err.message || 'Bad Request'
     case 402:
-      return 'Error 402: You must upgrade your account to do that'
+      return 'You must upgrade your account to do that'
     case 403:
-      return 'Error 403: You are not authorized to access that'
+      return 'You are not authorized to access that'
     case 404:
       return 'Requested Resource Not Found'
     case 429:
@@ -27,8 +24,8 @@ function errorMessage (err) {
 }
 
 function throwError (err) {
-  const msg = errorMessage(err)
-  throw msg
+  const error = { message: errorMessage(err), statusCode: err.status }
+  throw error
 }
 
 function identity (res) {
