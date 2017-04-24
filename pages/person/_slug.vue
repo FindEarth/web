@@ -165,13 +165,13 @@
         span.description-title  {{ person.name }}
         |  contactános:
       div(slot='body')
-        p(v-if="person.organization.emails || defaultContact.email")
+        p(v-if="(person.organization && person.organization.emails) || defaultContact.email")
           b.description-title Email:&nbsp;
           a.contact-link(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
             | {{ e }}&nbsp;
           a.contact-link(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
-        p(v-if="person.organization.phones || defaultContact.phone")
+        p(v-if="(person.organization && person.organization.phones) || defaultContact.phone")
           b.description-title Teléfono:&nbsp;
           a.contact-link(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
