@@ -47,11 +47,21 @@
       this.setPerson()
     },
 
-    methods: {
-      contact () {
-        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
+    computed: {
+      harOrganizationEmails () {
+        return this.person.organization &&
+          this.person.organization.emails &&
+          this.person.organization.emails.length
       },
 
+      hasOrganizationPhones () {
+        return this.person.organization &&
+          this.person.organization.phones &&
+          this.person.organization.phones.length
+      }
+    },
+
+    methods: {
       setPerson () {
         this.isLoading = false
         this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
@@ -165,16 +175,18 @@
         span.description-title  {{ person.name }}
         |  contactános:
       div(slot='body')
-        p(v-if="(person.organization && person.organization.emails) || defaultContact.email")
+        p(v-if="hasOrganizationEmails || defaultContact.email")
           b.description-title Email:&nbsp;
-          a.contact-link(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
+          a.contact-link(v-if='hasOrganizationEmails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
             | {{ e }}&nbsp;
-          a.contact-link(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
+          a.contact-link(v-else, :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
-        p(v-if="(person.organization && person.organization.phones) || defaultContact.phone")
+        p(v-if="hasOrganizationPhones || defaultContact.phone")
           b.description-title Teléfono:&nbsp;
-          a.contact-link(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
+          a.contact-link(v-if='hasOrganizationPhones', v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
+          a.contact-link(v-else, :href="`mailto:${defaultContact.phone}`")
+            | {{ defaultContact.phone }}
         p(v-if="defaultContact.emergencyPhone")
           b.description-title Teléfono de Emergencia:&nbsp;
           a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
