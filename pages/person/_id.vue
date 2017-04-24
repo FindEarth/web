@@ -90,7 +90,7 @@
         .logo
           nuxt-link(to='/')
             img(src='/animated-logo.svg')
-      .col-xs-12.col-sm-offset-7.col-sm-3
+      .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
           c-button.action-button(@click="showModal = true", name='Detalle')
           c-button.action-button(@click='contact', name='Contactar')
@@ -116,7 +116,7 @@
             :icon='markerIcon',
           )
 
-    //- c-footer
+    c-footer
 
     modal(v-if='showModal', @close='showModal = false')
       h3(slot='header') {{ person.name }}
@@ -138,6 +138,10 @@
     .logo {
       display: flex;
 
+      @media only screen and (max-width: 500px) {
+        justify-content: center;
+      }
+
       img {
         width: 45px;
       }
@@ -150,6 +154,10 @@
 
       .action-button {
         margin-left: 5px;
+      }
+
+      @media only screen and (max-width: 500px) {
+        margin-top: 30px;
       }
     }
 
@@ -174,6 +182,13 @@
         .social-icons {
           margin-left: 20px;
           color: #29235C;
+
+          @media only screen and (max-width: 500px) {
+            display: flex;
+            position: relative;
+            top: 47px;
+            left: -30px;
+          }
 
           i {
             width: 30px;
