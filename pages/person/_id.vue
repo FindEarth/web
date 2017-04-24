@@ -85,12 +85,12 @@
   .content
     person-meta-tags(:person='person')
 
-    .row
-      .col-xs-2
+    .row.center-xs
+      .col-xs-12.col-sm-2
         .logo
-          nuxt-link(to="/")
+          nuxt-link(to='/')
             img(src='/animated-logo.svg')
-      .col-xs-offset-7.col-xs-3
+      .col-xs-12.col-sm-offset-7.col-sm-3
         .action-buttons
           c-button.action-button(@click="showModal = true", name='Detalle')
           c-button.action-button(@click='contact', name='Contactar')
@@ -99,7 +99,7 @@
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+            <strong class='link' @click='showModal = true'>{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
           .help-message
             h1 Ayudanos a encontrarlo:
             span.social-icons
@@ -145,6 +145,8 @@
 
     .action-buttons {
       margin-top: 5px;
+      display: flex;
+      justify-content: flex-end;
 
       .action-button {
         margin-left: 5px;
