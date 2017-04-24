@@ -101,11 +101,11 @@
         )
 
   modal(
-    v-show='showModal',
-    @close='toggleModal'
+    v-show="showModal",
+    @close="toggleModal"
   )
     h3(slot="header")
-    div.image-slider-modal(slot='body')
+    div.image-slider-modal(slot="body")
       img(:src="selectedImage.url")
 </template>
 
@@ -118,9 +118,10 @@
 
   .image-slider-modal {
     margin: auto;
+    text-align: center;
 
     img {
-      width: 100%;
+      max-width: 100%;
     }
   }
 
