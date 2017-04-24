@@ -19,6 +19,9 @@
         person: {},
         position: {},
         isLoading: true,
+
+        defaultContact: config.contact,
+
         map: {
           options: {
             styles: config.map.style,
@@ -27,7 +30,9 @@
           }
         },
         markerIcon: { url: '' },
-        showModal: false
+
+        showDescriptionModal: false,
+        showContactModal: false
       }
     },
 
@@ -65,15 +70,19 @@
                      `${this.person.geo.city} ayúdanos a encontrarlo: ${url}`
 
         const sources = {
-          twitter: `https://twitter.com/intent/tweet?text=${text}`,
-          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+          twitter: `${config.social.twUrl}?text=${text}`,
+          facebook: `${config.social.fbUrl}?u=${url}`
         }
 
         window.open(sources[source])
       },
 
-      closeModal () {
-        this.showModal = false
+      toggleDescriptionModal () {
+        this.showDescriptionModal = !this.showDescriptionModal
+      },
+
+      toggleContactModal () {
+        this.showContactModal = !this.showContactModal
       }
     },
 
@@ -96,14 +105,18 @@
             img(src='/animated-logo.svg')
       .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
-          c-button.action-button(@click="showModal = true", name='Detalle', v-if='person.description')
-          c-button.action-button(@click='contact', name='Contactar')
+          c-button.action-button(@click="toggleDescriptionModal", name='Detalle', v-if='person.description')
+          c-button.action-button(@click='toggleContactModal', name='Contactar')
 
     .row
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            <strong class='link' @click='showModal = true'>{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+            b.link(@click="toggleDescriptionModal") {{ person.name }}
+            |  {{ `(${person.age} años)` }} se perdió el
+            b  {{ person.lastSeenAt | date }}
+            |  en
+            b  {{ person.geo.city }}.
           .help-message
             h1 Ayudanos a encontrarlo:
             span.social-icons
@@ -123,17 +136,47 @@
     c-footer
 
     modal(
-      v-if='showModal',
-      @close='closeModal'
+      v-if='showDescriptionModal',
+      @close='toggleDescriptionModal'
     )
-      h3(slot='header') {{ person.name }}
+      h3(slot='header')
+        span.description-title {{ person.name }}
+        |  {{ `(${person.age} años)` }}
       div(slot='body')
         p(v-if='person.description && person.description.appearance')
-          <strong class="description-title">Apariencia</strong>: {{ this.person.description.appearance }}
+          b.description-title Apariencia
+          | : {{ this.person.description.appearance }}
         p(v-if='person.description && person.description.clothing')
-          <strong class="description-title">Vestimenta</strong>: {{ this.person.description.clothing }}
+          b.description-title Vestimenta
+          | : {{ this.person.description.clothing }}
         p(v-if='person.description && person.description.more')
-          <strong class="description-title">Mas informacion</strong>: {{ this.person.description.more }}
+          b.description-title Mas informacion
+          | : {{ this.person.description.more }}
+
+    modal(
+      v-if='showContactModal',
+      @close='toggleContactModal'
+    )
+      h3(slot='header')
+        | Si tenes informacion sobre
+        span.description-title  {{ person.name }}
+        |  contactános:
+      div(slot='body')
+        ul(v-if='person.contacts')
+          li(v-for="c in person.contacts")
+            p(v-if="c.email")
+              b.description-title Email:&nbsp;
+              a(:href="`mailto:${c.email}`") {{ c.email }}
+            p(v-if="c.phone")
+              b.description-title Teléfono:&nbsp;
+              a(:href="`tel:${c.phone}`") {{ c.phone }}
+        p(v-else)
+          p(v-if="defaultContact.email")
+            b.description-title Email:&nbsp;
+            a(:href="`mailto:${defaultContact.email}`") {{ defaultContact.email }}
+          p(v-if="defaultContact.phone")
+            b.description-title Teléfono:&nbsp;
+            a(:href="`tel:${defaultContact.phone}`") {{ defaultContact.phone }}
 </template>
 
 <style lang="scss" scoped>

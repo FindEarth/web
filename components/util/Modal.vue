@@ -9,8 +9,10 @@
     .modal-mask
       .modal-wrapper
         .modal-container
-          .modal-body
+          .modal-header
             span.close-modal-button(@click='$emit("close")') X
+            slot(name='header')
+          .modal-body
             slot(name='body')
 </template>
 
