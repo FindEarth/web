@@ -15,8 +15,7 @@ module.exports = {
   */
   css: [
     'font-awesome/css/font-awesome.css',
-    '~assets/css/normalize.css',
-    '~assets/css/skeleton.css',
+    'flexboxgrid/dist/flexboxgrid.min.css',
     '~assets/css/main.css'
   ],
   loading: {

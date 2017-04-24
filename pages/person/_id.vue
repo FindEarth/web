@@ -82,41 +82,41 @@
 </script>
 
 <template lang="pug">
-  main
+  .content
     person-meta-tags(:person='person')
-    nav
-      .content
-        .row
-          .five.columns
-            .logo
-              nuxt-link(to="/")
-                img(src='/animated-logo.svg')
-              h3 Find Earth
-          .seven.columns.action-button-column
-            .action-buttons
-              c-button.action-button(@click="showModal = true", name='Detalle')
-              c-button.action-button(@click='contact', name='Contactar')
 
-    .content
-      .message.animated.fadeIn(v-if='person.name')
-        h1
-          <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
-        .help-found
-          h1 Ayudanos a encontrarlo:
-          span.social-icons
-            i.fa.fa-facebook(@click='sharePerson("facebook")')
-            i.fa.fa-twitter(@click='sharePerson("twitter")')
+    .row
+      .col-xs-2
+        .logo
+          nuxt-link(to="/")
+            img(src='/animated-logo.svg')
+      .col-xs-offset-7.col-xs-3
+        .action-buttons
+          c-button.action-button(@click="showModal = true", name='Detalle')
+          c-button.action-button(@click='contact', name='Contactar')
 
+    .row
+      .col-xs-12
+        .message.animated.fadeIn(v-if='person.name')
+          h1
+            <strong class="link" @click="showModal = true">{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+          .help-message
+            h1 Ayudanos a encontrarlo:
+            span.social-icons
+              i.fa.fa-facebook(@click='sharePerson("facebook")')
+              i.fa.fa-twitter(@click='sharePerson("twitter")')
 
-      gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
-        gmap-marker(
-          :position='position',
-          :clickable='true',
-          style='width: 30px;',
-          :icon='markerIcon',
-        )
+    .row
+      .col-xs-12
+        gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
+          gmap-marker(
+            :position='position',
+            :clickable='true',
+            style='width: 30px;',
+            :icon='markerIcon',
+          )
 
-    c-footer
+    //- c-footer
 
     modal(v-if='showModal', @close='showModal = false')
       h3(slot='header') {{ person.name }}
@@ -130,23 +130,10 @@
 </template>
 
 <style lang="scss" scoped>
-  main {
-    height: 95vh;
-  }
-
-  nav {
-    .content {
-      margin-top: 10px;
-    }
-  }
-
   .content {
-    position: relative;
-    height: 80%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 50px;
-    box-sizing: border-box;
+    height: 100vh;
+    margin-left: 40px;
+    margin-right: 40px;
 
     .logo {
       display: flex;
@@ -156,33 +143,39 @@
       }
     }
 
-    .action-button-column {
-      display: flex;
-      justify-content: flex-start;
-      flex-direction: row;
-      align-items: center;
-    }
     .action-buttons {
       margin-top: 5px;
-      margin-left: auto;
-    }
-    .action-button {
-      margin-left: 5px;
+
+      .action-button {
+        margin-left: 5px;
+      }
     }
 
     .message {
-      margin-top: 50px;
+      margin-top: 60px;
       margin-bottom: 50px;
 
-      .help-found {
+      h1 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 2.1em;
+        line-height: 1.4;
+        strong {
+          font-weight: 700;
+          color: #29235C;
+        }
+      }
+
+      .help-message {
         display: inline-flex;
+
         .social-icons {
           margin-left: 20px;
           color: #29235C;
 
           i {
             width: 30px;
-            font-size: 2.5rem;
+            font-size: 1.6rem;
             line-height: 2;
             &:hover {
               cursor: pointer;
@@ -198,17 +191,6 @@
               color: #1dcaff;
             }
           }
-        }
-      }
-
-      h1 {
-        margin: 0;
-        font-weight: 300;
-        font-size: 2.2em;
-        line-height: 1.4;
-        strong {
-          font-weight: 700;
-          color: #29235C;
         }
       }
     }
