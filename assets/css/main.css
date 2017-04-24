@@ -93,3 +93,25 @@ html, body {
   -webkit-animation-name: particlesFadeIn;
   animation-name: particlesFadeIn;
 }
+
+.image-modal div.modal-container {
+  background: inherit;
+  width: 100%;
+  padding: 0;
+  height: 100vh;
+  box-shadow: none;
+}
+
+.image-modal div.modal-mask {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.image-modal .modal-body {
+}
+
+.image-modal .close-modal-button {
+  right: 20px;
+  top: 10px;
+  font-size: 1.5em;
+  color: #fff;
+}

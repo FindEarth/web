@@ -5,14 +5,15 @@
   import personService from '~plugins/person'
 
   import Modal from '~components/util/Modal'
-  import CButton from '~components/util/Button'
   import CFooter from '~components/layout/Footer'
+  import CButton from '~components/util/Button'
+  import ImageSlider from '~components/util/ImageSlider'
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'Person',
 
-    components: { CFooter, CButton, Modal, PersonMetaTags },
+    components: { CFooter, CButton, Modal, ImageSlider, PersonMetaTags },
 
     data () {
       return {
@@ -46,11 +47,21 @@
       this.setPerson()
     },
 
-    methods: {
-      contact () {
-        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
+    computed: {
+      hasOrganizationEmails () {
+        return this.person.organization &&
+          this.person.organization.emails &&
+          this.person.organization.emails.length
       },
 
+      hasOrganizationPhones () {
+        return this.person.organization &&
+          this.person.organization.phones &&
+          this.person.organization.phones.length
+      }
+    },
+
+    methods: {
       setPerson () {
         this.isLoading = false
         this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
@@ -124,7 +135,9 @@
               i.fa.fa-twitter(@click='sharePerson("twitter")')
 
     .row
-      .col-xs-12
+      .col-xs-12.col-md-3.person-image(v-if="person.photos && person.photos.length")
+        image-slider(:items="person.photos", :title="`${person.name} (${person.age} años)`")
+      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-9' : 'col-xs-12'")
         gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
           gmap-marker(
             :position='position',
@@ -136,7 +149,7 @@
     c-footer
 
     modal(
-      v-if='showDescriptionModal',
+      v-show='showDescriptionModal',
       @close='toggleDescriptionModal'
     )
       h3(slot='header')
@@ -154,7 +167,7 @@
           | : {{ this.person.description.more }}
 
     modal(
-      v-if='showContactModal',
+      v-show='showContactModal',
       @close='toggleContactModal'
     )
       h3(slot='header')
@@ -162,19 +175,21 @@
         span.description-title  {{ person.name }}
         |  contactános:
       div(slot='body')
-        p(v-if="person.organization.emails || defaultContact.email")
+        p(v-if="hasOrganizationEmails || defaultContact.email")
           b.description-title Email:&nbsp;
-          a(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
+          a.contact-link(v-if='hasOrganizationEmails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
             | {{ e }}&nbsp;
-          a(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
+          a.contact-link(v-else, :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
-        p(v-if="person.organization.phones || defaultContact.phone")
+        p(v-if="hasOrganizationPhones || defaultContact.phone")
           b.description-title Teléfono:&nbsp;
-          a(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
+          a.contact-link(v-if='hasOrganizationPhones', v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
+          a.contact-link(v-else, :href="`mailto:${defaultContact.phone}`")
+            | {{ defaultContact.phone }}
         p(v-if="defaultContact.emergencyPhone")
           b.description-title Teléfono de Emergencia:&nbsp;
-          a(:href="`tel:${defaultContact.emergencyPhone}`")
+          a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
             | {{ defaultContact.emergencyPhone }}
         p(v)
 </template>
@@ -264,13 +279,19 @@
 
     .map {
       height: 45vh;
-      margin-left: -50px;
-      margin-right: -50px;
       margin-bottom: 40px;
     }
 
     .description-title {
       color: #29235C;
+    }
+
+    .person-image {
+      text-align: center;
+    }
+
+    a.contact-link {
+      text-decoration: none;
     }
   }
 </style>
