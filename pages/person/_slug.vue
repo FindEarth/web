@@ -112,7 +112,11 @@
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            <strong class='link' @click='showDescriptionModal = true'>{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+            b.link(@click="toggleDescriptionModal") {{ person.name }}
+            |  {{ `(${person.age} años)` }} se perdió el
+            b  {{ person.lastSeenAt | date }}
+            |  en
+            b  {{ person.geo.city }}.
           .help-message
             h1 Ayudanos a encontrarlo:
             span.social-icons
@@ -135,7 +139,9 @@
       v-if='showDescriptionModal',
       @close='toggleDescriptionModal'
     )
-      h3(slot='header') {{ person.name }}
+      h3(slot='header')
+        span.description-title {{ person.name }}
+        |  {{ `(${person.age} años)` }}
       div(slot='body')
         p(v-if='person.description && person.description.appearance')
           b.description-title Apariencia
@@ -151,7 +157,10 @@
       v-if='showContactModal',
       @close='toggleContactModal'
     )
-      h3(slot='header') Si tenes informacion sobre {{ person.name }} contactanos:
+      h3(slot='header')
+        | Si tenes informacion sobre
+        span.description-title  {{ person.name }}
+        |  contactános:
       div(slot='body')
         ul(v-if='person.contacts')
           li(v-for="c in person.contacts")
