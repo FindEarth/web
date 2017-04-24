@@ -12,6 +12,11 @@ const config = {
 
   api: {
     baseUrl: process.env.API_URL || 'http://localhost:9090/'
+  },
+
+  contact: {
+    email: 'hi@keepe.rs',
+    phone: ''
   }
 }
 
