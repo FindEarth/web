@@ -1,9 +1,21 @@
 html, body {
   font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .link {
   text-decoration: none;
   border-bottom: 1px solid #29235C;
   cursor: pointer;
+}
+
+.move-enter-active, .move-leave-active {
+  transform: translateX(0);
+  transition: all .3s linear;
+}
+
+.move-enter,
+.move-leave-to {
+  transform: translateX(100%);
 }

@@ -48,8 +48,6 @@
 
   #home {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #29235C;;
     display: flex;
@@ -67,15 +65,5 @@
         opacity: 0.7;
       }
     }
-  }
-
-  .move-enter-active, .move-leave-active {
-    transform: translateX(0);
-    transition: all .3s linear;
-  }
-
-  .move-enter,
-  .move-leave-to {
-    transform: translateX(100%);
   }
 </style>
