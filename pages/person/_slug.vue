@@ -151,7 +151,7 @@
       v-if='showContactModal',
       @close='toggleContactModal'
     )
-      header(slot='header') {{ person.name }}
+      h3(slot='header') Si tenes informacion sobre {{ person.name }} contactanos:
       div(slot='body')
         ul(v-if='person.contacts')
           li(v-for="c in person.contacts")
