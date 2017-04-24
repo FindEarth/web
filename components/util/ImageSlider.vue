@@ -11,10 +11,6 @@
       items: {
         type: Array,
         required: true
-      },
-
-      title: {
-        type: String
       }
     },
 
@@ -100,13 +96,13 @@
           v-show="i >= from && i < to"
         )
 
-  modal(
-    v-show="showModal",
-    @close="toggleModal"
-  )
-    h3(slot="header") {{ title }}
-    div.image-slider-modal(slot="body")
-      img(:src="selectedImage.url")
+  .image-modal
+    modal(
+      v-show="showModal",
+      @close="toggleModal",
+    )
+      div.image-slider-modal(slot="body", @click="toggleModal")
+        img(:src="selectedImage.url")
 </template>
 
 <style lang="scss" scoped>
@@ -121,7 +117,7 @@
     text-align: center;
 
     img {
-      width: 100%;
+      max-width: 100%;
     }
   }
 
