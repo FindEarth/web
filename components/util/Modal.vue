@@ -10,7 +10,7 @@
       .modal-wrapper
         .modal-container
           .modal-body
-            span.close-modal-button(@click="$emit('close')") X
+            span.close-modal-button(@click='$emit("close")') X
             slot(name='body')
 </template>
 

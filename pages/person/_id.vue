@@ -70,6 +70,10 @@
         }
 
         window.open(sources[source])
+      },
+
+      closeModal () {
+        this.showModal = false
       }
     },
 
@@ -92,7 +96,7 @@
             img(src='/animated-logo.svg')
       .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
-          c-button.action-button(@click="showModal = true", name='Detalle')
+          c-button.action-button(@click="showModal = true", name='Detalle', v-if='person.description')
           c-button.action-button(@click='contact', name='Contactar')
 
     .row
@@ -118,7 +122,10 @@
 
     c-footer
 
-    modal(v-if='showModal', @close='showModal = false')
+    modal(
+      v-if='showModal',
+      @close='closeModal'
+    )
       h3(slot='header') {{ person.name }}
       div(slot='body')
         p(v-if='person.description && person.description.appearance')
