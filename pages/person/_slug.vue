@@ -33,7 +33,7 @@
 
     async asyncData ({ params, error }) {
       return {
-        person: await personService.getById(params.id)
+        person: await personService.getBySlug(params.slug)
       }
     },
 
