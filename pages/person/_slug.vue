@@ -139,7 +139,7 @@
     c-footer
 
     modal(
-      v-if='showDescriptionModal',
+      v-show='showDescriptionModal',
       @close='toggleDescriptionModal'
     )
       h3(slot='header')
@@ -157,7 +157,7 @@
           | : {{ this.person.description.more }}
 
     modal(
-      v-if='showContactModal',
+      v-show='showContactModal',
       @close='toggleContactModal'
     )
       h3(slot='header')

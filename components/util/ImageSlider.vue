@@ -1,7 +1,12 @@
 <script>
+  import Modal from '~components/util/Modal'
+
   let interval
   export default {
     name: 'ImageSlider',
+
+    components: { Modal },
+
     props: {
       items: {
         type: Array,
@@ -83,13 +88,16 @@
           :title="c.name",
           v-show="i >= from && i < to"
         )
+  modal(
+    v-show='showContactModal',
+    @close='toggleContactModal'
+  )
 </template>
 
 <style scoped>
   img {
     height: 45vh;
     max-width: 100%;
-    margin-bottom: 40px;
   }
 
   .fade-enter-active, .fade-leave-active {
