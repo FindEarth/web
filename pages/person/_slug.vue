@@ -48,7 +48,7 @@
     },
 
     computed: {
-      harOrganizationEmails () {
+      hasOrganizationEmails () {
         return this.person.organization &&
           this.person.organization.emails &&
           this.person.organization.emails.length
