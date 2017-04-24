@@ -158,25 +158,25 @@
       @close='toggleContactModal'
     )
       h3(slot='header')
-        | Si tenes informacion sobre
+        | Si tenes información sobre
         span.description-title  {{ person.name }}
         |  contactános:
       div(slot='body')
-        ul(v-if='person.contacts')
-          li(v-for="c in person.contacts")
-            p(v-if="c.email")
-              b.description-title Email:&nbsp;
-              a(:href="`mailto:${c.email}`") {{ c.email }}
-            p(v-if="c.phone")
-              b.description-title Teléfono:&nbsp;
-              a(:href="`tel:${c.phone}`") {{ c.phone }}
-        p(v-else)
-          p(v-if="defaultContact.email")
-            b.description-title Email:&nbsp;
-            a(:href="`mailto:${defaultContact.email}`") {{ defaultContact.email }}
-          p(v-if="defaultContact.phone")
-            b.description-title Teléfono:&nbsp;
-            a(:href="`tel:${defaultContact.phone}`") {{ defaultContact.phone }}
+        p(v-if="person.organization.emails || defaultContact.email")
+          b.description-title Email:&nbsp;
+          a(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
+            | {{ e }}&nbsp;
+          a(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
+            | {{ defaultContact.email }}
+        p(v-if="person.organization.phones || defaultContact.phone")
+          b.description-title Teléfono:&nbsp;
+          a(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
+            | {{ p }}&nbsp;
+        p(v-if="defaultContact.emergencyPhone")
+          b.description-title Teléfono de Emergencia:&nbsp;
+          a(:href="`tel:${defaultContact.emergencyPhone}`")
+            | {{ defaultContact.emergencyPhone }}
+        p(v)
 </template>
 
 <style lang="scss" scoped>
