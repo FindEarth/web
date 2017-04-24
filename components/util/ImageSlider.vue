@@ -13,9 +13,8 @@
         required: true
       },
 
-      moveSize: {
-        type: Number,
-        default: 1
+      title: {
+        type: String
       }
     },
 
@@ -25,6 +24,7 @@
         selectedImage: {},
 
         pageSize: 1,
+        moveSize: 1,
 
         from: 0,
         to: 0
@@ -104,7 +104,7 @@
     v-show="showModal",
     @close="toggleModal"
   )
-    h3(slot="header")
+    h3(slot="header") {{ title }}
     div.image-slider-modal(slot="body")
       img(:src="selectedImage.url")
 </template>
@@ -121,7 +121,7 @@
     text-align: center;
 
     img {
-      max-width: 100%;
+      width: 100%;
     }
   }
 
