@@ -21,11 +21,16 @@
   "dependencies": {
     "cross-env": "^3.1.4",
     "express": "^4.14.0",
+    "flexboxgrid": "^6.3.1",
     "font-awesome": "^4.7.0",
+    "i": "^0.3.5",
     "moment": "^2.18.1",
+    "npm": "^4.5.0",
     "nuxt": "~0.10.5",
+    "particles.js": "^2.0.0",
     "pug": "^2.0.0-beta11",
     "trae": "^1.4.0",
+    "v-click-outside": "^0.0.8",
     "vue2-google-maps": "^0.7.5"
   },
   "devDependencies": {
