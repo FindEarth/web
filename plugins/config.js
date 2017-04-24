@@ -16,7 +16,7 @@ const config = {
 
   contact: {
     email: 'hi@keepe.rs',
-    phone: ''
+    phone: '+54 9 11 0000 0000'
   }
 }
 

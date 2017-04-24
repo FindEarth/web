@@ -20,6 +20,8 @@
         position: {},
         isLoading: true,
 
+        defaultContact: config.contact,
+
         map: {
           options: {
             styles: config.map.style,
@@ -146,14 +148,23 @@
       v-if='showContactModal',
       @close='toggleContactModal'
     )
-      h3(slot='header') {{ person.name }}
+      header(slot='header') {{ person.name }}
       div(slot='body')
-        p(v-if='person.description && person.description.appearance')
-          <strong class="description-title">Apariencia</strong>: {{ this.person.description.appearance }}
-        p(v-if='person.description && person.description.clothing')
-          <strong class="description-title">Vestimenta</strong>: {{ this.person.description.clothing }}
-        p(v-if='person.description && person.description.more')
-          <strong class="description-title">Mas informacion</strong>: {{ this.person.description.more }}
+        ul(v-if='person.contacts')
+          li(v-for="c in person.contacts")
+            p(v-if="c.email")
+              b.description-title Email:&nbsp;
+              a(:href="`mailto:${c.email}`") {{ c.email }}
+            p(v-if="c.phone")
+              b.description-title Teléfono:&nbsp;
+              a(:href="`tel:${c.phone}`") {{ c.phone }}
+        p(v-else)
+          p(v-if="defaultContact.email")
+            b.description-title Email:&nbsp;
+            a(:href="`mailto:${defaultContact.email}`") {{ defaultContact.email }}
+          p(v-if="defaultContact.phone")
+            b.description-title Teléfono:&nbsp;
+            a(:href="`tel:${defaultContact.phone}`") {{ defaultContact.phone }}
 </template>
 
 <style lang="scss" scoped>
