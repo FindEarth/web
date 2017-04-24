@@ -138,11 +138,14 @@
       h3(slot='header') {{ person.name }}
       div(slot='body')
         p(v-if='person.description && person.description.appearance')
-          <strong class="description-title">Apariencia</strong>: {{ this.person.description.appearance }}
+          b.description-title Apariencia
+          | : {{ this.person.description.appearance }}
         p(v-if='person.description && person.description.clothing')
-          <strong class="description-title">Vestimenta</strong>: {{ this.person.description.clothing }}
+          b.description-title Vestimenta
+          | : {{ this.person.description.clothing }}
         p(v-if='person.description && person.description.more')
-          <strong class="description-title">Mas informacion</strong>: {{ this.person.description.more }}
+          b.description-title Mas informacion
+          | : {{ this.person.description.more }}
 
     modal(
       v-if='showContactModal',
