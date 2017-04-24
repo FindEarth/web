@@ -1,6 +1,7 @@
 <script>
   import CFooter from '~components/layout/Footer'
   import CButton from '~components/util/Button'
+  import Particles from '~plugins/particles'
 
   export default {
     name: 'Home',
@@ -14,9 +15,10 @@
     },
 
     mounted () {
-      setInterval(() => {
-        this.lang = this.lang === 'en' ? 'es' : 'en'
-      }, 7000)
+      if (process.BROWSER_BUILD && window.location.host.includes('alertasolidaria.com')) {
+        this.lang = 'es'
+      }
+      Particles.init('particles-js')
     },
 
     head () {
@@ -31,20 +33,21 @@
   main
     .header
       .logo-container
-        a(href="https://opencollective.com/findearth", target="_blank")
-          img.animated-logo(src="/animated-logo.svg")
+        img.animated-logo(src="/animated-logo.svg")
       h1.title
         | Find Earth
     .decription
-      h2.text-2
-        | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo
+      h2.text-2(v-if='lang === \'es\'')
+        | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo.
+      h2.text-2(v-if='lang === \'en\'')
+        | Help non-profit organizations and governments find missing people around the world.
       .button-container
         a(href="https://opencollective.com/findearth", target="_blank")
-          c-button(name='Unite a la Causa')
-      .button-img
+          c-button(v-if='lang === \'es\'' name='Unite a la Causa')
+          c-button(v-if='lang === \'en\'' name='Help Us')
     .footer-container
       c-footer
-    .overlay
+    #particles-js
 </template>
 
 <style lang="scss">
@@ -61,10 +64,6 @@
     display: flex;
     flex-direction: column;
     z-index: 1;
-    background-image: url('/bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 30%;
 
     .header {
       flex: 5;
@@ -81,12 +80,6 @@
 
         .animated-logo {
           width: 150px;
-          transition: opacity 0.3s;
-
-          &:hover {
-            cursor: pointer;
-            opacity: 0.7;
-          }
         }
       }
 
@@ -117,18 +110,6 @@
       .button-container {
         margin-top: 30px;
       }
-
-      .button-img {
-        position: relative;
-        z-index: 3;
-        background-image: url('/mapita.png');
-        width: 200px;
-        height: 150px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        margin-top: 40px;
-      }
     }
 
     .footer-container {
@@ -137,12 +118,13 @@
       flex-direction: column;
       justify-content: center;
       padding: 15px;
+      margin: 0 20px;
       position: relative;
       z-index: 3;
     }
   }
 
-  .overlay {
+  #particles-js {
     height: 100vh;
     position: absolute;
     top: 0;
@@ -151,6 +133,6 @@
     bottom: 0;
     width: 100%;
     z-index: 2;
-    background-color: rgba(255, 255, 255, .83);
+    opacity: 0.5;
   }
 </style>
