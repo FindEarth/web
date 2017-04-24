@@ -5,14 +5,15 @@
   import personService from '~plugins/person'
 
   import Modal from '~components/util/Modal'
-  import CButton from '~components/util/Button'
   import CFooter from '~components/layout/Footer'
+  import CButton from '~components/util/Button'
+  import ImageSlider from '~components/util/ImageSlider'
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'Person',
 
-    components: { CFooter, CButton, Modal, PersonMetaTags },
+    components: { CFooter, CButton, Modal, ImageSlider, PersonMetaTags },
 
     data () {
       return {
@@ -124,7 +125,9 @@
               i.fa.fa-twitter(@click='sharePerson("twitter")')
 
     .row
-      .col-xs-12
+      .col-xs-6(v-if="person.photos")
+        image-slider(:items="person.photos")
+      .col-xs-6
         gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
           gmap-marker(
             :position='position',
@@ -263,10 +266,16 @@
     }
 
     .map {
-      height: 45vh;
+      height: 70vh;
       margin-left: -50px;
       margin-right: -50px;
       margin-bottom: 40px;
+    }
+
+    .image-slider {
+      img {
+        height: 70vh;
+      }
     }
 
     .description-title {
