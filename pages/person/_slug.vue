@@ -19,6 +19,7 @@
         person: {},
         position: {},
         isLoading: true,
+
         map: {
           options: {
             styles: config.map.style,
@@ -27,7 +28,9 @@
           }
         },
         markerIcon: { url: '' },
-        showModal: false
+
+        showDescriptionModal: false,
+        showContactModal: false
       }
     },
 
@@ -72,8 +75,12 @@
         window.open(sources[source])
       },
 
-      closeModal () {
-        this.showModal = false
+      toggleDescriptionModal () {
+        this.showDescriptionModal = !this.showDescriptionModal
+      },
+
+      toggleContactModal () {
+        this.showContactModal = !this.showContactModal
       }
     },
 
@@ -96,14 +103,14 @@
             img(src='/animated-logo.svg')
       .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
-          c-button.action-button(@click="showModal = true", name='Detalle', v-if='person.description')
-          c-button.action-button(@click='contact', name='Contactar')
+          c-button.action-button(@click="toggleDescriptionModal", name='Detalle', v-if='person.description')
+          c-button.action-button(@click='toggleContactModal', name='Contactar')
 
     .row
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            <strong class='link' @click='showModal = true'>{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
+            <strong class='link' @click='showDescriptionModal = true'>{{ person.name }}</strong> se perdió el {{ person.lastSeenAt | date }} en {{ person.geo.city }}.</h1>
           .help-message
             h1 Ayudanos a encontrarlo:
             span.social-icons
@@ -123,8 +130,21 @@
     c-footer
 
     modal(
-      v-if='showModal',
-      @close='closeModal'
+      v-if='showDescriptionModal',
+      @close='toggleDescriptionModal'
+    )
+      h3(slot='header') {{ person.name }}
+      div(slot='body')
+        p(v-if='person.description && person.description.appearance')
+          <strong class="description-title">Apariencia</strong>: {{ this.person.description.appearance }}
+        p(v-if='person.description && person.description.clothing')
+          <strong class="description-title">Vestimenta</strong>: {{ this.person.description.clothing }}
+        p(v-if='person.description && person.description.more')
+          <strong class="description-title">Mas informacion</strong>: {{ this.person.description.more }}
+
+    modal(
+      v-if='showContactModal',
+      @close='toggleContactModal'
     )
       h3(slot='header') {{ person.name }}
       div(slot='body')
