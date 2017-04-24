@@ -29,6 +29,7 @@
     "nuxt": "~0.10.5",
     "pug": "^2.0.0-beta11",
     "trae": "^1.4.0",
+    "v-click-outside": "^0.0.8",
     "vue2-google-maps": "^0.7.5"
   },
   "devDependencies": {
