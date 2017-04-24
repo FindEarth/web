@@ -125,9 +125,9 @@
               i.fa.fa-twitter(@click='sharePerson("twitter")')
 
     .row
-      .col-xs-6(v-if="person.photos")
+      .col-xs-3(v-if="person.photos && person.photos.length")
         image-slider(:items="person.photos")
-      .col-xs-6
+      div(:class="person.photos && person.photos.length ? 'col-xs-9' : 'col-xs-12'")
         gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
           gmap-marker(
             :position='position',
@@ -167,17 +167,17 @@
       div(slot='body')
         p(v-if="person.organization.emails || defaultContact.email")
           b.description-title Email:&nbsp;
-          a(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
+          a.contact-link(v-if='person.organization.emails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
             | {{ e }}&nbsp;
-          a(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
+          a.contact-link(v-else-if="defaultContact.email", :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
         p(v-if="person.organization.phones || defaultContact.phone")
           b.description-title Teléfono:&nbsp;
-          a(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
+          a.contact-link(v-if='person.organization.phones', v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
         p(v-if="defaultContact.emergencyPhone")
           b.description-title Teléfono de Emergencia:&nbsp;
-          a(:href="`tel:${defaultContact.emergencyPhone}`")
+          a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
             | {{ defaultContact.emergencyPhone }}
         p(v)
 </template>
@@ -266,20 +266,16 @@
     }
 
     .map {
-      height: 70vh;
-      margin-left: -50px;
-      margin-right: -50px;
+      height: 45vh;
       margin-bottom: 40px;
-    }
-
-    .image-slider {
-      img {
-        height: 70vh;
-      }
     }
 
     .description-title {
       color: #29235C;
+    }
+
+    a.contact-link {
+      text-decoration: none;
     }
   }
 </style>

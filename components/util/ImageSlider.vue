@@ -7,10 +7,7 @@
         type: Array,
         required: true
       },
-      pageSize: {
-        type: Number,
-        default: 1
-      },
+
       moveSize: {
         type: Number,
         default: 1
@@ -19,6 +16,7 @@
 
     data () {
       return {
+        pageSize: 1,
         from: 0,
         to: 0
       }
@@ -88,6 +86,12 @@
 </template>
 
 <style scoped>
+  img {
+    height: 45vh;
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity 1s
   }
