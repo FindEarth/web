@@ -1,24 +1,20 @@
-<template>
-  <section class="container">
-    <img width="90" src="/animated-logo.svg" alt="Find Earth Logo" class="logo" />
-    <h1 class="title">
-      {{ error.statusCode }}
-    </h1>
-    <h2 class="info">
-      {{ error.message }}
-    </h2>
-    <nuxt-link class="button" to="/" v-if="error.statusCode === 404">
-      Homepage
-    </nuxt-link>
-  </section>
+<template lang="pug">
+  section.container
+    img.logo(width='90', src='/animated-logo.svg', alt='Find Earth Logo')
+    h1.title {{ error.statusCode }}
+    h2.info {{ error.message }}
+    nuxt-link.button(to='/', v-if='error.statusCode === 404') Homepage
 </template>
+
 <script>
-export default {
-  props: ['error']
-}
+  export default {
+    props: {
+      error: {}
+    }
+  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .container {
     text-align: center;
   }

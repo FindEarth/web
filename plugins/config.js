@@ -8,6 +8,10 @@ const config = {
       male: '/person-male.svg',
       female: '/person-female.svg'
     }
+  },
+
+  api: {
+    baseUrl: process.env.API_URL || 'http://localhost:9090/'
   }
 }
 

@@ -5,14 +5,17 @@
     props: {
       person: {
         type: Object,
-        required: true,
+        required: true
       }
     },
 
     head () {
-      const personPhotos = this.person.photos && this.person.photos.length ?  this.person.photos[0].url : ''
+      const personPhotos = this.person.photos && this.person.photos.length
+        ? this.person.photos[0].url : ''
+
       return {
-        title: this.person.name,
+        title: `Ayudanos a encontrar a ${this.person.name}`,
+
         meta: [
           { name: 'og:site_name', content: 'Find Earth' },
           { name: 'og:title', content: `${this.person.name} | Find Earth` },
@@ -27,7 +30,7 @@
         ]
       }
     }
-  };
+  }
 </script>
 
 <template lang="pug">

@@ -1,4 +1,5 @@
 import trae from 'trae'
+import config from './config'
 
 function errorMessage (err) {
   switch (err.status) {
@@ -34,17 +35,8 @@ function identity (res) {
   return res
 }
 
-// let options = {}
-
-// The server-side needs a full url to works
-// if (process.SERVER_BUILD) {
-//   options.baseUrl = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`
-// } else {
-//   options.baseUrl = 'https://api.find.earth'
-// }
-
 const api = trae.create({
-  baseUrl: 'https://api.find.earth'
+  baseUrl: config.api.baseUrl
 })
 
 api.after(identity, throwError)

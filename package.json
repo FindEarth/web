@@ -1,15 +1,16 @@
 {
   "name": "web-findearth",
   "version": "1.0.0",
-  "description": "Public website for Find Earth",
+  "description": "Find Earth public website",
   "author": "Keepers <hi@keepe.rs>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "nodemon --exec babel-node -w server.js -w nuxt.config.js -w api/ server.js",
     "build": "nuxt build && babel server.js --out-file server.prod.js",
     "start": "cross-env NODE_ENV=production node server.prod.js",
     "precommit": "npm run lint",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "eslint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "eslint:fix": "eslint --fix .js,.vue"
   },
   "babel": {
     "presets": [
@@ -20,11 +21,16 @@
   "dependencies": {
     "cross-env": "^3.1.4",
     "express": "^4.14.0",
+    "flexboxgrid": "^6.3.1",
     "font-awesome": "^4.7.0",
+    "i": "^0.3.5",
     "moment": "^2.18.1",
+    "npm": "^4.5.0",
     "nuxt": "~0.10.5",
+    "particles.js": "^2.0.0",
     "pug": "^2.0.0-beta11",
     "trae": "^1.4.0",
+    "v-click-outside": "^0.0.8",
     "vue2-google-maps": "^0.7.5"
   },
   "devDependencies": {
@@ -39,8 +45,10 @@
     "eslint-plugin-standard": "^2.0.1",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
+    "pre-commit": "^1.2.2",
     "sass-loader": "^6.0.3"
   },
+  "precommit": "eslint",
   "engines": {
     "node": "7.0.0",
     "npm": "3.10.8"
