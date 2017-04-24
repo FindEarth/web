@@ -9,6 +9,11 @@ const personService = {
   async getById (id) {
     const response = await trae.get(`/person/${id}`)
     return response.data
+  },
+
+  async getBySlug (slug) {
+    const response = await trae.get(`/person/${slug}`)
+    return response.data
   }
 }
 
