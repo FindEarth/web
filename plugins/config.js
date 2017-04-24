@@ -17,6 +17,11 @@ const config = {
   contact: {
     email: 'hi@keepe.rs',
     phone: '+54 9 11 0000 0000'
+  },
+
+  social: {
+    fbUrl: 'https://www.facebook.com/sharer/sharer.php',
+    twUrl: 'https://twitter.com/intent/tweet'
   }
 }
 

@@ -70,8 +70,8 @@
                      `${this.person.geo.city} ayúdanos a encontrarlo: ${url}`
 
         const sources = {
-          twitter: `https://twitter.com/intent/tweet?text=${text}`,
-          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+          twitter: `${config.social.twUrl}?text=${text}`,
+          facebook: `${config.social.fbUrl}?u=${url}`
         }
 
         window.open(sources[source])
