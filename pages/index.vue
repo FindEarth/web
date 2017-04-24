@@ -10,15 +10,22 @@
 
     data () {
       return {
-        lang: 'en'
+        lang: ''
       }
     },
 
     mounted () {
-      if (process.BROWSER_BUILD && window.location.host.includes('alertasolidaria.com')) {
-        this.lang = 'es'
+      if (process.BROWSER_BUILD) {
+        if (window.location.host.includes('alertasolidaria.com')) {
+          this.lang = 'es'
+        } else {
+          this.lang = 'en'
+        }
+        Particles.init('particles-js').then(() => {
+          const partcilesEl = this.$el.querySelector('#particles-js')
+          partcilesEl.classList.add('animated', 'particlesFadeIn')
+        })
       }
-      Particles.init('particles-js')
     },
 
     head () {
@@ -31,21 +38,21 @@
 
 <template lang="pug">
   main
-    .header
+    .header.animated.fadeIn
       .logo-container
         img.animated-logo(src="/animated-logo.svg")
       h1.title
         | Find Earth
     .decription
-      h2.text-2(v-if='lang === \'es\'')
+      h2.text-2.animated.fadeIn(v-if='lang === \'es\'')
         | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo.
-      h2.text-2(v-if='lang === \'en\'')
+      h2.text-2.animated.fadeIn(v-if='lang === \'en\'')
         | Help non-profit organizations and governments find missing people around the world.
       .button-container
         a(href="https://opencollective.com/findearth", target="_blank")
-          c-button(v-if='lang === \'es\'' name='Unite a la Causa')
-          c-button(v-if='lang === \'en\'' name='Help Us')
-    .footer-container
+          c-button.animated.fadeIn(v-if='lang === \'es\'' name='Unite a la Causa')
+          c-button.animated.fadeIn(v-if='lang === \'en\'' name='Help Us')
+    .footer-container.animated.fadeIn
       c-footer
     #particles-js
 </template>

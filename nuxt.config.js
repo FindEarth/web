@@ -35,7 +35,6 @@ module.exports = {
 
   plugins: [
     { src: '~plugins/v-click-outside', ssr: false },
-    { src: '~plugins/particles', ssr: false },
     { src: '~plugins/vue-google-maps' }
   ]
 }
