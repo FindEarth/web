@@ -48,10 +48,6 @@
     },
 
     methods: {
-      contact () {
-        window.location.href = `mailto:hi@keepe.rs?subject=Información sobre ${this.person.name}`
-      },
-
       setPerson () {
         this.isLoading = false
         this.markerIcon = this.person.gender === 'M' ? config.map.icons.male : config.map.icons.female
