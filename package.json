@@ -27,6 +27,7 @@
     "moment": "^2.18.1",
     "npm": "^4.5.0",
     "nuxt": "~0.10.5",
+    "particles.js": "^2.0.0",
     "pug": "^2.0.0-beta11",
     "trae": "^1.4.0",
     "v-click-outside": "^0.0.8",

@@ -28,12 +28,14 @@ module.exports = {
     vendor: [
       'trae',
       'vue2-google-maps',
-      'moment'
+      'moment',
+      'particles.js'
     ]
   },
 
   plugins: [
     { src: '~plugins/v-click-outside', ssr: false },
+    { src: '~plugins/particles', ssr: false },
     { src: '~plugins/vue-google-maps' }
   ]
 }
