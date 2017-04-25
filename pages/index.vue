@@ -38,20 +38,19 @@
 
 <template lang="pug">
   main
-    .header.animated.fadeIn
+    .home(v-if='lang').animated.fadeIn
       .logo-container
         img.animated-logo(src="/animated-logo.svg")
-      h1.title
-        | Find Earth
-    .decription
-      h2.text-2.animated.fadeIn(v-if='lang === \'es\'')
+        h1.title
+          | Find Earth
+      h2.text-2(v-if='lang === \'es\'')
         | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo.
-      h2.text-2.animated.fadeIn(v-if='lang === \'en\'')
+      h2.text-2(v-if='lang === \'en\'')
         | Help non-profit organizations and governments find missing people around the world.
       .button-container
         a(href="https://opencollective.com/findearth", target="_blank")
-          c-button.animated.fadeIn(v-if='lang === \'es\'' name='Unite a la Causa')
-          c-button.animated.fadeIn(v-if='lang === \'en\'' name='Help Us')
+          c-button(v-if='lang === \'es\'' name='Unite a la Causa')
+          c-button(v-if='lang === \'en\'' name='Help Us')
     .footer-container.animated.fadeIn
       c-footer
     #particles-js
@@ -72,22 +71,15 @@
     flex-direction: column;
     z-index: 1;
 
-    .header {
-      flex: 5;
+    .logo-container {
       display: flex;
       flex-direction: column;
-      z-index: 3;
-      position: relative;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
 
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
-
-        .animated-logo {
-          width: 150px;
-        }
+      .animated-logo {
+        width: 150px;
       }
 
       .title {
@@ -98,10 +90,11 @@
       }
     }
 
-    .decription {
+    .home {
       flex: 7;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       padding: 15px;
       z-index: 3;
@@ -120,11 +113,9 @@
     }
 
     .footer-container {
-      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 15px;
       margin: 0 20px;
       position: relative;
       z-index: 3;
