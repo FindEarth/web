@@ -16,11 +16,7 @@
 
     mounted () {
       if (process.BROWSER_BUILD) {
-        if (window.location.host.includes('alertasolidaria.com')) {
-          this.lang = 'es'
-        } else {
-          this.lang = 'en'
-        }
+        this.lang = window.location.host.includes('alertasolidaria.com') ? 'es' : 'en'
         Particles.init('particles-js').then(() => {
           const partcilesEl = this.$el.querySelector('#particles-js')
           partcilesEl.classList.add('animated', 'particlesFadeIn')
@@ -37,8 +33,8 @@
 </script>
 
 <template lang="pug">
-  main
-    .home(v-if='lang').animated.fadeIn
+  main(v-if='lang').animated.fadeIn
+    .home
       .logo-container
         img.animated-logo(src="/animated-logo.svg")
         h1.title
@@ -51,7 +47,7 @@
         a(href="https://opencollective.com/findearth", target="_blank")
           c-button(v-if='lang === \'es\'' name='Unite a la Causa')
           c-button(v-if='lang === \'en\'' name='Help Us')
-    .footer-container.animated.fadeIn
+    .footer-container
       c-footer
     #particles-js
 </template>
