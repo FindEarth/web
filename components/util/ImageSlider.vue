@@ -117,6 +117,7 @@
     text-align: center;
 
     img {
+      object-fit: contain;
       max-width: 100%;
     }
   }
