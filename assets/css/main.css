@@ -94,6 +94,10 @@ html, body {
   animation-name: particlesFadeIn;
 }
 
+.image-modal .modal-body {
+  margin: 0;
+}
+
 .image-modal div.modal-container {
   background: inherit;
   width: 100%;
