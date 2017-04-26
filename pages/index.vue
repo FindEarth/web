@@ -48,7 +48,7 @@
           c-button(v-if='lang === \'es\'' name='Unite a la Causa')
           c-button(v-if='lang === \'en\'' name='Help Us')
     .footer-container
-      c-footer
+      c-footer(:show-open-collective-icon='false')
     #particles-js
 </template>
 
