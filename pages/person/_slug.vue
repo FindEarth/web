@@ -74,7 +74,7 @@
       },
 
       sharePerson (source) {
-        const url = `https://find.earth/person/${this.person._id}`
+        const url = `https://find.earth/person/${this.person.slug}`
 
         const date = moment(this.person.createdAt).format('DD/MM/YYYY')
         const text = `${this.person.name} se perdió el ${date}, en ` +

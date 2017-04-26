@@ -102,11 +102,12 @@
         img(:src='selectedImage.url')
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   img.image-slider {
     height: 45vh;
     max-width: 100%;
     cursor: pointer;
+    object-fit: contain;
   }
 
   .image-slider-modal {
@@ -117,6 +118,8 @@
 
     img {
       object-fit: contain;
+      width: 100%;
+      height: 100%;
       max-width: 100%;
     }
   }
