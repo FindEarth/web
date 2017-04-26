@@ -148,10 +148,7 @@
 
     c-footer
 
-    modal(
-      v-show='showDescriptionModal',
-      @close='toggleDescriptionModal'
-    )
+    modal(v-show='showDescriptionModal', @close='toggleDescriptionModal')
       h3(slot='header')
         span.description-title {{ person.name }}
         |  {{ `(${person.age} años)` }}
@@ -166,10 +163,7 @@
           b.description-title Mas informacion
           | : {{ this.person.description.more }}
 
-    modal(
-      v-show='showContactModal',
-      @close='toggleContactModal'
-    )
+    modal(v-show='showContactModal', @close='toggleContactModal')
       h3(slot='header')
         | Si tenes información sobre
         span.description-title  {{ person.name }}
@@ -191,7 +185,6 @@
           b.description-title Teléfono de Emergencia:&nbsp;
           a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
             | {{ defaultContact.emergencyPhone }}
-        p(v)
 </template>
 
 <style lang="scss" scoped>
@@ -203,7 +196,7 @@
     .logo {
       display: flex;
 
-      @media only screen and (max-width: 500px) {
+      @media only screen and (max-width: 767px) {
         justify-content: center;
       }
 
@@ -221,7 +214,8 @@
         margin-left: 5px;
       }
 
-      @media only screen and (max-width: 500px) {
+      @media only screen and (max-width: 767px) {
+        justify-content: center;
         margin-top: 30px;
       }
     }
@@ -235,6 +229,7 @@
         font-weight: 300;
         font-size: 2.1em;
         line-height: 1.4;
+        color: #29235C;
         strong {
           font-weight: 700;
           color: #29235C;
@@ -291,6 +286,7 @@
     }
 
     a.contact-link {
+      color: #383081;
       text-decoration: none;
     }
   }
