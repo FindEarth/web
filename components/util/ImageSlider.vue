@@ -83,26 +83,23 @@
 <template lang="pug">
 .image-slider-container
   div(
-    v-for="(c, i) in items",
-    v-show="i >= from && i < to"
+    v-for='(c, i) in items',
+    v-show='i >= from && i < to'
   )
-    a(:href="c.linkUrl", target="_blank")
-      transition(name="fade")
+    a(:href='c.linkUrl', target='_blank')
+      transition(name='fade')
         img.image-slider(
-          @click="toggleModal(c)",
-          :src="c.url",
-          :alt="c.name",
-          :title="c.name",
-          v-show="i >= from && i < to"
+          @click='toggleModal(c)',
+          :src='c.url',
+          :alt='c.name',
+          :title='c.name',
+          v-show='i >= from && i < to'
         )
 
   .image-modal
-    modal(
-      v-show="showModal",
-      @close="toggleModal",
-    )
-      div.image-slider-modal(slot="body", @click="toggleModal")
-        img(:src="selectedImage.url")
+    modal(v-show='showModal', @close='toggleModal')
+      div.image-slider-modal(slot='body')
+        img(:src='selectedImage.url')
 </template>
 
 <style lang="scss" scoped>
@@ -113,19 +110,14 @@
   }
 
   .image-slider-modal {
-    margin: auto;
-    text-align: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 
     img {
+      object-fit: contain;
       max-width: 100%;
     }
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s
-  }
-
-  .fade-enter, .fade-leave-to {
-    opacity: 0
   }
 </style>

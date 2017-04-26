@@ -6,11 +6,11 @@
 
 <template lang="pug">
   transition(name='modal')
-    .modal-mask
+    .modal-mask(@click='$emit("close")')
       .modal-wrapper
         .modal-container
           .modal-header
-            span.close-modal-button(@click='$emit("close")') X
+            span.close-modal-button X
             slot(name='header')
           .modal-body
             slot(name='body')
@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .7);
     display: table;
     transition: opacity .3s ease;
   }
