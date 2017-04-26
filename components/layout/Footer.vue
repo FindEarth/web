@@ -1,3 +1,16 @@
+<script>
+  export default {
+    name: 'Footer',
+
+    props: {
+      showOpenCollectiveIcon: {
+        type: Boolean,
+        default: true
+      }
+    }
+  }
+</script>
+
 <template lang="pug">
   footer
     .row
@@ -6,7 +19,7 @@
           img(src='/keepers-logo.png')
       .col-xs-6.col-sm-offset-9.col-sm-1
         .social-icons
-          a.opacity-hover(href='https://opencollective.com/findearth', target='_blank')
+          a.opacity-hover(v-if='showOpenCollectiveIcon', href='https://opencollective.com/findearth', target='_blank')
             i.fa.fa-handshake-o
           a.opacity-hover(href='https://facebook.com/FindEarth', target='_blank')
             i.fa.fa-facebook

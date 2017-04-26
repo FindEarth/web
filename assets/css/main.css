@@ -102,13 +102,6 @@ html, body {
   box-shadow: none;
 }
 
-.image-modal div.modal-mask {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.image-modal .modal-body {
-}
-
 .image-modal .close-modal-button {
   right: 20px;
   top: 10px;
