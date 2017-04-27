@@ -11,7 +11,7 @@ const config = {
   },
 
   api: {
-    baseUrl: process.env.API_URL || 'http://qa-api.find.earth/'
+    baseUrl: process.env.API_URL || 'http://localhost:9090/'
   },
 
   contact: {
