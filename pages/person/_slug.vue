@@ -124,7 +124,7 @@
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            b.link(@click="toggleDescriptionModal") {{ person.name }}
+            b {{ person.name }}
             |  {{ `(${person.age} años)` }} se perdió el
             b  {{ person.lastSeenAt | date }}
             |  en
