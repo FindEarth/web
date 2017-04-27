@@ -76,9 +76,10 @@
       sharePerson (source) {
         const url = `https://find.earth/person/${this.person.slug}`
 
+        const gender = this.person.gender === 'M' ? 'o' : 'a'
         const date = moment(this.person.createdAt).format('DD/MM/YYYY')
         const text = `${this.person.name} se perdió el ${date}, en ` +
-                     `${this.person.geo.city} ayúdanos a encontrarlo: ${url}`
+                     `${this.person.geo.city} ayúdanos a encontrarl${gender}: ${url}`
 
         const sources = {
           twitter: `${config.social.twUrl}?text=${text}`,
@@ -123,13 +124,15 @@
       .col-xs-12
         .message.animated.fadeIn(v-if='person.name')
           h1
-            b.link(@click="toggleDescriptionModal") {{ person.name }}
+            b {{ person.name }}
             |  {{ `(${person.age} años)` }} se perdió el
             b  {{ person.lastSeenAt | date }}
             |  en
-            b  {{ person.geo.city }}.
+            b(v-show="person.geo.vicinity")  {{person.geo.vicinity}},
+            b  {{ person.geo.city }}
+            | .
           .help-message
-            h1 Ayudanos a encontrarlo:
+            h1 Ayudanos a encontrarl{{ person.gender === 'M' ? 'o' : 'a'}}:
             span.social-icons
               i.fa.fa-facebook(@click='sharePerson("facebook")')
               i.fa.fa-twitter(@click='sharePerson("twitter")')

@@ -31,6 +31,7 @@
     "pug": "^2.0.0-beta11",
     "trae": "^1.4.0",
     "v-click-outside": "^0.0.8",
+    "vue-ua": "^1.3.0",
     "vue2-google-maps": "^0.7.5"
   },
   "devDependencies": {
