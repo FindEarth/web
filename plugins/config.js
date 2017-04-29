@@ -5,8 +5,8 @@ const config = {
     key: 'AIzaSyBFDFmn-PL1Kg0frwZUXibuFyuiTPDMsas',
     style: mapStyle,
     icons: {
-      male: '/person-male.svg',
-      female: '/person-female.svg'
+      male: '/person-male.png',
+      female: '/person-female.png'
     }
   },
 
@@ -22,7 +22,8 @@ const config = {
 
   social: {
     fbUrl: 'https://www.facebook.com/sharer/sharer.php',
-    twUrl: 'https://twitter.com/intent/tweet'
+    twUrl: 'https://twitter.com/intent/tweet',
+    wpUrl: 'whatsapp://send/?text='
   }
 }
 

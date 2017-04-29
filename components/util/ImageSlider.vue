@@ -91,8 +91,6 @@
         img.image-slider(
           @click='toggleModal(c)',
           :src='c.url',
-          :alt='c.name',
-          :title='c.name',
           v-show='i >= from && i < to'
         )
 
@@ -115,11 +113,10 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     img {
       object-fit: contain;
-      width: 100%;
-      height: 100%;
       max-width: 100%;
     }
   }

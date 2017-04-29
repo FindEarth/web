@@ -83,7 +83,8 @@
 
         const sources = {
           twitter: `${config.social.twUrl}?text=${text}`,
-          facebook: `${config.social.fbUrl}?u=${url}`
+          facebook: `${config.social.fbUrl}?u=${url}`,
+          whatsapp: `${config.social.wpUrl}${encodeURI(text)}`
         }
 
         window.open(sources[source])
@@ -117,7 +118,11 @@
             img(src='/animated-logo.svg')
       .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
-          c-button.action-button(@click="toggleDescriptionModal", name='Detalle', v-if='person.description')
+          c-button.action-button(
+            @click="toggleDescriptionModal",
+            name='Detalle',
+            v-if='person.description && Object.keys(person.description).length'
+          )
           c-button.action-button(@click='toggleContactModal', name='Contactar')
 
     .row
@@ -136,11 +141,12 @@
             span.social-icons
               i.fa.fa-facebook(@click='sharePerson("facebook")')
               i.fa.fa-twitter(@click='sharePerson("twitter")')
+              i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
 
     .row
-      .col-xs-12.col-md-3.person-image(v-if="person.photos && person.photos.length")
+      .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
         image-slider(:items="person.photos", :title="`${person.name} (${person.age} años)`")
-      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-9' : 'col-xs-12'")
+      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-7' : 'col-xs-12'")
         gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
           gmap-marker(
             :position='position',
@@ -243,23 +249,25 @@
         display: inline-flex;
 
         .social-icons {
-          margin-left: 20px;
+          margin-left: 5px;
           color: #29235C;
 
           @media only screen and (max-width: 500px) {
             display: flex;
             position: relative;
             top: 47px;
-            left: -30px;
+            left: -50px;
           }
 
           i {
             width: 30px;
             font-size: 1.6rem;
             line-height: 2;
+            text-align: center;
             &:hover {
               cursor: pointer;
             }
+            transition: color 0.3s;
           }
           .fa-facebook {
             &:hover {
@@ -269,6 +277,11 @@
           .fa-twitter {
             &:hover {
               color: #1dcaff;
+            }
+          }
+          .fa-whatsapp {
+            &:hover {
+              color: #25d366;
             }
           }
         }
@@ -286,6 +299,9 @@
 
     .person-image {
       text-align: center;
+      @media only screen and (max-width: 1023px) {
+        margin-bottom: 15px;
+      }
     }
 
     a.contact-link {
