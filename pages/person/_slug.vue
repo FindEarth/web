@@ -83,7 +83,8 @@
 
         const sources = {
           twitter: `${config.social.twUrl}?text=${text}`,
-          facebook: `${config.social.fbUrl}?u=${url}`
+          facebook: `${config.social.fbUrl}?u=${url}`,
+          whatsapp: `${config.social.wpUrl}${encodeURI(text)}`
         }
 
         window.open(sources[source])
@@ -136,6 +137,7 @@
             span.social-icons
               i.fa.fa-facebook(@click='sharePerson("facebook")')
               i.fa.fa-twitter(@click='sharePerson("twitter")')
+              i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
 
     .row
       .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
@@ -243,23 +245,25 @@
         display: inline-flex;
 
         .social-icons {
-          margin-left: 20px;
+          margin-left: 5px;
           color: #29235C;
 
           @media only screen and (max-width: 500px) {
             display: flex;
             position: relative;
             top: 47px;
-            left: -30px;
+            left: -50px;
           }
 
           i {
             width: 30px;
             font-size: 1.6rem;
             line-height: 2;
+            text-align: center;
             &:hover {
               cursor: pointer;
             }
+            transition: color 0.3s;
           }
           .fa-facebook {
             &:hover {
@@ -269,6 +273,11 @@
           .fa-twitter {
             &:hover {
               color: #1dcaff;
+            }
+          }
+          .fa-whatsapp {
+            &:hover {
+              color: #25d366;
             }
           }
         }
