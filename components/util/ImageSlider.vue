@@ -113,6 +113,7 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     img {
       object-fit: contain;
