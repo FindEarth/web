@@ -138,9 +138,9 @@
               i.fa.fa-twitter(@click='sharePerson("twitter")')
 
     .row
-      .col-xs-12.col-md-3.person-image(v-if="person.photos && person.photos.length")
+      .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
         image-slider(:items="person.photos", :title="`${person.name} (${person.age} años)`")
-      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-9' : 'col-xs-12'")
+      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-7' : 'col-xs-12'")
         gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
           gmap-marker(
             :position='position',
@@ -286,6 +286,9 @@
 
     .person-image {
       text-align: center;
+      @media only screen and (max-width: 1023px) {
+        margin-bottom: 15px;
+      }
     }
 
     a.contact-link {
