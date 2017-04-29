@@ -117,7 +117,7 @@
             img(src='/animated-logo.svg')
       .col-xs-12.col-sm-offset-5.col-sm-5
         .action-buttons
-          c-button.action-button(@click="toggleDescriptionModal", name='Detalle', v-if='person.description')
+          c-button.action-button(@click="toggleDescriptionModal", name='Detalle', v-if='Object.keys(person.description).length')
           c-button.action-button(@click='toggleContactModal', name='Contactar')
 
     .row
