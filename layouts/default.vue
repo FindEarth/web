@@ -5,6 +5,6 @@
 
 <style lang="scss" scoped>
   .content {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 </style>
