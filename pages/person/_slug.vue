@@ -133,15 +133,15 @@
             |  {{ `(${person.age} años)` }} se perdió el
             b  {{ person.lastSeenAt | date }}
             |  en
-            b(v-show="person.geo.vicinity")  {{person.geo.vicinity}},
+            b(v-show="person.geo.vicinity")  {{ person.geo.vicinity }},
             b  {{ person.geo.city }}
             | .
           .help-message
             h1 Ayudanos a encontrarl{{ person.gender === 'M' ? 'o' : 'a'}}:
-            span.social-icons
-              i.fa.fa-facebook(@click='sharePerson("facebook")')
-              i.fa.fa-twitter(@click='sharePerson("twitter")')
-              i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
+              span.social-icons
+                i.fa.fa-facebook(@click='sharePerson("facebook")')
+                i.fa.fa-twitter(@click='sharePerson("twitter")')
+                i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
 
     .row
       .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
@@ -251,13 +251,6 @@
         .social-icons {
           margin-left: 5px;
           color: #29235C;
-
-          @media only screen and (max-width: 500px) {
-            display: flex;
-            position: relative;
-            top: 47px;
-            left: -50px;
-          }
 
           i {
             width: 30px;
