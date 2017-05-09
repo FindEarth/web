@@ -48,14 +48,16 @@
       z-index: -1;
     }
 
-    &:hover {
-      cursor: pointer;
-      color: white;
-      &:after {
-        width: 100%;
-        left: 0;
-        left: -10%;
-        width: 120%;
+    @media (hover) {
+      &:hover {
+        cursor: pointer;
+        color: white;
+        &:after {
+          width: 100%;
+          left: 0;
+          left: -10%;
+          width: 120%;
+        }
       }
     }
   }

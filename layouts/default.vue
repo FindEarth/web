@@ -3,8 +3,8 @@
     nuxt
 </template>
 
-<style lang="scss" scoped>
+<scripts lang="scss">
   .content {
-    margin-top: 50px;
+    height: 100vh;
   }
-</style>
+</scripts>
