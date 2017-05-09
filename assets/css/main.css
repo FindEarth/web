@@ -2,12 +2,23 @@ html, body {
   font-family: 'Lato', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
+
+ #__nuxt {
+   position: relative;
+ }
 
 .link {
   text-decoration: none;
   border-bottom: 1px solid #29235C;
   cursor: pointer;
+  transition: opacity .3s;
+}
+
+.link:hover {
+  opacity: 0.7;
 }
 
 .move-enter-active, .move-leave-active {
