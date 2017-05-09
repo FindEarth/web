@@ -199,6 +199,7 @@
 <style lang="scss" scoped>
   .content {
     height: 100vh;
+    margin-top: 40px;
     margin-left: 40px;
     margin-right: 40px;
 
