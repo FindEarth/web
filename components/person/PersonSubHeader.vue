@@ -149,6 +149,7 @@
       .person-name {
         color: #29235C;
         font-size: 1.5em;
+        font-weight: 500;
       }
     }
 
