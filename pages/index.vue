@@ -47,25 +47,22 @@
         a(href="https://opencollective.com/findearth", target="_blank")
           c-button(v-if='lang === \'es\'' name='Unite a la Causa')
           c-button(v-if='lang === \'en\'' name='Help Us')
-    .footer-container
-      c-footer(:show-open-collective-icon='false')
+    c-footer(:show-open-collective-icon='false')
     #particles-js
 </template>
 
 <style lang="scss">
   main {
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    // font-family: 'Avenir', Helvetica, Arial, sans-serif;
     color: #29235C;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     z-index: 1;
+    min-height: 100vh;
+    justify-content: space-between;
 
     .logo-container {
       display: flex;
@@ -87,12 +84,12 @@
     }
 
     .home {
-      flex: 7;
+      flex: 1;
+      display: -ms-flexbox;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 15px;
       z-index: 3;
       position: relative;
 
@@ -100,27 +97,17 @@
         text-align: center;
         max-width: 800px;
         font-size: 28px;
-        font-weight: 100;
+        font-weight: 300;
       }
 
       .button-container {
         margin-top: 30px;
       }
     }
-
-    .footer-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin: 0 20px;
-      position: relative;
-      z-index: 3;
-    }
   }
 
   #particles-js {
-    height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
