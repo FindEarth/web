@@ -109,8 +109,8 @@
         font-size: 2.1em;
         line-height: 1.4;
         color: #29235C;
-        strong {
-          font-weight: 700;
+        b {
+          font-weight: 600;
           color: #29235C;
         }
       }

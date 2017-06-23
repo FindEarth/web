@@ -34,6 +34,7 @@
     padding: 20px 80px;
     background: #f4f7fa;
     border-top: 1px solid #DAE1E9;
+    z-index: 4;
 
     // TODO: move transition on hover to a class in main.css
 
