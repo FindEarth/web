@@ -13,7 +13,7 @@
       li.item
         nuxt-link(to="/") Inicio
       li.item
-        nuxt-link(to="/") Nosotros
+        nuxt-link(to="/acerca") Acerca
       li.item
         nuxt-link(to="/") Personas
       li.item
@@ -53,6 +53,14 @@
 
           &:hover {
             opacity: .6;
+          }
+
+          &.router-link-exact-active {
+            opacity: .6;
+
+            &:hover {
+              cursor: default;
+            }
           }
         }
       }
