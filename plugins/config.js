@@ -1,4 +1,7 @@
 import mapStyle from './map-style'
+import env from './environment'
+
+const apiUrl = env.isBrowserBuild() && env.isQa() ? 'https://qa-api.find.earth/' : 'https://api.find.earth/'
 
 const config = {
   map: {
@@ -11,7 +14,7 @@ const config = {
   },
 
   api: {
-    baseUrl: process.env.API_URL || 'http://localhost:9090/'
+    baseUrl: process.env.API_URL || apiUrl
   },
 
   contact: {
