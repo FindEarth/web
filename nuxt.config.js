@@ -19,7 +19,7 @@ module.exports = {
     '~assets/css/main.css'
   ],
   loading: {
-    color: '#29235C'
+    color: '#DAE1E9'
   },
   /*
   ** Add dependencies globally
