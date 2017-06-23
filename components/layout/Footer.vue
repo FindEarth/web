@@ -31,7 +31,9 @@
 
 <style lang="scss" scoped>
   footer {
-    margin-bottom: 10px;
+    padding: 20px 80px;
+    background: #f4f7fa;
+    border-top: 1px solid #DAE1E9;
 
     // TODO: move transition on hover to a class in main.css
 
