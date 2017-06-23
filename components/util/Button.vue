@@ -12,53 +12,59 @@
 </script>
 
 <template lang="pug">
-  .custom-button(@click="$emit('click')") {{ name }}
+  .test
+    .hvr-sweep-to-right(@click="$emit('click')") {{ name }}
 </template>
 
 <style lang="scss">
-  .custom-button {
+  .hvr-sweep-to-right {
     display: inline-block;
-    height: 38px;
-    padding: 0 30px;
-    line-height: 38px;
-    letter-spacing: .1rem;
-    border-radius: 2px;
-    box-sizing: border-box;
-    border: 1px solid #29235C;
-    text-align: center;
-    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
     position: relative;
-    overflow: hidden;
-    transition: .3s;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    border: 1px solid #29235C;
+    text-transform: uppercase;
     color: #29235C;
     font-size: .8em;
+    padding: 10px 30px;
+    letter-spacing: .1rem;
+    border-radius: 2px;
+    cursor: pointer;
 
-    &:after {
+    &:before {
+      content: "";
       position: absolute;
-      transition: .3s;
-      content: '';
-      width: 0;
-      left: 50%;
-      bottom: 0;
-      height: 3px;
-      background: #29235C;
-      height: 120%;
-      left: -10%;
-      transform: skewX(15deg);
       z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #29235C;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: 0 50%;
+      transform-origin: 0 50%;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
     }
 
-    @media (hover) {
-      &:hover {
-        cursor: pointer;
-        color: white;
-        &:after {
-          width: 100%;
-          left: 0;
-          left: -10%;
-          width: 120%;
-        }
-      }
+    &:hover, &:focus, &:active {
+      color: white;
+    }
+
+    &:hover:before, &:focus:before, &:active:before {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
     }
   }
 </style>
