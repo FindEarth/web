@@ -4,24 +4,22 @@
   import config from '~plugins/config'
   import personService from '~plugins/person'
 
-  import Modal from '~components/util/Modal'
-  import CFooter from '~components/layout/Footer'
-  import CButton from '~components/util/Button'
   import ImageSlider from '~components/util/ImageSlider'
+  import PersonSubHeader from '~components/person/PersonSubHeader'
   import PersonMetaTags from '~components/person/PersonMetaTags'
 
   export default {
     name: 'Person',
 
-    components: { CFooter, CButton, Modal, ImageSlider, PersonMetaTags },
+    layout: 'main',
+
+    components: { PersonSubHeader, ImageSlider, PersonMetaTags },
 
     data () {
       return {
         person: {},
         position: {},
         isLoading: true,
-
-        defaultContact: config.contact,
 
         map: {
           options: {
@@ -47,20 +45,6 @@
       this.setPerson()
     },
 
-    computed: {
-      hasOrganizationEmails () {
-        return this.person.organization &&
-          this.person.organization.emails &&
-          this.person.organization.emails.length
-      },
-
-      hasOrganizationPhones () {
-        return this.person.organization &&
-          this.person.organization.phones &&
-          this.person.organization.phones.length
-      }
-    },
-
     methods: {
       setPerson () {
         this.isLoading = false
@@ -71,31 +55,6 @@
       setPosition () {
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0)
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0)
-      },
-
-      sharePerson (source) {
-        const url = `https://find.earth/person/${this.person.slug}`
-
-        const gender = this.person.gender === 'M' ? 'o' : 'a'
-        const date = moment(this.person.createdAt).format('DD/MM/YYYY')
-        const text = `${this.person.name} se perdió el ${date}, en ` +
-                     `${this.person.geo.city} ayúdanos a encontrarl${gender}: ${url}`
-
-        const sources = {
-          twitter: `${config.social.twUrl}?text=${text}`,
-          facebook: `${config.social.fbUrl}?u=${url}`,
-          whatsapp: `${config.social.wpUrl}${encodeURI(text)}`
-        }
-
-        window.open(sources[source])
-      },
-
-      toggleDescriptionModal () {
-        this.showDescriptionModal = !this.showDescriptionModal
-      },
-
-      toggleContactModal () {
-        this.showContactModal = !this.showContactModal
       }
     },
 
@@ -108,130 +67,40 @@
 </script>
 
 <template lang="pug">
-  .content
+  section#person-detail
+
+    person-sub-header(:person='person')
     person-meta-tags(:person='person')
 
-    .row.center-xs
-      .col-xs-12.col-sm-2
-        .logo
-          nuxt-link(to='/')
-            img(src='/animated-logo.svg')
-      .col-xs-12.col-sm-offset-5.col-sm-5
-        .action-buttons
-          c-button.action-button(
-            @click="toggleDescriptionModal",
-            name='Detalle',
-            v-if='person.description && Object.keys(person.description).length'
-          )
-          c-button.action-button(@click='toggleContactModal', name='Contactar')
+    .details-container
+      .row
+        .col-xs-12
+          .message.animated.fadeIn(v-if='person.name')
+            h1
+              |  Se perdió el
+              b  {{ person.lastSeenAt | date }}
+              |  en
+              b(v-show="person.geo.vicinity")  {{ person.geo.vicinity }},
+              b  {{ person.geo.city }}
+              |  y tiene {{ `(${person.age} años)` }}.
 
-    .row
-      .col-xs-12
-        .message.animated.fadeIn(v-if='person.name')
-          h1
-            b {{ person.name }}
-            |  {{ `(${person.age} años)` }} se perdió el
-            b  {{ person.lastSeenAt | date }}
-            |  en
-            b(v-show="person.geo.vicinity")  {{ person.geo.vicinity }},
-            b  {{ person.geo.city }}
-            | .
-          .help-message
-            h1 Ayudanos a encontrarl{{ person.gender === 'M' ? 'o' : 'a'}}:
-              span.social-icons
-                i.fa.fa-facebook(@click='sharePerson("facebook")')
-                i.fa.fa-twitter(@click='sharePerson("twitter")')
-                i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
-
-    .row
-      .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
-        image-slider(:items="person.photos", :title="`${person.name} (${person.age} años)`")
-      div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-7' : 'col-xs-12'")
-        gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
-          gmap-marker(
-            :position='position',
-            :clickable='true',
-            style='width: 30px;',
-            :icon='markerIcon',
-          )
-
-    c-footer
-
-    modal(v-show='showDescriptionModal', @close='toggleDescriptionModal')
-      h3(slot='header')
-        span.description-title {{ person.name }}
-        |  {{ `(${person.age} años)` }}
-      div(slot='body')
-        p(v-if='person.description && person.description.appearance')
-          b.description-title Apariencia
-          | : {{ this.person.description.appearance }}
-        p(v-if='person.description && person.description.clothing')
-          b.description-title Vestimenta
-          | : {{ this.person.description.clothing }}
-        p(v-if='person.description && person.description.more')
-          b.description-title Mas informacion
-          | : {{ this.person.description.more }}
-
-    modal(v-show='showContactModal', @close='toggleContactModal')
-      h3(slot='header')
-        | Si tenes información sobre
-        span.description-title  {{ person.name }}
-        |  contactános:
-      div(slot='body')
-        p(v-if="hasOrganizationEmails || defaultContact.email")
-          b.description-title Email:&nbsp;
-          a.contact-link(v-if='hasOrganizationEmails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
-            | {{ e }}&nbsp;
-          a.contact-link(v-else, :href="`mailto:${defaultContact.email}`")
-            | {{ defaultContact.email }}
-        p(v-if="hasOrganizationPhones || defaultContact.phone")
-          b.description-title Teléfono:&nbsp;
-          a.contact-link(v-if='hasOrganizationPhones', v-for="p in person.organization.phones", :href="`tel:${p}`")
-            | {{ p }}&nbsp;
-          a.contact-link(v-else, :href="`mailto:${defaultContact.phone}`")
-            | {{ defaultContact.phone }}
-        p(v-if="defaultContact.emergencyPhone")
-          b.description-title Teléfono de Emergencia:&nbsp;
-          a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
-            | {{ defaultContact.emergencyPhone }}
+      .row
+        .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
+          image-slider(:items="person.photos", :title="`${person.name} (${person.age} años)`")
+        div(:class="person.photos && person.photos.length ? 'col-xs-12 col-md-7' : 'col-xs-12'")
+          gmap-map.map(v-if='position.lat && position.lng', :options="map.options", :center='position', :zoom='14')
+            gmap-marker(
+              :position='position',
+              :clickable='true',
+              style='width: 30px;',
+              :icon='markerIcon',
+            )
 </template>
 
 <style lang="scss" scoped>
-  .content {
-    height: 100vh;
-    margin-top: 40px;
-    margin-left: 40px;
-    margin-right: 40px;
-
-    .logo {
-      display: flex;
-
-      @media only screen and (max-width: 767px) {
-        justify-content: center;
-      }
-
-      img {
-        width: 45px;
-      }
-    }
-
-    .action-buttons {
-      margin-top: 5px;
-      display: flex;
-      justify-content: flex-end;
-
-      .action-button {
-        margin-left: 5px;
-      }
-
-      @media only screen and (max-width: 767px) {
-        justify-content: center;
-        margin-top: 30px;
-      }
-    }
-
+  section#person-detail {
     .message {
-      margin-top: 60px;
+      margin-top: 50px;
       margin-bottom: 50px;
 
       h1 {
@@ -245,62 +114,22 @@
           color: #29235C;
         }
       }
+    }
 
-      .help-message {
-        display: inline-flex;
+    .details-container {
+      padding: 0 80px;
 
-        .social-icons {
-          margin-left: 5px;
-          color: #29235C;
+      .map {
+        height: 45vh;
+        margin-bottom: 40px;
+      }
 
-          i {
-            width: 30px;
-            font-size: 1.6rem;
-            line-height: 2;
-            text-align: center;
-            &:hover {
-              cursor: pointer;
-            }
-            transition: color 0.3s;
-          }
-          .fa-facebook {
-            &:hover {
-              color: #3b5998;
-            }
-          }
-          .fa-twitter {
-            &:hover {
-              color: #1dcaff;
-            }
-          }
-          .fa-whatsapp {
-            &:hover {
-              color: #25d366;
-            }
-          }
+      .person-image {
+        text-align: center;
+        @media only screen and (max-width: 1023px) {
+          margin-bottom: 15px;
         }
       }
-    }
-
-    .map {
-      height: 45vh;
-      margin-bottom: 40px;
-    }
-
-    .description-title {
-      color: #29235C;
-    }
-
-    .person-image {
-      text-align: center;
-      @media only screen and (max-width: 1023px) {
-        margin-bottom: 15px;
-      }
-    }
-
-    a.contact-link {
-      color: #383081;
-      text-decoration: none;
     }
   }
 </style>
