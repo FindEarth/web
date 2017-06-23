@@ -10,6 +10,16 @@ html, body {
    position: relative;
  }
 
+ a {
+   color: #29235C;
+ }
+
+ .truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .link {
   text-decoration: none;
   border-bottom: 1px solid #29235C;
