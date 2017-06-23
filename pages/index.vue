@@ -106,6 +106,10 @@
     }
   }
 
+  footer {
+    background: rgba(244, 247, 250, .6) !important;
+  }
+
   #particles-js {
     position: fixed;
     top: 0;
