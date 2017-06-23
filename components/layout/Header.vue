@@ -15,7 +15,7 @@
       li.item
         nuxt-link(to="/acerca") Acerca
       li.item
-        nuxt-link(to="/") Personas
+        nuxt-link(to="/personas") Personas
       li.item
         nuxt-link(to="/") Sumarse
 </template>
