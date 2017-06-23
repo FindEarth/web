@@ -1,15 +1,12 @@
 <script>
-  import CHeader from '~components/layout/Header'
-
   export default {
     name: 'Acerca',
-    components: { CHeader }
+    layout: 'main'
   }
 </script>
 
 <template lang="pug">
   section#acerca
-    c-header(title='Acerca')
     .content
       h1 Qué es?
       p Find Earth es una plataforma <a class="link" href="https://github.com/FindEarth" target="_blank">open source</a>, que tiene como objetivo facilitar el reporte de personas perdidas, agilizar la viralización de sus datos en redes sociales y lo más importante: ayudar a encontrarlas.
@@ -47,36 +44,26 @@
 
 <style lang="scss" scoped>
   section#acerca {
-    height: 100vh;
 
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    padding: 0 80px;
 
-    .content {
-      padding: 84px 4em 1em;
-      p {
-        line-height: 25px;
+    p {
+      line-height: 25px;
+    }
+
+    .image-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 50%;
       }
-      .image-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        img {
-          width: 50%;
-        }
-        .description {
-          margin-top: 10px;
-          font-size: 0.8em;
-        }
+      .description {
+        margin-top: 10px;
+        font-size: 0.8em;
       }
     }
 
-    footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0 10px;
-    }
   }
 </style>
