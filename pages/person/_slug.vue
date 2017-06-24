@@ -11,8 +11,6 @@
   export default {
     name: 'Person',
 
-    layout: 'main',
-
     components: { PersonSubHeader, ImageSlider, PersonMetaTags },
 
     data () {

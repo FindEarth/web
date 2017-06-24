@@ -1,7 +1,6 @@
 <script>
   export default {
-    name: 'Acerca',
-    layout: 'main'
+    name: 'Acerca'
   }
 </script>
 

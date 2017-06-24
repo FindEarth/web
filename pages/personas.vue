@@ -8,8 +8,6 @@
 
     components: { PersonCard },
 
-    layout: 'main',
-
     data () {
       return {
         persons: []
