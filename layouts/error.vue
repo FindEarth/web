@@ -1,36 +1,32 @@
-<template lang="pug">
-  section.container
-    img.logo(width='90', src='/animated-logo.svg', alt='Find Earth Logo')
-    h1.title {{ error.statusCode }}
-    h2.info {{ error.message }}
-    nuxt-link.button(to='/', v-if='error.statusCode === 404') Homepage
-</template>
-
 <script>
+
   export default {
     props: {
       error: {}
     }
   }
+
 </script>
 
-<style lang="scss" scoped>
-  .container {
+<template lang="pug">
+  section#error
+    p.title {{ error.statusCode }}
+    p.info {{ error.message }}
+</template>
+
+<style lang="scss">
+  section#error {
     text-align: center;
-  }
+    color: #29235C;
 
-  .title {
-    margin-top: 15px;
-    font-size: 5em;
-  }
+    p.title {
+      font-weight: 600;
+      font-size: 5em;
+    }
 
-  .info {
-    font-weight: 300;
-    color: #9aabb1;
-    margin: 0;
-  }
-
-  .button {
-    margin-top: 50px;
+    p.info {
+      font-size: 3em;
+      font-weight: 300;
+    }
   }
 </style>
