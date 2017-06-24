@@ -4,7 +4,7 @@
   import PersonCard from '~components/person/PersonCard'
 
   export default {
-    name: 'Personas',
+    name: 'Persons',
 
     components: { PersonCard },
 

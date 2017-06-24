@@ -13,25 +13,24 @@
       li.item
         nuxt-link(to="/") Inicio
       li.item
-        nuxt-link(to="/acerca") Acerca
+        nuxt-link(to="/about") Acerca
       li.item
-        nuxt-link(to="/personas") Personas
+        nuxt-link(to="/persons") Personas
       li.item
-        nuxt-link(to="/") Sumarse
+        nuxt-link(to="/sumarse") Sumarse
 </template>
 
 <style lang="scss" scoped>
   .header {
     $logo-width: 40px;
 
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     align-items: center;
     height: 70px;
     background: #29235C;
     color: #fff;
     padding: 0 80px;
+    z-index: 4;
 
     .logo {
       width: $logo-width;
