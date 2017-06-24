@@ -43,7 +43,7 @@
 
       li.item {
         display: inline;
-        margin: 0 10px;
+        margin-left: 20px;
 
         a {
           color: #fff;
