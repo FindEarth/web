@@ -115,7 +115,7 @@
     }
 
     .details-container {
-      padding: 0 80px;
+      padding: 0 3em;
 
       .map {
         height: 45vh;

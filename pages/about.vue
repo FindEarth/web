@@ -44,7 +44,7 @@
 <style lang="scss" scoped>
   section#about {
 
-    padding: 0 80px;
+    padding: 0 3em;
 
     p {
       line-height: 25px;

@@ -36,7 +36,7 @@
     height: 70px;
     background: #29235C;
     color: #fff;
-    padding: 0 80px;
+    padding: 0 3em;
     z-index: 4;
 
     .hamburguer-container {

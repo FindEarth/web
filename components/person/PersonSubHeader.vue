@@ -142,7 +142,7 @@
     height: 70px;
     background: #f4f7fa;
     color: #fff;
-    padding: 0 80px;
+    padding: 0 3em;
     border-bottom: 1px solid #DAE1E9;
 
     .left {
