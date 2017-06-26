@@ -1,6 +1,11 @@
 <script>
+
+  import HamburgerButton from '~components/util/HamburgerButton'
+
   export default {
-    name: 'Header'
+    name: 'Header',
+
+    components: { HamburgerButton }
   }
 </script>
 
@@ -18,6 +23,8 @@
         nuxt-link(to="/persons") Personas
       li.item
         nuxt-link(to="/sumarse") Sumarse
+      li.item.hamburguer-container
+        hamburger-button
 </template>
 
 <style lang="scss" scoped>
@@ -31,6 +38,20 @@
     color: #fff;
     padding: 0 80px;
     z-index: 4;
+
+    .hamburguer-container {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+
+      li.item {
+        display: none !important;
+        &.hamburguer-container {
+          display: inherit !important;
+        }
+      }
+    }
 
     .logo {
       width: $logo-width;
@@ -49,6 +70,7 @@
           color: #fff;
           text-decoration: none;
           transition: opacity .3s;
+          cursor: pointer;
 
           &:hover {
             opacity: .6;
