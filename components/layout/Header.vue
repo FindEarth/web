@@ -54,7 +54,7 @@
             opacity: .6;
           }
 
-          &.router-link-exact-active {
+          &.nuxt-link-exact-active {
             opacity: .6;
 
             &:hover {
