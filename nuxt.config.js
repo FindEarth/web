@@ -40,7 +40,12 @@ module.exports = {
   },
 
   modules: [
-    ['@nuxtjs/google-analytics', { ua: 'UA-98216529-1' }]
+    {
+      src: '@nuxtjs/google-analytics',
+      options: {
+        ua: 'UA-98216529-1'
+      }
+    }
   ],
 
   plugins: [
