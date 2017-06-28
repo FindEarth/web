@@ -1,10 +1,32 @@
+<script>
+
+  import CHeader from '~components/layout/Header'
+  import CFooter from '~components/layout/Footer'
+
+  export default {
+    name: 'DefaultLayout',
+    components: { CHeader, CFooter }
+  }
+
+</script>
+
 <template lang="pug">
-  .content
-    nuxt
+  .main
+    c-header
+    .content
+      nuxt
+    c-footer
 </template>
 
-<scripts lang="scss">
-  .content {
-    height: 100vh;
+<style lang="scss">
+  .main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-</scripts>
+
+  .content {
+    flex: 1;
+  }
+</style>

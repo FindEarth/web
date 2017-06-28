@@ -11,8 +11,6 @@
   export default {
     name: 'Person',
 
-    layout: 'main',
-
     components: { PersonSubHeader, ImageSlider, PersonMetaTags },
 
     data () {
@@ -117,7 +115,7 @@
     }
 
     .details-container {
-      padding: 0 80px;
+      padding: 0 3em;
 
       .map {
         height: 45vh;

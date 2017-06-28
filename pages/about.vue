@@ -1,12 +1,11 @@
 <script>
   export default {
-    name: 'Acerca',
-    layout: 'main'
+    name: 'About'
   }
 </script>
 
 <template lang="pug">
-  section#acerca
+  section#about
     .content
       h1 Qué es?
       p Find Earth es una plataforma <a class="link" href="https://github.com/FindEarth" target="_blank">open source</a>, que tiene como objetivo facilitar el reporte de personas perdidas, agilizar la viralización de sus datos en redes sociales y lo más importante: ayudar a encontrarlas.
@@ -43,9 +42,9 @@
 </template>
 
 <style lang="scss" scoped>
-  section#acerca {
+  section#about {
 
-    padding: 0 80px;
+    padding: 0 3em;
 
     p {
       line-height: 25px;
