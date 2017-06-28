@@ -33,81 +33,56 @@
 </script>
 
 <template lang="pug">
-  main(v-if='lang').animated.fadeIn
-    .home
-      .logo-container
-        img.animated-logo(src="/animated-logo.svg")
-        h1.title
-          | Find Earth
+  section#home(v-if='lang').animated.fadeIn
+    .home-container
+      h1.title
+        | Find Earth
       h2.text-2(v-if='lang === \'es\'')
         | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo.
       h2.text-2(v-if='lang === \'en\'')
         | Help non-profit organizations and governments find missing people around the world.
-      .button-container
-        a(href="https://opencollective.com/findearth", target="_blank")
-          c-button(v-if='lang === \'es\'' name='Unite a la Causa')
-          c-button(v-if='lang === \'en\'' name='Help Us')
-    c-footer(:show-open-collective-icon='false')
     #particles-js
 </template>
 
 <style lang="scss">
-  main {
-    height: 100vh;
-    // font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    color: #29235C;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    z-index: 1;
-    min-height: 100vh;
-    justify-content: space-between;
+  section#home {
 
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 50px;
+    z-index: 3;
+    color: #29235c;
 
-      .animated-logo {
-        width: 150px;
-      }
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-      .title {
-        text-align: center;
-        margin: 0;
-        font-weight: 600;
-        font-size: 35px;
-      }
+    .title {
+      text-align: center;
+      margin: 0;
+      font-weight: 600;
+      font-size: 3rem;
     }
 
-    .home {
+    .home-container {
       flex: 1;
-      display: -ms-flexbox;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 3;
       position: relative;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
 
       h2 {
         text-align: center;
         max-width: 800px;
-        font-size: 28px;
+        font-size: 2rem;
         font-weight: 300;
       }
-
-      .button-container {
-        margin-top: 30px;
-      }
     }
-  }
-
-  footer {
-    background: rgba(244, 247, 250, .6) !important;
   }
 
   #particles-js {

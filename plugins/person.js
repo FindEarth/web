@@ -1,6 +1,11 @@
 import trae from '~plugins/trae'
 
 const personService = {
+  async all () {
+    const response = await trae.get('/person')
+    return response.data
+  },
+
   async get (query = {}) {
     const response = await trae.get('/person', { params: query })
     return response.data

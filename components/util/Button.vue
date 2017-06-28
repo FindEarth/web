@@ -36,6 +36,7 @@
     letter-spacing: .1rem;
     border-radius: 2px;
     cursor: pointer;
+    font-weight: 500;
 
     &:before {
       content: "";

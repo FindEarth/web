@@ -10,27 +10,33 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
-  /*
-  ** Global CSS
-  */
+
+  loading: { color: '#DAE1E9' },
+
   css: [
     'font-awesome/css/font-awesome.css',
     'flexboxgrid/dist/flexboxgrid.min.css',
     '~assets/css/main.css'
   ],
-  loading: {
-    color: '#DAE1E9'
-  },
-  /*
-  ** Add dependencies globally
-  */
+
   build: {
     vendor: [
       'trae',
       'vue2-google-maps',
       'moment',
       'particles.js'
-    ]
+    ],
+
+    extend (config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    }
   },
 
   plugins: [
