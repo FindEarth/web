@@ -39,8 +39,11 @@ module.exports = {
     }
   },
 
+  modules: [
+    ['@nuxtjs/google-analytics', { ua: 'UA-98216529-1' }]
+  ],
+
   plugins: [
-    { src: '~plugins/ga', ssr: false },
     { src: '~plugins/vue-google-maps' }
   ]
 }
