@@ -37,7 +37,7 @@
 
 <style lang="scss" scoped>
   footer {
-    padding: 20px 80px;
+    padding: 20px 3em;
     background: #f4f7fa;
     border-top: 1px solid #DAE1E9;
     z-index: 4;

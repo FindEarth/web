@@ -31,7 +31,7 @@
 
 <style lang="scss" scoped>
   section#persons {
-    padding: 2em 80px;
+    padding: 2em 3em;
 
     .person-card-container {
       margin-bottom: 20px;

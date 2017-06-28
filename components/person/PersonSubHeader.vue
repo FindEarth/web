@@ -82,13 +82,13 @@
         i.fa.fa-twitter(@click='sharePerson("twitter")')
         i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
 
-      c-button.action-button.animated.fadeIn(
+      c-button.action-button.first.animated.fadeIn(
         v-if='person.name',
         name='Contactar',
         @click='toggleContactModal'
       )
 
-      c-button.action-button.animated.fadeIn(
+      c-button.action-button.second.animated.fadeIn(
         v-if='person.description && Object.keys(person.description).length',
         name='Más info',
         @click='toggleDescriptionModal'
@@ -135,15 +135,18 @@
 
 <style lang="scss" scoped>
   .person-sub-header {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     align-items: center;
-    height: 70px;
     background: #f4f7fa;
     color: #fff;
-    padding: 0 80px;
+    padding: 0 3em;
     border-bottom: 1px solid #DAE1E9;
+    justify-content: space-between;
+
+    @media (max-width: 750px) {
+      flex-direction: column;
+      padding-bottom: 25px;
+    }
 
     .left {
       .person-name {
@@ -154,13 +157,32 @@
     }
 
     .right {
-      margin-left: auto;
       display: flex;
       align-content: center;
+
+      @media (max-width: 750px) {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+      }
 
       .social-icons {
         margin-left: 20px;
         color: #29235C;
+
+        @media (max-width: 750px) {
+          margin: 0;
+          order: 2;
+        }
+
+        @media (max-width: 500px) {
+          order: 0;
+          margin-bottom: 10px;
+        }
 
         i {
           width: 30px;
@@ -191,6 +213,19 @@
 
       .action-button {
         margin-left: 20px;
+        order: 3;
+
+        @media (max-width: 750px) {
+          margin: 0;
+        }
+
+        &.first {
+          order: 1;
+
+          @media (max-width: 500px) {
+            margin-bottom: 20px;
+          }
+        }
       }
     }
   }
