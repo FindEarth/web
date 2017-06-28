@@ -36,6 +36,9 @@
     "pug": "^2.0.0-beta11",
     "sass-loader": "^6.0.3"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "engines": {
     "node": "7.0.0",
     "npm": "3.10.8"
