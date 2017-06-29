@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "home": "Inicio",
+    "about": "Acerca",
+    "people": "Personas",
+    "help": "Sumarse"
+  },
+
+  "home": {
+    "title": "Alerta Solidaria",
+    "description": "Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo."
+  }
+}

@@ -19,12 +19,17 @@ module.exports = {
     '~assets/css/main.css'
   ],
 
+  router: {
+    middleware: 'i18n'
+  },
+
   build: {
     vendor: [
       'trae',
       'vue2-google-maps',
       'moment',
-      'particles.js'
+      'particles.js',
+      'vue-i18n'
     ],
 
     extend (config, ctx) {
@@ -41,6 +46,7 @@ module.exports = {
 
   plugins: [
     { src: '~plugins/ga', ssr: false },
-    { src: '~plugins/vue-google-maps' }
+    { src: '~plugins/vue-google-maps' },
+    { src: '~plugins/i18n.js', injectAs: 'i18n' }
   ]
 }
