@@ -1,12 +1,13 @@
 <script>
 
   import personService from '~plugins/person'
+  import PersonsSubHeader from '~components/person/PersonsSubHeader'
   import PersonCard from '~components/person/PersonCard'
 
   export default {
     name: 'Persons',
 
-    components: { PersonCard },
+    components: { PersonsSubHeader, PersonCard },
 
     data () {
       return {
@@ -24,6 +25,7 @@
 
 <template lang="pug">
   section#persons
+    persons-sub-header
     .row
       .person-card-container.col-xs-12.col-sm-4.col-md-4.col-lg-3(v-for='person in persons')
         person-card(:person='person')
@@ -31,10 +33,12 @@
 
 <style lang="scss" scoped>
   section#persons {
-    padding: 2em 3em;
+    .row {
+      padding: 2em 3em;
 
-    .person-card-container {
-      margin-bottom: 20px;
+      .person-card-container {
+        margin-bottom: 20px;
+      }
     }
   }
 </style>
