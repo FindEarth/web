@@ -27,13 +27,13 @@
         img.animated-logo(src="/animated-white-logo.svg")
     ul.items
       li.item(@click="toogleMenuClassItem")
-        nuxt-link(to="/") Inicio
+        nuxt-link(to="/") {{ $t('menu.home') }}
       li.item(@click="toogleMenuClassItem")
-        nuxt-link(to="/about") Acerca
+        nuxt-link(to="/about") {{ $t('menu.about') }}
       li.item(@click="toogleMenuClassItem")
-        nuxt-link(to="/persons") Personas
+        nuxt-link(to="/persons") {{ $t('menu.people') }}
       li.item(@click="toogleMenuClassItem")
-        nuxt-link(to="/sumarse") Sumarse
+        nuxt-link(to="/sumarse") {{ $t('menu.help') }}
     .hamburguer-container(@click="toogleMenuClass")
       hamburger-button
 </template>
@@ -112,6 +112,7 @@
           text-decoration: none;
           transition: opacity .3s;
           cursor: pointer;
+          font-size: 1.1em;
 
           @media (max-width: 600px) {
             padding: 0 3.5em;

@@ -142,6 +142,7 @@
     padding: 0 3em;
     border-bottom: 1px solid #DAE1E9;
     justify-content: space-between;
+    height: 60px;
 
     @media (max-width: 750px) {
       flex-direction: column;

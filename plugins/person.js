@@ -11,6 +11,11 @@ const personService = {
     return response.data
   },
 
+  async getNear (coords, radius = 99999) {
+    const response = await trae.get(`/person/near/${coords.lat}/${coords.lng}?radius=${radius}`)
+    return response.data
+  },
+
   async getById (id) {
     const response = await trae.get(`/person/${id}`)
     return response.data

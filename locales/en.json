@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "people": "People",
+    "help": "Join"
+  },
+
+  "home": {
+    "title": "Find Earth",
+    "description": "Help non-profit organizations and governments find missing people around the world."
+  }
+}
