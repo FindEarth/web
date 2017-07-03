@@ -18,12 +18,12 @@
         span.description <a class="link" href="https://admin.find.earth" target="_blank">https://admin.find.earth</a>
       p Esto permite tener toda la información en un mismo lugar, de una manera organizada y fácil de procesar. Por otro lado la herramienta también facilita la difusión de imágenes y datos de las personas en distintas redes sociales.
 
-      h3 Web Pública
+      h3 2. Web Pública
       p Portal donde cualquier usuario puede ver los datos de una persona perdida: nombre, edad, fotos y lugar en el mapa donde fue la última vez vista.
       .image-wrapper
         img(src="https://cdn-images-1.medium.com/max/1600/1*w3jv0K5C2RwCRscO6IFJzQ.png")
 
-      h3 App Mobile
+      h3 3. App Mobile
       p Esta capa de la plataforma todavía está <a class="link" href="https://github.com/FindEarth/app" target="_blank">en desarrollo</a> pero el objetivo es:
       p <b>a.</b> Que el usuario pueda reportar personas perdidas
       p <b>b.</b> Mostrar una lista de las personas reportadas más cercanas a la posición actual del dispositivo
@@ -44,7 +44,7 @@
 <style lang="scss" scoped>
   section#about {
 
-    padding: 0 3em;
+    padding: 2em 3em;
 
     p {
       line-height: 25px;
