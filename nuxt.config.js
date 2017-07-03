@@ -54,7 +54,6 @@ module.exports = {
   ],
 
   plugins: [
-    { src: '~plugins/ga', ssr: false },
     { src: '~plugins/vue-google-maps' },
     { src: '~plugins/i18n.js', injectAs: 'i18n' }
   ]
