@@ -10,11 +10,6 @@
       }
     },
 
-    data () {
-      return {
-      }
-    },
-
     methods: {
       getPhotoSrc () {
         const photos = this.person.photos
@@ -36,6 +31,7 @@
         h4.truncate
           b {{ person.name }}
         p {{ person.age }} años
+        p(v-if='person.distance') {{ person.distance.toFixed(2) }} km
 </template>
 
 <style lang="scss" scoped>

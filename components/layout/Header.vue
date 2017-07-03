@@ -112,6 +112,7 @@
           text-decoration: none;
           transition: opacity .3s;
           cursor: pointer;
+          font-size: 1.1em;
 
           @media (max-width: 600px) {
             padding: 0 3.5em;
