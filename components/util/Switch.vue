@@ -9,9 +9,21 @@
       }
     },
 
+    data () {
+      return {
+        value: this.model
+      }
+    },
+
+    watch: {
+      model (newValue) {
+        this.value = newValue
+      }
+    },
+
     methods: {
-      test () {
-        console.log('test')
+      onChange () {
+        this.$emit('change', this.value)
       }
     }
   }
@@ -19,7 +31,7 @@
 
 <template lang="pug">
   label.switch
-    input.switch-input(type='checkbox', v-model='model')
+    input.switch-input(type='checkbox', v-model='value', v-on:change='onChange')
     .slider.round
 </template>
 
