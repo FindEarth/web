@@ -15,31 +15,37 @@
     },
 
     mounted () {
-      this.askForGeolocation()
+      this.getGeolocation()
     },
 
     methods: {
-      askForGeolocation () {
-        let lat = null
-        let lng = null
-        const value = prompt('a')
-        if (value) {
-          lat = 0
-          lng = 0
+      getGeolocation () {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(this.setGeolocation, this.geoError)
         } else {
-          this.onlyNearPersons = false
+          this.geoError()
         }
+      },
 
-        this.$emit('geolocation', {lat, lng})
+      setGeolocation (position) {
+        this.$emit('geolocation', {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        })
+      },
+
+      geoError () {
+        this.onlyNearPersons = false
+        this.$emit('geolocation')
       },
 
       debounceInput: debounce(function (e) {
-        // TODO: call API
-        console.log(e.target.value)
+        this.$emit('search-name', e.target.value)
       }, 500),
 
       switchChange (value) {
         this.onlyNearPersons = value
+        this.$emit('search-near-persons', this.onlyNearPersons)
       }
     }
   }

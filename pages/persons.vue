@@ -1,31 +1,56 @@
 <script>
 
   import personService from '~plugins/person'
+  import Loading from '~components/util/Loading'
   import PersonsSubHeader from '~components/person/PersonsSubHeader'
   import PersonCard from '~components/person/PersonCard'
 
   export default {
     name: 'Persons',
 
-    components: { PersonsSubHeader, PersonCard },
+    components: { PersonsSubHeader, PersonCard, Loading },
 
     data () {
       return {
         persons: [],
-        loading: true
-      }
-    },
-
-    async asyncData ({ params, error }) {
-      return {
-        persons: await personService.all()
+        loading: true,
+        filterNear: true,
+        coords: undefined
       }
     },
 
     methods: {
       fetchPersons (coords) {
+        this.loading = true
+        const hasCoords = coords && coords.lat || this.coords && this.coords.lat
+        if (hasCoords && this.filterNear) {
+          this.coords = coords || this.coords
+          personService.getNear(this.coords).then(persons => {
+            this.setPersons(persons)
+          })
+        } else {
+          personService.all().then(persons => {
+            this.setPersons(persons)
+          })
+        }
+      },
+
+      searchPersonByName (name) {
+        this.loading = true
+        const query = name ? { name } : {}
+        personService.get(query).then(persons => {
+          this.setPersons(persons)
+        })
+      },
+
+      setPersons (persons) {
         this.loading = false
-        console.log(coords)
+        this.persons = persons
+      },
+
+      changeNearFilter (value) {
+        this.filterNear = value
+        this.fetchPersons()
       }
     }
   }
@@ -33,9 +58,15 @@
 
 <template lang="pug">
   section#persons
-    persons-sub-header(@geolocation='fetchPersons')
+    persons-sub-header(
+      @geolocation='fetchPersons',
+      @search-name='searchPersonByName',
+      @search-near-persons='changeNearFilter'
+    )
 
-    p.loading(v-if='loading') Cargando...
+    .no-persons(v-if='!loading && !persons.length') No hay personas
+
+    loading(v-if='loading')
 
     .row(v-else)
       .person-card-container.col-xs-12.col-sm-4.col-md-4.col-lg-3(v-for='person in persons')
@@ -44,7 +75,7 @@
 
 <style lang="scss" scoped>
   section#persons {
-    p.loading {
+    .no-persons {
       margin-top: 3em;
       text-align: center;
     }
