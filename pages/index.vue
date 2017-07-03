@@ -8,15 +8,8 @@
 
     components: { CFooter, CButton },
 
-    data () {
-      return {
-        lang: ''
-      }
-    },
-
     mounted () {
       if (process.BROWSER_BUILD) {
-        this.lang = window.location.host.includes('alertasolidaria.com') ? 'es' : 'en'
         Particles.init('particles-js').then(() => {
           const partcilesEl = this.$el.querySelector('#particles-js')
           partcilesEl.classList.add('animated', 'particlesFadeIn')
@@ -33,14 +26,10 @@
 </script>
 
 <template lang="pug">
-  section#home(v-if='lang').animated.fadeIn
+  section#home.animated.fadeIn
     .home-container
-      h1.title
-        | Find Earth
-      h2.text-2(v-if='lang === \'es\'')
-        | Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo.
-      h2.text-2(v-if='lang === \'en\'')
-        | Help non-profit organizations and governments find missing people around the world.
+      h1.title {{ $t('home.title') }}
+      h2.text-2 {{ $t('home.description') }}
     #particles-js
 </template>
 
