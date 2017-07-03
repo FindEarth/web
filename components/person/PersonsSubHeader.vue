@@ -14,11 +14,33 @@
       }
     },
 
+    mounted () {
+      this.askForGeolocation()
+    },
+
     methods: {
+      askForGeolocation () {
+        let lat = null
+        let lng = null
+        const value = prompt('a')
+        if (value) {
+          lat = 0
+          lng = 0
+        } else {
+          this.onlyNearPersons = false
+        }
+
+        this.$emit('geolocation', {lat, lng})
+      },
+
       debounceInput: debounce(function (e) {
         // TODO: call API
         console.log(e.target.value)
-      }, 500)
+      }, 500),
+
+      switchChange (value) {
+        this.onlyNearPersons = value
+      }
     }
   }
 </script>
@@ -30,8 +52,8 @@
       input.search(type='search' name='search' placeholder='Buscar' @input='debounceInput')
 
     .right
-      p.near-persons-label Solo personas cercanas
-      c-switch(:model='onlyNearPersons')
+      p.near-persons-label Filtrar por cercanía
+      c-switch(:model='onlyNearPersons', @change='switchChange')
 </template>
 
 <style lang="scss" scoped>
@@ -43,11 +65,10 @@
     padding: 0 3em;
     border-bottom: 1px solid #DAE1E9;
     justify-content: space-between;
-    height: 60px;
+    padding: .5em 3em;
 
     @media (max-width: 750px) {
       flex-direction: column;
-      padding-bottom: 25px;
     }
 
     .left {
@@ -57,8 +78,11 @@
         width: 40%;
         border: 1px solid #DAE1E9;
         padding: 10px;
+        font-size: 1em;
+        font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
+        border-radius: 2px;
 
         &:focus {
           width: 100%;
