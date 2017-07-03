@@ -5,14 +5,15 @@
   "author": "Keepers <hi@keepe.rs>",
   "private": false,
   "dependencies": {
+    "@nuxtjs/google-analytics": "^0.2.0",
+    "flexboxgrid": "^6.3.1",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.18.1",
     "nuxt": "latest",
     "particles.js": "^2.0.0",
     "trae": "^1.4.0",
     "vue-i18n": "^7.0.3",
-    "vue2-google-maps": "^0.7.5",
-    "moment": "^2.18.1",
-    "flexboxgrid": "^6.3.1",
-    "font-awesome": "^4.7.0"
+    "vue2-google-maps": "^0.7.5"
   },
   "scripts": {
     "dev": "nuxt",
@@ -35,6 +36,9 @@
     "pug": "^2.0.0-beta11",
     "sass-loader": "^6.0.3"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "engines": {
     "node": "7.0.0",
     "npm": "3.10.8"
