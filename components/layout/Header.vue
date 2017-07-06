@@ -1,11 +1,19 @@
 <script>
 
   import HamburgerButton from '~components/util/HamburgerButton'
+  import Modal from '~components/util/Modal'
+  import Contribute from '~components/Contribute'
 
   export default {
     name: 'Header',
 
-    components: { HamburgerButton },
+    components: { HamburgerButton, Modal, Contribute },
+
+    data () {
+      return {
+        showContributeModal: false
+      }
+    },
 
     methods: {
       toogleMenuClass () {
@@ -15,6 +23,10 @@
       toogleMenuClassItem () {
         this.$el.classList.toggle('open')
         this.$el.querySelector('.hamburger').classList.toggle('is-active')
+      },
+
+      toggleContributeModal () {
+        this.showContributeModal = !this.showContributeModal
       }
     }
   }
@@ -32,10 +44,17 @@
         nuxt-link(to="/about") {{ $t('menu.about') }}
       li.item(@click="toogleMenuClassItem")
         nuxt-link(to="/persons") {{ $t('menu.people') }}
-      li.item(@click="toogleMenuClassItem")
-        nuxt-link(to="/sumarse") {{ $t('menu.help') }}
+      li.item(@click="toggleContributeModal")
+        a {{ $t('menu.help') }}
     .hamburguer-container(@click="toogleMenuClass")
       hamburger-button
+
+    modal(v-show='showContributeModal', @close='toggleContributeModal')
+      h3(slot='header')
+        span.description-title Contribute
+      div(slot='body')
+        contribute(@done="toggleContributeModal")
+
 </template>
 
 <style lang="scss" scoped>
