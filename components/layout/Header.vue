@@ -53,7 +53,7 @@
       h3(slot='header')
         span.description-title Contribute
       div(slot='body')
-        contribute
+        contribute(@done="toggleContributeModal")
 
 </template>
 

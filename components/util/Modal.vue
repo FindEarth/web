@@ -6,11 +6,11 @@
 
 <template lang="pug">
   transition(name='modal')
-    .modal-mask(@click='$emit("close")')
+    .modal-mask
       .modal-wrapper
         .modal-container
           .modal-header
-            span.close-modal-button X
+            span.close-modal-button(@click='$emit("close")') X
             slot(name='header')
           .modal-body
             slot(name='body')
