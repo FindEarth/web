@@ -30,7 +30,7 @@
       .detail
         h4.truncate
           b {{ person.name }}
-        p {{ person.age }} años
+        p {{ person.age }} {{ $t('person.years') }}
         p(v-if='person.distance') {{ person.distance.toFixed(2) }} km
 </template>
 

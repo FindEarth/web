@@ -133,3 +133,8 @@ html, body {
   font-size: 1.5em;
   color: #fff;
 }
+
+b.person-description-bold {
+  font-weight: 600;
+  color: #29235C;
+}

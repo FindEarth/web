@@ -55,10 +55,10 @@
   .sub-header
 
     .left
-      input.search(type='search' name='search' placeholder='Buscar' @input='debounceInput')
+      input.search(type="search", name="search", :placeholder="$t('persons.subheader.search')", @input="debounceInput")
 
     .right
-      p.near-persons-label Filtrar por cercanía
+      p.near-persons-label {{ $t('persons.subheader.filterByNearest') }}
       c-switch(:model='onlyNearPersons', @change='switchChange')
 </template>
 
@@ -80,8 +80,7 @@
     .left {
       flex: 1;
       .search {
-        min-width: 200px;
-        width: 40%;
+        width: 200px;
         border: 1px solid #DAE1E9;
         padding: 10px;
         font-size: 1em;
@@ -91,7 +90,7 @@
         border-radius: 2px;
 
         &:focus {
-          width: 100%;
+          width: 300px;
         }
       }
     }

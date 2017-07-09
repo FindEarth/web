@@ -37,7 +37,7 @@
 
       searchPersonByName (name) {
         this.loading = true
-        const query = name ? { name } : {}
+        const query = name ? { name: { $regex: name, $options: 'i' } } : {}
         personService.get(query).then(persons => {
           this.setPersons(persons)
         })
@@ -64,7 +64,7 @@
       @search-near-persons='changeNearFilter'
     )
 
-    .no-persons(v-if='!loading && !persons.length') No hay personas
+    .no-persons(v-if='!loading && !persons.length') {{ $t('persons.noPersons') }}
 
     loading(v-if='loading')
 

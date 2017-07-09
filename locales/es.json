@@ -9,5 +9,22 @@
   "home": {
     "title": "Alerta Solidaria",
     "description": "Ayudamos a gorbiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo."
+  },
+
+  "persons": {
+    "subheader": {
+      "search": "Buscar",
+      "filterByNearest": "Filtrar por cercanía"
+    },
+    "noPersons": "No se encontraron personas"
+  },
+
+  "person": {
+    "subheader": {
+      "contact": "Contactar",
+      "moreInfo": "Más Info"
+    },
+    "years": "años",
+    "description": "Se perdió el <b class='person-description-bold'>{date}</b> en <b class='person-description-bold'>{place}</b>"
   }
 }
