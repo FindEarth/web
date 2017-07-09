@@ -40,7 +40,7 @@
     padding: 20px 3em;
     background: #f4f7fa;
     border-top: 1px solid #DAE1E9;
-    z-index: 4;
+    z-index: 3;
 
     &.opacity {
       background: rgba(244, 247, 250, 0.5);
