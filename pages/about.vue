@@ -29,7 +29,7 @@
       p <b>b.</b> Mostrar una lista de las personas reportadas más cercanas a la posición actual del dispositivo
       p <b>c.</b> Enviar una notificación al usuario cuando alguien reporto una persona a unos pocos KMs de distancia
       .image-wrapper
-        img(src="https://cdn-images-1.medium.com/max/1600/1*kLO2xbftpELUqp-kXKg2MA.png")
+        img(style="width: 30%; max-width: 30%;" src="https://cdn-images-1.medium.com/max/1600/1*kLO2xbftpELUqp-kXKg2MA.png")
 
       h1 Por qué?
       p Cuando se pierde una persona, el tiempo vale más de lo normal. Por medio de Find Earth se puede reportar, ver los datos y compartir personas perdidas con solo un click.
