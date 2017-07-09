@@ -90,7 +90,7 @@
         border-radius: 2px;
 
         &:focus {
-          width: 400px;
+          width: 300px;
         }
       }
     }
