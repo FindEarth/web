@@ -37,7 +37,7 @@
 
       searchPersonByName (name) {
         this.loading = true
-        const query = name ? { name } : {}
+        const query = name ? { name: { $regex: name, $options: 'i' } } : {}
         personService.get(query).then(persons => {
           this.setPersons(persons)
         })
