@@ -49,12 +49,7 @@
     .hamburguer-container(@click="toogleMenuClass")
       hamburger-button
 
-    modal(v-show='showContributeModal', @close='toggleContributeModal')
-      h3(slot='header')
-        span.description-title Contribute
-      div(slot='body')
-        contribute(@done="toggleContributeModal")
-
+    contribute(v-if="showContributeModal", @done="toggleContributeModal")
 </template>
 
 <style lang="scss" scoped>
