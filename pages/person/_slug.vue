@@ -80,7 +80,7 @@
               |  en
               b(v-show="person.geo.vicinity")  {{ person.geo.vicinity }},
               b  {{ person.geo.city }}
-              |  y tiene {{ `(${person.age} años)` }}.
+              |  y tiene {{ `${person.age} años` }}.
 
       .row
         .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
