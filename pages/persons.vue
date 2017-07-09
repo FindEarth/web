@@ -64,7 +64,7 @@
       @search-near-persons='changeNearFilter'
     )
 
-    .no-persons(v-if='!loading && !persons.length') No hay personas
+    .no-persons(v-if='!loading && !persons.length') {{ $t('persons.noPersons') }}
 
     loading(v-if='loading')
 

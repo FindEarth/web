@@ -73,57 +73,58 @@
   .person-sub-header
 
     .left
-      h1.person-name.animated.fadeIn(v-if='person.name') {{ person.name }}
+      h1.person-name.animated.fadeIn(v-if="person.name") {{ person.name }}&nbsp;
+        | ({{`${person.age} ${$t('person.years')}`}})
 
     .right
 
-      span.social-icons.animated.fadeIn(v-if='person.name')
-        i.fa.fa-facebook(@click='sharePerson("facebook")')
-        i.fa.fa-twitter(@click='sharePerson("twitter")')
-        i.fa.fa-whatsapp(@click='sharePerson("whatsapp")')
+      span.social-icons.animated.fadeIn(v-if="person.name")
+        i.fa.fa-facebook(@click="sharePerson('facebook')")
+        i.fa.fa-twitter(@click="sharePerson('twitter')")
+        i.fa.fa-whatsapp(@click="sharePerson('whatsapp')")
 
       c-button.action-button.first.animated.fadeIn(
-        v-if='person.name',
-        name='Contactar',
-        @click='toggleContactModal'
+        v-if="person.name",
+        :name="$t('person.subheader.contact')",
+        @click="toggleContactModal"
       )
 
       c-button.action-button.second.animated.fadeIn(
-        v-if='person.description && Object.keys(person.description).length',
-        name='Más info',
-        @click='toggleDescriptionModal'
+        v-if="person.description && Object.keys(person.description).length",
+        :name="$t('person.subheader.moreInfo')",
+        @click="toggleDescriptionModal"
       )
 
-    modal(v-show='showDescriptionModal', @close='toggleDescriptionModal')
-      h3(slot='header')
+    modal(v-show="showDescriptionModal", @close="toggleDescriptionModal")
+      h3(slot="header")
         span.description-title {{ person.name }}
-        |  {{ `(${person.age} años)` }}
-      div(slot='body')
-        p(v-if='person.description && person.description.appearance')
+        |  ({{ person.age }} {{ $t('person.years') }})
+      div(slot="body")
+        p(v-if="person.description && person.description.appearance")
           b.description-title Apariencia
           | : {{ this.person.description.appearance }}
-        p(v-if='person.description && person.description.clothing')
+        p(v-if="person.description && person.description.clothing")
           b.description-title Vestimenta
           | : {{ this.person.description.clothing }}
-        p(v-if='person.description && person.description.more')
+        p(v-if="person.description && person.description.more")
           b.description-title Mas informacion
           | : {{ this.person.description.more }}
 
-    modal(v-show='showContactModal', @close='toggleContactModal')
-      h3(slot='header')
+    modal(v-show="showContactModal", @close="toggleContactModal")
+      h3(slot="header")
         | Si tenes información sobre
         span.description-title  {{ person.name }}
         |  contactános:
-      div(slot='body')
+      div(slot="body")
         p(v-if="hasOrganizationEmails || defaultContact.email")
           b.description-title Email:&nbsp;
-          a.contact-link(v-if='hasOrganizationEmails', v-for="e in person.organization.emails", :href="`mailto:${e}`")
+          a.contact-link(v-if="hasOrganizationEmails", v-for="e in person.organization.emails", :href="`mailto:${e}`")
             | {{ e }}&nbsp;
           a.contact-link(v-else, :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
         p(v-if="hasOrganizationPhones || defaultContact.phone")
           b.description-title Teléfono:&nbsp;
-          a.contact-link(v-if='hasOrganizationPhones', v-for="p in person.organization.phones", :href="`tel:${p}`")
+          a.contact-link(v-if="hasOrganizationPhones", v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
           a.contact-link(v-else, :href="`mailto:${defaultContact.phone}`")
             | {{ defaultContact.phone }}

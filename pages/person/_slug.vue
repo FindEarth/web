@@ -53,12 +53,17 @@
       setPosition () {
         this.$set(this.position, 'lat', (this.person.geo && this.person.geo.loc[1]) || 0)
         this.$set(this.position, 'lng', (this.person.geo && this.person.geo.loc[0]) || 0)
-      }
-    },
+      },
 
-    filters: {
-      date (date) {
+      formatDate (date) {
         return moment(date).format('DD/MM/YYYY')
+      },
+
+      getPersonDescriptionObject () {
+        const place = this.person.geo.vicinity
+                        ? `${this.person.geo.vicinity}, ${this.person.geo.city}`
+                        : `${this.person.geo.city}`
+        return { date: this.formatDate(this.person.lastSeenAt), place }
       }
     }
   }
@@ -74,13 +79,7 @@
       .row
         .col-xs-12
           .message.animated.fadeIn(v-if='person.name')
-            h1
-              |  Se perdió el
-              b  {{ person.lastSeenAt | date }}
-              |  en
-              b(v-show="person.geo.vicinity")  {{ person.geo.vicinity }},
-              b  {{ person.geo.city }}
-              |  y tiene {{ person.age }} años .
+            h1(v-html="$t('person.description', getPersonDescriptionObject())")
 
       .row
         .col-xs-12.col-md-5.person-image(v-if="person.photos && person.photos.length")
@@ -107,10 +106,6 @@
         font-size: 2.1em;
         line-height: 1.4;
         color: #29235C;
-        b {
-          font-weight: 600;
-          color: #29235C;
-        }
       }
     }
 

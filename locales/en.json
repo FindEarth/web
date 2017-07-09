@@ -9,5 +9,22 @@
   "home": {
     "title": "Find Earth",
     "description": "Help non-profit organizations and governments find missing people around the world."
+  },
+
+  "persons": {
+    "subheader": {
+      "search": "Search",
+      "filterByNearest": "Filter by nearest"
+    },
+    "noPersons": "No persons found"
+  },
+
+  "person": {
+    "subheader": {
+      "contact": "Contact",
+      "moreInfo": "More Info"
+    },
+    "years": "years old",
+    "description": "It's missing since <b class='person-description-bold'>{date}</b> in <b class='person-description-bold'>{place}</b>"
   }
 }

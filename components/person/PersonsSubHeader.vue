@@ -55,10 +55,10 @@
   .sub-header
 
     .left
-      input.search(type='search' name='search' placeholder='Buscar' @input='debounceInput')
+      input.search(type="search", name="search", :placeholder="$t('persons.subheader.search')", @input="debounceInput")
 
     .right
-      p.near-persons-label Filtrar por cercanía
+      p.near-persons-label {{ $t('persons.subheader.filterByNearest') }}
       c-switch(:model='onlyNearPersons', @change='switchChange')
 </template>
 
