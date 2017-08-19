@@ -60,6 +60,7 @@
       justify-content: center;
       align-items: center;
       z-index: 3;
+      padding: 0 15px;
 
       h2 {
         text-align: center;
