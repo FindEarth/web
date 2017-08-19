@@ -35,7 +35,7 @@
 
 <style lang="scss">
   section#home {
-
+    display: flex;
     z-index: 3;
     color: #29235c;
 
@@ -60,10 +60,7 @@
       justify-content: center;
       align-items: center;
       z-index: 3;
-      position: relative;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
+      padding: 0 15px;
 
       h2 {
         text-align: center;
