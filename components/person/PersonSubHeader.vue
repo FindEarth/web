@@ -143,7 +143,6 @@
     padding: 0 3em;
     border-bottom: 1px solid #DAE1E9;
     justify-content: space-between;
-    height: 60px;
 
     @media (max-width: 750px) {
       flex-direction: column;
@@ -155,12 +154,17 @@
         color: #29235C;
         font-size: 1.5em;
         font-weight: 500;
+
+        @media (max-width: 750px) {
+          text-align: center;
+        }
       }
     }
 
     .right {
       display: flex;
       align-content: center;
+      align-items: center;
 
       @media (max-width: 750px) {
         width: 100%;

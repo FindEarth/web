@@ -79,6 +79,11 @@
 
     .left {
       flex: 1;
+
+      @media (max-width: 750px) {
+        margin-top: 15px;
+      }
+
       .search {
         width: 200px;
         border: 1px solid #DAE1E9;
