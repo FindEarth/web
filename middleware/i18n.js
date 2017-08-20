@@ -1,9 +1,12 @@
-export default function ({ app, store, route, params, error, redirect, hotReload }) {
+export default function ({ app, store, route, redirect, hotReload, req }) {
   // Check if middleware called from hot-reloading, ignore
   if (hotReload) return
 
-  // Get locale from params
-  const locale = params.lang || 'en'
+  let locale = req.headers['accept-language'].split(',')[0].split('-')[0].toLocaleLowerCase()
+
+  if (locale !== 'en' && locale !== 'es') {
+    locale = 'en'
+  }
 
   store.commit('SET_LANG', locale)
   app.i18n.locale = store.state.locale
