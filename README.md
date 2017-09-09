@@ -1,4 +1,4 @@
-# Public Site | [Find Earth](https://find.eart)
+# Public Site | [Find Earth](https://find.earth)
 
 [![Codeship](https://img.shields.io/codeship/33c10310-d37c-0134-404f-16b6d884a97d/master.svg)]()
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67ca51a6336c4b23b3d731b8f345c48d)](https://www.codacy.com/app/FindEarth/web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FindEarth/web&amp;utm_campaign=Badge_Grade)
