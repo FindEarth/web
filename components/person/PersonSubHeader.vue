@@ -101,20 +101,18 @@
         |  ({{ person.age }} {{ $t('person.years') }})
       div(slot="body")
         p(v-if="person.description && person.description.appearance")
-          b.description-title Apariencia
-          | : {{ this.person.description.appearance }}
+          b.description-title {{ $t('person.descriptionModal.appearance') }} &nbsp;
+          | {{ this.person.description.appearance }}
         p(v-if="person.description && person.description.clothing")
-          b.description-title Vestimenta
-          | : {{ this.person.description.clothing }}
+          b.description-title {{ $t('person.descriptionModal.clothing') }} &nbsp;
+          | {{ this.person.description.clothing }}
         p(v-if="person.description && person.description.more")
-          b.description-title Mas informacion
-          | : {{ this.person.description.more }}
+          b.description-title {{ $t('person.descriptionModal.moreInfo') }} &nbsp;
+          | {{ this.person.description.more }}
 
     modal(v-show="showContactModal", @close="toggleContactModal")
       h3(slot="header")
-        | Si tenes información sobre
-        span.description-title  {{ person.name }}
-        |  contactános:
+        span(v-html="$t('person.contactModal.title', { personName: person.name })")
       div(slot="body")
         p(v-if="hasOrganizationEmails || defaultContact.email")
           b.description-title Email:&nbsp;
@@ -123,13 +121,13 @@
           a.contact-link(v-else, :href="`mailto:${defaultContact.email}`")
             | {{ defaultContact.email }}
         p(v-if="hasOrganizationPhones || defaultContact.phone")
-          b.description-title Teléfono:&nbsp;
+          b.description-title {{ $t('person.contactModal.phone') }} &nbsp;
           a.contact-link(v-if="hasOrganizationPhones", v-for="p in person.organization.phones", :href="`tel:${p}`")
             | {{ p }}&nbsp;
           a.contact-link(v-else, :href="`mailto:${defaultContact.phone}`")
             | {{ defaultContact.phone }}
         p(v-if="defaultContact.emergencyPhone")
-          b.description-title Teléfono de Emergencia:&nbsp;
+          b.description-title {{ $t('person.contactModal.emergencyPhone') }} &nbsp;
           a.contact-link(:href="`tel:${defaultContact.emergencyPhone}`")
             | {{ defaultContact.emergencyPhone }}
 </template>

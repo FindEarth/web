@@ -24,6 +24,16 @@
       "contact": "Contactar",
       "moreInfo": "Más Info"
     },
+    "contactModal": {
+      "title": "Si tenes información sobre {personName} contactános",
+      "phone": "Teléfono:",            
+      "emergencyPhone": "Teléfono de Emergencia:"
+    },
+    "descriptionModal": {
+      "appearance": "Apariencia:",
+      "clothing": "Vestimenta:",
+      "moreInfo": "Mas información:"
+    },
     "years": "años",
     "description": "Se perdió el <b class='person-description-bold'>{date}</b> en <b class='person-description-bold'>{place}</b>"
   },
