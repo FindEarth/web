@@ -24,6 +24,16 @@
       "contact": "Contact",
       "moreInfo": "More Info"
     },
+    "contactModal": {
+      "title": "If you have information about {personName} please contact us",
+      "phone": "Phone:",
+      "emergencyPhone": "Emergency Phone:"
+    },
+    "descriptionModal": {
+      "appearance": "Appearance:",
+      "clothing": "Clothing:",
+      "moreInfo": "More info:"
+    },
     "years": "years old",
     "description": "It's missing since <b class='person-description-bold'>{date}</b> in <b class='person-description-bold'>{place}</b>"
   },
