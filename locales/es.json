@@ -40,7 +40,8 @@
 
   "contributeModal": {
     "title": "Sumarse",
-    "description": "Si te gusta el proyecto y queres colaborar, por favor dejanos tus datos y te contactaremos en la brevedad. Gracias!"
+    "description": "Si te gusta el proyecto y queres colaborar, por favor dejanos tus datos y te contactaremos en la brevedad. Gracias!",
+    "submit": "Enviar"
   },
 
   "about": {

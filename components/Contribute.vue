@@ -48,7 +48,7 @@
           .form-block.submit-block
             .loading-container(v-if="loading")
               loading
-            c-button(v-else name="Submit", @click="submit")
+            c-button(v-else :name="$t('contributeModal.submit')", @click="submit")
 </template>
 
 <style lang="scss" scoped>

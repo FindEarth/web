@@ -40,7 +40,8 @@
 
   "contributeModal": {
     "title": "Join",
-    "description": "If you like the project and you want to contribute, please leave your contact details and we will get in touch with you. Thanks!"
+    "description": "If you like the project and you want to contribute, please leave your contact details and we will get in touch with you. Thanks!",
+    "submit": "Submit"
   },
 
   "about": {
