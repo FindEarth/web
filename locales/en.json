@@ -38,6 +38,11 @@
     "description": "It's missing since <b class='person-description-bold'>{date}</b> in <b class='person-description-bold'>{place}</b>"
   },
 
+  "contributeModal": {
+    "title": "Join",
+    "description": "If you like the project and you want to contribute, please leave your contact details and we will get in touch with you. Thanks!"
+  },
+
   "about": {
     "whatIsIt": "<h1>What is it?</h1>  <p>Find Earth is a platform <a class='link' href='https://github.com/FindEarth' target='_blank'>open source</a>, which aims to facilitate the reporting of lost people, speed up the viralization of their data in social networks and the most important: help to find them.</p>  <p>The platform is composed by 3 applications:</p>",
     "administrationWeb": "<h3>1. Administration Web</h3><p>From this website, an organization, such as <a class='link' href='http://redsolidaria.org.ar' target='_blank'>Red Solidaria</a>, can load information from lost people, receive and evaluate user complaints and view statistics in real time.</p><div class='image-wrapper'><img src='https://cdn-images-1.medium.com/max/1600/1*zQaAv0bNMJ3d6KJhoSR_vw.png'/><span class='description'><a class='link' href='https://admin.find.earth' target='_blank'>https://admin.find.earth</a></span></div><p>This allows you to have all the information in one place, organized and easy to process. On the other hand the tool also facilitates the diffusion of images and data of the people in different social networks.</p>",

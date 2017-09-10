@@ -35,8 +35,9 @@
   section#contribute
     modal(@close="$emit('done')")
       h3(slot="header")
-        span.description-title Contribute
+        span.description-title {{ $t('contributeModal.title') }}
       div(slot="body")
+        p {{ $t('contributeModal.description') }}
         form(@submit.prevent="submit")
           .form-block
             input(type="text", v-model="name", placeholder="Name")
