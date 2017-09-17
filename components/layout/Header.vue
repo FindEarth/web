@@ -44,6 +44,8 @@
         nuxt-link(to="/about") {{ $t('menu.about') }}
       li.item(@click="toogleMenuClassItem")
         nuxt-link(to="/persons") {{ $t('menu.people') }}
+      li.item(@click="toogleMenuClassItem")
+        nuxt-link(to="/report") {{ $t('menu.report') }}
       li.item(@click="toggleContributeModal")
         a {{ $t('menu.help') }}
     .hamburguer-container(@click="toogleMenuClass")
