@@ -82,7 +82,7 @@
 
       submit () {
         if (!this.personRequest.name || !this.personRequest.age || !this.personRequest.geo.address) {
-          return alert('Please, complete missing person name, age and address')
+          return alert(this.$t('report.formError'))
         }
 
         this.loading = true
@@ -109,30 +109,30 @@
     .content
 
       .missing-person
-        h1 Missing Person
+        h1 {{ $t('report.missingPerson') }}
         .form-container
           form
             .form-block
-              input(type="text", v-model="personRequest.name", placeholder="Name *")
+              input(type="text", v-model="personRequest.name", :placeholder="$t('report.personRequestPlaceholders.name')")
             .form-block
-              input(type="number", v-model="personRequest.age", placeholder="Age *")
+              input(type="number", v-model="personRequest.age", :placeholder="$t('report.personRequestPlaceholders.age')")
             .form-block
               select(v-model="personRequest.gender")
-                option(value="F") Female
-                option(value="M") Male
+                option(value="F") {{ $t('report.personRequestPlaceholders.female') }}
+                option(value="M") {{ $t('report.personRequestPlaceholders.male') }}
             .form-block
-              datepicker(v-model="personRequest.lastSeenAt", placeholder="Last seen date", :language="locale")
+              datepicker(v-model="personRequest.lastSeenAt", :placeholder="$t('report.personRequestPlaceholders.lastSeenAt')", :language="locale")
             .form-block
-              textarea(v-model="personRequest.description.clothing" placeholder="Clothes")
+              textarea(v-model="personRequest.description.clothing" :placeholder="$t('report.personRequestPlaceholders.clothes')")
             .form-block
-              textarea(v-model="personRequest.description.appearance" placeholder="Appearance")
+              textarea(v-model="personRequest.description.appearance" :placeholder="$t('report.personRequestPlaceholders.appearance')")
             .form-block.last
-              textarea(v-model="personRequest.description.disappearance" placeholder="Other information")
+              textarea(v-model="personRequest.description.disappearance" :placeholder="$t('report.personRequestPlaceholders.otherInfo')")
 
           .map-container
             gmap-place-input(
               class-name='input',
-              placeholder='Last seen address *',
+              :placeholder="$t('report.personRequestPlaceholders.lastSeenAddress')",
               :select-first-on-enter='true',
               :default-place='personRequest.geo.address',
               @place_changed='onPlaceChange'
@@ -150,22 +150,22 @@
 
 
       .your-details
-        h1 Your Details
+        h1 {{ $t('report.yourDetails') }}
 
         form
           .form-block
-            input(type="text", v-model="personRequest.contacts[0].name", placeholder="Name")
+            input(type="text", v-model="personRequest.contacts[0].name", :placeholder="$t('report.personRequestPlaceholders.name')")
           .form-block
-            input(type="email", v-model="personRequest.contacts[0].email", placeholder="Email")
+            input(type="email", v-model="personRequest.contacts[0].email", :placeholder="$t('report.personRequestPlaceholders.email')")
           .form-block
-            input(type="tel", v-model="personRequest.contacts[0].phone", placeholder="Phone")
+            input(type="tel", v-model="personRequest.contacts[0].phone", :placeholder="$t('report.personRequestPlaceholders.phone')")
 
       .form-block.submit-block
         span(v-if="!showSent")
           .loading-container(v-if="loading")
             loading
-          c-button(v-else name="Submit", @click="submit")
-        p.sent(v-else) Report sent. Thanks.
+          c-button(v-else :name="$t('report.submit')", @click="submit")
+        p.sent(v-else) {{ $t('report.reportSent') }}
 </template>
 
 <style lang="scss">
