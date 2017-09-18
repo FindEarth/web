@@ -14,7 +14,8 @@
     "particles.js": "^2.0.0",
     "trae": "^1.4.0",
     "vue-i18n": "^7.0.3",
-    "vue2-google-maps": "^0.7.5"
+    "vue2-google-maps": "^0.7.10",
+    "vuejs-datepicker": "^0.9.13"
   },
   "scripts": {
     "dev": "nuxt",

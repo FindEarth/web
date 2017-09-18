@@ -4,11 +4,12 @@
   import Loading from '~components/util/Loading'
   import PersonsSubHeader from '~components/person/PersonsSubHeader'
   import PersonCard from '~components/person/PersonCard'
+  import PersonCardCreate from '~components/person/PersonCardCreate'
 
   export default {
     name: 'Persons',
 
-    components: { PersonsSubHeader, PersonCard, Loading },
+    components: { PersonsSubHeader, PersonCard, PersonCardCreate, Loading },
 
     data () {
       return {
@@ -71,6 +72,8 @@
     .row(v-else)
       .person-card-container.col-xs-12.col-sm-4.col-md-4.col-lg-3(v-for='person in persons')
         person-card(:person='person')
+      .person-card-container.col-xs-12.col-sm-4.col-md-4.col-lg-3
+        person-card-create
 </template>
 
 <style lang="scss" scoped>

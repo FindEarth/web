@@ -8,9 +8,6 @@
   section#about
     .content
       .what-is-it(v-html="$t('about.whatIsIt')")
-      .administration-web(v-html="$t('about.administrationWeb')")
-      .public-web(v-html="$t('about.publicWeb')")
-      .app-mobile(v-html="$t('about.appMobile')")
       .why(v-html="$t('about.why')")
 </template>
 
