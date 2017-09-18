@@ -200,7 +200,7 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            z-index: 99999;
+            z-index: 2;
             width: 80%;
           }
           
