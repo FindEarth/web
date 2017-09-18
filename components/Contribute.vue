@@ -50,33 +50,3 @@
               loading
             c-button(v-else :name="$t('contributeModal.submit')", @click="submit")
 </template>
-
-<style lang="scss" scoped>
-  section#contribute {
-    .form-block {
-      margin-bottom: 20px;
-
-      input {
-        width: 100%;
-        border: 1px solid #DAE1E9;
-        padding: 10px;
-        font-size: 1em;
-        font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        border-radius: 2px;
-        box-sizing: border-box;
-      }
-
-      &.submit-block {
-        display: flex;
-        align-items: center;
-        margin-top: 40px;
-
-        .loading-container {
-          .spinner {
-            margin: 0;
-          }
-        }
-      }
-    }
-  }
-</style>
