@@ -5,6 +5,7 @@ import config from '~plugins/config'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: config.map.key
+    key: config.map.key,
+    libraries: 'places'
   }
 })
