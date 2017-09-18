@@ -30,19 +30,19 @@
     flex: 1;
   }
 
+  input, select, textarea, .input {
+    width: 100%;
+    border: 1px solid #DAE1E9;
+    padding: 10px;
+    font-size: 1em;
+    font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: white;
+  }
+
   .form-block {
     margin-bottom: 20px;
-
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid #DAE1E9;
-      padding: 10px;
-      font-size: 1em;
-      font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      border-radius: 2px;
-      box-sizing: border-box;
-      background-color: white;
-    }
 
     select {
       height: 44px;
