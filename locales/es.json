@@ -9,12 +9,15 @@
 
   "home": {
     "title": "Alerta Solidaria",
-    "description": "Ayudamos a gobiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo."
+    "description":
+      "Ayudamos a gobiernos y organizaciones sin fines de lucro a encontrar personas perdidas por todo el mundo."
   },
 
   "about": {
-    "whatIsIt": "<h1>Qué es?</h1> <p>Find Earth es una plataforma <a class='link' href='https://github.com/FindEarth' target='_blank'>open source</a>, que tiene como objetivo facilitar el reporte de personas perdidas, agilizar la viralización de sus datos en redes sociales y lo más importante: ayudar a encontrarlas.</p></p>",
-    "why": "<h1>Por qué?</h1><p>Cuando se pierde una persona, el tiempo vale más de lo normal. Por medio de Find Earth se puede reportar, ver los datos y compartir personas perdidas con solo un click.</p><p>Muchas veces vemos posts en Facebook o Tweets con información de alguna persona perdida. Esto tiene algunas desventajas. Por ejemplo, un tweet no se puede actualizar. Si el tweet se hizo viral ya es muy tarde para agreagarle o actualizarle cierta información.</p><p>Es necesario una plataforma así? Miremos las estadísticas de Argentina: en 27 días de Abril acontecieron 28 femicidios. Casi un femicidio por día.</p><div class='image-wrapper'><img src='https://cdn-images-1.medium.com/max/1600/1*5kp5-MeTa5zS1kyI3JrK8Q.png'/><span class='description'>Fuente: <a class='link' href='http://cosecharoja.org/femicidio-araceli' target='_blank'>http://cosecharoja.org/femicidio-araceli</a></span></div><p>Cuando una persona se pierde, las primeras 72 horas son de suma importancia para ayudar a encontrarla. Pasado este tiempo las estadísticas se reducen desfavorablemente.</p><p>Para nosotros es de suma importancia la concientización y colaboración de la sociedad ya que Find Earth es simplemente una herramienta, el medio somos <b>TODOS</b> nosotros.</p>"
+    "whatIsIt":
+      "<h1>Qué es?</h1> <p>Find Earth es una plataforma <a class='link' href='https://github.com/FindEarth/web#the-platform' target='_blank'>open source</a>, que tiene como objetivo facilitar el reporte de personas perdidas, agilizar la viralización de sus datos en redes sociales y lo más importante: ayudar a encontrarlas.</p></p>",
+    "why":
+      "<h1>Por qué?</h1><p>Cuando se pierde una persona, el tiempo vale más de lo normal. Por medio de Find Earth se puede reportar, ver los datos y compartir personas perdidas con solo un click.</p><p>Muchas veces vemos posts en Facebook o Tweets con información de alguna persona perdida. Esto tiene algunas desventajas. Por ejemplo, un tweet no se puede actualizar. Si el tweet se hizo viral ya es muy tarde para agreagarle o actualizarle cierta información.</p><p>Es necesario una plataforma así? Miremos las estadísticas de Argentina: en 27 días de Abril acontecieron 28 femicidios. Casi un femicidio por día.</p><div class='image-wrapper'><img src='https://cdn-images-1.medium.com/max/1600/1*5kp5-MeTa5zS1kyI3JrK8Q.png'/><span class='description'>Fuente: <a class='link' href='http://cosecharoja.org/femicidio-araceli' target='_blank'>http://cosecharoja.org/femicidio-araceli</a></span></div><p>Cuando una persona se pierde, las primeras 72 horas son de suma importancia para ayudar a encontrarla. Pasado este tiempo las estadísticas se reducen desfavorablemente.</p><p>Para nosotros es de suma importancia la concientización y colaboración de la sociedad ya que Find Earth es simplemente una herramienta, el medio somos <b>TODOS</b> nosotros.</p>"
   },
 
   "persons": {
@@ -32,7 +35,7 @@
     },
     "contactModal": {
       "title": "Si tenes información sobre {personName} contactános",
-      "phone": "Teléfono:",            
+      "phone": "Teléfono:",
       "emergencyPhone": "Teléfono de Emergencia:"
     },
     "descriptionModal": {
@@ -41,11 +44,13 @@
       "moreInfo": "Mas información:"
     },
     "years": "años",
-    "description": "Se perdió el <b class='person-description-bold'>{date}</b> en <b class='person-description-bold'>{place}</b>"
+    "description":
+      "Se perdió el <b class='person-description-bold'>{date}</b> en <b class='person-description-bold'>{place}</b>"
   },
 
   "report": {
-    "formError": "Por favor, complete el nombre, edad y dirección de la persona",
+    "formError":
+      "Por favor, complete el nombre, edad y dirección de la persona",
     "submit": "Enviar",
     "missingPerson": "Persona Perdida",
     "yourDetails": "Tus Datos",
@@ -67,7 +72,8 @@
 
   "contributeModal": {
     "title": "Sumarse",
-    "description": "Si te gusta el proyecto y queres colaborar, por favor dejanos tus datos y te contactaremos en la brevedad. Gracias!",
+    "description":
+      "Si te gusta el proyecto y queres colaborar, por favor dejanos tus datos y te contactaremos en la brevedad. Gracias!",
     "submit": "Enviar"
   }
 }
